@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- need to add those in the future; although, not sure if it's correct
+	
+	<bean id="imCandidateDAO" class="ro.sit.hrapp.dao.inmemory.IMCandidateDAO"/>
+	<bean id="companyService" class="ro.sit.hrapp.service.CandidateService">
+	    <property name="candidatedao" ref="imCandidateDAO" />
+	</bean> 
+	
+	<bean id="imCompanyDAO" class="ro.sit.hrapp.dao.inmemory.IMCompanyDAO"/>
+	<bean id="companyService" class="ro.sit.hrapp.service.CompanyService">
+	    <property name="companydao" ref="imCompanyDAO" />
+	</bean> 
+	
+	-->
+
+</beans>
