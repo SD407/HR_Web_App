@@ -25,24 +25,10 @@ public class JobDescription {
 	}
 
 	/**
-	 * @param currentJobTitle the currentJobTitle to set
-	 */
-	public void setCurrentJobTitle(CurrentJobTitle currentJobTitle) {
-		this.currentJobTitle = currentJobTitle;
-	}
-
-	/**
 	 * @return the yearOfExperience to get
 	 */
 	public YearsOfExperience getYearOfExperience() {
 		return yearOfExperience;
-	}
-
-	/**
-	 * @param yearOfExperience the yearOfExperience to set
-	 */
-	public void setYearOfExperience(YearsOfExperience yearOfExperience) {
-		this.yearOfExperience = yearOfExperience;
 	}
 
 	/**
@@ -53,24 +39,10 @@ public class JobDescription {
 	}
 
 	/**
-	 * @param prefferedLocation the prefferedLocation to set
-	 */
-	public void setPrefferedLocation(PrefferedLocation prefferedLocation) {
-		this.prefferedLocation = prefferedLocation;
-	}
-
-	/**
 	 * @return the professionalSkills to get
 	 */
 	public ProfessionalSkills getProfessionalSkills() {
 		return professionalSkills;
-	}
-
-	/**
-	 * @param professionalSkills the professionalSkills to set
-	 */
-	public void setProfessionalSkills(ProfessionalSkills professionalSkills) {
-		this.professionalSkills = professionalSkills;
 	}
 
 	/**
@@ -80,13 +52,6 @@ public class JobDescription {
 		return personalSkills;
 	}
 
-	/**
-	 * @param personalSkills the personalSkills to set
-	 */
-	public void setPersonalSkills(PersonalSkills personalSkills) {
-		this.personalSkills = personalSkills;
-	}
-	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
