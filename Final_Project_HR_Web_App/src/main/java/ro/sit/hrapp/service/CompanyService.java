@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
-import ro.sit.hrapp.DAO.CompanyDAO;
+import ro.sit.hrapp.dao.CompanyDAO;
 import ro.sit.hrapp.domain.Company;
 
 public class CompanyService {

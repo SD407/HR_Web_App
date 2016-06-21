@@ -1,10 +1,10 @@
-package ro.sit.hrapp.ImDao;
+package ro.sit.hrapp.imdao;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import ro.sit.hrapp.DAO.CandidateDAO;
+import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.domain.Candidate;
 
 public class IMCandidate extends ImBaseDao<Candidate> implements CandidateDAO {

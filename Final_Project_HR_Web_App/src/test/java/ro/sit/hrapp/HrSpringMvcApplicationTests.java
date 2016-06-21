@@ -16,7 +16,7 @@ import ro.sit.hrapp.domain.Company;
 import ro.sit.hrapp.domain.JobDescription;
 import ro.sit.hrapp.service.CandidateService;
 import ro.sit.hrapp.service.CompanyService;
-import ro.sit.hrapp.domain.JobDescription.*;
+import ro.sit.hrapp.domain.JobDescription.CurrentJobTitle.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = HrSpringMvcApplication.class)
@@ -69,7 +69,7 @@ public class HrSpringMvcApplicationTests {
 	@Test
 	public void testSaveCompany() {
 		List<JobDescription>jobList = new LinkedList<>();
-		jobList.add(createJobDescriptionObject(,JobDescription.yearOfExperience));
+		jobList.add(createJobDescriptionObject(jd.));
 		Company company = createObjectFromCompany("nokia","nokya","phons","nokia.emp@yahoo.com","040-03457623",
 				"phons",jobList,"Cluj-Napoca");
 

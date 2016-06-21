@@ -1,10 +1,10 @@
-package ro.sit.hrapp.ImDao;
+package ro.sit.hrapp.imdao;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import ro.sit.hrapp.DAO.BaseDAO;
+import ro.sit.hrapp.dao.BaseDAO;
 import ro.sit.hrapp.domain.AbstractModel;
 
 public class ImBaseDao<T extends AbstractModel> implements BaseDAO<T> {

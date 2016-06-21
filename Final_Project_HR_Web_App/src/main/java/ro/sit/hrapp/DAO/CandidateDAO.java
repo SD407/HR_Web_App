@@ -1,4 +1,4 @@
-package ro.sit.hrapp.DAO;
+package ro.sit.hrapp.dao;
 
 import java.util.Collection;
 

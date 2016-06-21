@@ -1,4 +1,4 @@
-package ro.sit.hrapp.ImDao;
+package ro.sit.hrapp.imdao;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import org.springframework.stereotype.Component;
 
-import ro.sit.hrapp.DAO.CompanyDAO;
+import ro.sit.hrapp.dao.CompanyDAO;
 import ro.sit.hrapp.domain.Company;
 
 @Component
