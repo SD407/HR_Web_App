@@ -1,6 +1,6 @@
 package ro.sit.hrapp.domain;
 
-public class Candidate extends AbstractModel {
+public class Candidate extends AbstractModel  {
 	
 	private String firstName;
 	private String lastName;
