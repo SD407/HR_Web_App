@@ -10,4 +10,6 @@ public interface CompanyDAO extends BaseDAO<Company> {
 
 	
 
+	
+
 }
