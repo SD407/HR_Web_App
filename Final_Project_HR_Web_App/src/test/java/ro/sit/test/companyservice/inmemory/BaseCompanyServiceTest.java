@@ -2,6 +2,7 @@ package ro.sit.test.companyservice.inmemory;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,10 +10,6 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import ro.sit.hrapp.domain.Company;
 import ro.sit.hrapp.domain.JobDescription;
@@ -29,12 +26,12 @@ public abstract class BaseCompanyServiceTest {
 
 	protected abstract CompanyService getCompanyService();
 
-	CompanyService compService;
+	CompanyService compService = new CompanyService();
 	CandidateService candService;
 	JobDescription jd;
 	List<JobDescription> jobList = new LinkedList<>();
-	Company company = new Company();
-
+    Company company ;
+    
 	// asta verifica daca lista de companii este goala la inceput ?
 	@Test
 	public void test_empty_get_all() {
@@ -43,26 +40,49 @@ public abstract class BaseCompanyServiceTest {
 	}
 
 	@Test
-	public void contextLoads() {
-
-	}
-
-	@Test
 	public void addCompany() throws ValidationException {
-		// adding company
+
+	   company = new Company();
+
 		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
 				JobDescription.ProfessionalSkills.JAVA, JobDescription.PersonalSkills.TEAM_PLAYER));
+		// adding company
 
 		company = createObjectFromCompany("nokia", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons",
 				jobList, "Cluj-Napoca");
 		getCompanyService().saveCompany(company);
 
-		assertNotEquals(company.getCompanyName(), compService.getComp_dao().searchByNameCompany("nokia"));
+		Collection<Company> comp = getCompanyService().getComp_dao().getAllCompanies();
+		List<Company> list = new ArrayList<>(comp);
+		assertEquals("nokia", list.get(0).getCompanyName());
+		
+	}
+	@Test
+	public void deleteCompany() throws ValidationException {
 
+		 Company compToDelete = new Company();
+
+		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
+				JobDescription.ProfessionalSkills.JAVA, JobDescription.PersonalSkills.TEAM_PLAYER));
+		// adding company
+
+		compToDelete = createObjectFromCompany("endava", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons",
+				jobList, "Cluj-Napoca");
+		// saving company
+		getCompanyService().saveCompany(compToDelete);
+		
+		// deleteing the company
+        Long id = compToDelete.getId();
+		getCompanyService().deleteCompany(id);
+		Collection<Company> com = getCompanyService().getComp_dao().getAllCompanies();
+		List<Company> list = new ArrayList<>(com);
+		assertTrue(list.isEmpty());
+		
 	}
 
-	// @Test(expected = ValidationException.class)
+	 //@Test(expected = ValidationException.class)
 	public void test_add_no_company_name() throws ValidationException {
 
 		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
