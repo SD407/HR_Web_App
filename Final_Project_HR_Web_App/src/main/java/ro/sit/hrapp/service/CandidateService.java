@@ -20,7 +20,7 @@ public class CandidateService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CandidateService.class);
 
 	@Autowired
-	private CandidateDAO cand_dao;
+	private CandidateDAO cand_dao; // fake
 	
 	public Collection<Candidate> listAllCandidates() {
 		return cand_dao.getAllCandidates();

@@ -33,7 +33,7 @@ public class CompanyService {
 
 	public boolean deleteCompany(Long id) {
 		LOGGER.debug("Deleting company for id: " + id);
-		Company company = comp_dao.findByIdCandidate(id);
+		Company company = comp_dao.findByIdCompany(id);
 		if (company != null) {
 			comp_dao.deleteCompany(company);
 			return true;
@@ -53,7 +53,7 @@ public class CompanyService {
 		LOGGER.debug("Saving: " + company);
 		validateCompany(company);
 
-		comp_dao.updateCandidate(company);
+		comp_dao.updateCompany(company);
 
 	}
 

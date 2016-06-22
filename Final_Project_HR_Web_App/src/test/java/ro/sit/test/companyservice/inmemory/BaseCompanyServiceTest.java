@@ -30,19 +30,20 @@ public abstract class BaseCompanyServiceTest {
 	CandidateService candService;
 	JobDescription jd;
 	List<JobDescription> jobList = new LinkedList<>();
-    Company company ;
-    
+	Company company;
+
 	// asta verifica daca lista de companii este goala la inceput ?
-	@Test
+	// @Test
 	public void test_empty_get_all() {
 		Collection<Company> company = getCompanyService().listAll();
 		Assert.assertTrue(company.isEmpty());
 	}
 
-	@Test
+	// test negativ - dau o companie si caut alta !
+	 @Test
 	public void addCompany() throws ValidationException {
 
-	   company = new Company();
+		company = new Company();
 
 		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
@@ -56,55 +57,96 @@ public abstract class BaseCompanyServiceTest {
 		Collection<Company> comp = getCompanyService().getComp_dao().getAllCompanies();
 		List<Company> list = new ArrayList<>(comp);
 		assertEquals("nokia", list.get(0).getCompanyName());
-		
+
+		getCompanyService().getComp_dao().deleteCompany(company);
+
 	}
-	@Test
+
+	 @Test
 	public void deleteCompany() throws ValidationException {
 
-		 Company compToDelete = new Company();
+		Company compToDelete = new Company();
 
 		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
 				JobDescription.ProfessionalSkills.JAVA, JobDescription.PersonalSkills.TEAM_PLAYER));
 		// adding company
 
-		compToDelete = createObjectFromCompany("endava", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons",
-				jobList, "Cluj-Napoca");
+		compToDelete = createObjectFromCompany("endava", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623",
+				"phons", jobList, "Cluj-Napoca");
 		// saving company
 		getCompanyService().saveCompany(compToDelete);
-		
+
 		// deleteing the company
-        Long id = compToDelete.getId();
+		Long id = compToDelete.getId();
 		getCompanyService().deleteCompany(id);
 		Collection<Company> com = getCompanyService().getComp_dao().getAllCompanies();
 		List<Company> list = new ArrayList<>(com);
 		assertTrue(list.isEmpty());
-		
+
 	}
 
-	 //@Test(expected = ValidationException.class)
-	public void test_add_no_company_name() throws ValidationException {
+	@Test
+	public void getCompany() throws ValidationException {
+
+		Company compToGet = new Company();
+		Company comp1 = new Company();
+		Company comp2 = new Company();
+
+		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
+				JobDescription.ProfessionalSkills.JAVA, JobDescription.PersonalSkills.TEAM_PLAYER));
+		// adding companys
+
+		comp1 = createObjectFromCompany("endava", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons",
+				jobList, "Cluj-Napoca");
+		getCompanyService().saveCompany(comp1);
+
+		comp2 = createObjectFromCompany("bosh", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons",
+				jobList, "Cluj-Napoca");
+		getCompanyService().saveCompany(comp2);
+
+		Collection<Company> com = getCompanyService().getComp_dao().getAllCompanies();
+		List<Company> list = new ArrayList<>(com);
+		assertEquals(comp1.getClass(), list.get(0).getClass());//?
+
+	}
+
+	@Test
+	public void test_add_no_company_name() {
 
 		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
 				JobDescription.ProfessionalSkills.JAVA, JobDescription.PersonalSkills.TEAM_PLAYER));
 
-		company = createObjectFromCompany("", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons", jobList,
-				"Cluj-Napoca");
-		getCompanyService().saveCompany(company);
+		company = createObjectFromCompany("", "nokya", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons",
+				jobList, "Cluj-Napoca");
+		try {
+			getCompanyService().saveCompany(company);
+		} catch (ValidationException e) {
+			assertEquals("[Company name is Empty]", e.getMessage().toString());
+		}
+
+		// golire imdao
+		getCompanyService().getComp_dao().deleteCompany(company);
 
 	}
 
-	// @Test(expected = ValidationException.class)
-	public void test_add_no_username() throws ValidationException {
+	 @Test
+	public void test_add_no_username() {
 
 		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
 				JobDescription.ProfessionalSkills.JAVA, JobDescription.PersonalSkills.TEAM_PLAYER));
 
-		company = createObjectFromCompany("nokia", "", "phons", "nokia.emp@yahoo.com", "040-03457623", "phons", jobList,
-				"Cluj-Napoca");
-		getCompanyService().saveCompany(company);
+		company = createObjectFromCompany("nokia", null, "phons", "nokia.emp@yahoo.com", "040-03457623", "phons",
+				jobList, "Cluj-Napoca");
+		try {
+			getCompanyService().saveCompany(company);
+		} catch (ValidationException e) {
+			assertEquals("[UserName is Empty]", e.getMessage().toString());
+			e.printStackTrace();
+		}
 
 	}
 
