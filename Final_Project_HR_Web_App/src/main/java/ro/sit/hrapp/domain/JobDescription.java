@@ -13,7 +13,7 @@ public class JobDescription {
 	
 	private CurrentJobTitle currentJobTitle;
 	private YearsOfExperience yearOfExperience;
-	private PrefferedLocation prefferedLocation;
+	private Location location;
 	private ProfessionalSkills professionalSkills;
 	private PersonalSkills personalSkills;
 	
@@ -25,6 +25,13 @@ public class JobDescription {
 	}
 
 	/**
+	 * @param currentJobTitle the currentJobTitle to set
+	 */
+	public void setCurrentJobTitle(CurrentJobTitle currentJobTitle) {
+		this.currentJobTitle = currentJobTitle;
+	}
+
+	/**
 	 * @return the yearOfExperience to get
 	 */
 	public YearsOfExperience getYearOfExperience() {
@@ -32,10 +39,24 @@ public class JobDescription {
 	}
 
 	/**
-	 * @return the prefferedLocation to get
+	 * @param yearOfExperience the yearOfExperience to set
 	 */
-	public PrefferedLocation getPrefferedLocation() {
-		return prefferedLocation;
+	public void setYearOfExperience(YearsOfExperience yearOfExperience) {
+		this.yearOfExperience = yearOfExperience;
+	}
+
+	/**
+	 * @return the location to get
+	 */
+	public Location getLocation() {
+		return location;
+	}
+
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	/**
@@ -46,10 +67,24 @@ public class JobDescription {
 	}
 
 	/**
+	 * @param professionalSkills the professionalSkills to set
+	 */
+	public void setProfessionalSkills(ProfessionalSkills professionalSkills) {
+		this.professionalSkills = professionalSkills;
+	}
+
+	/**
 	 * @return the personalSkills to get
 	 */
 	public PersonalSkills getPersonalSkills() {
 		return personalSkills;
+	}
+
+	/**
+	 * @param personalSkills the personalSkills to set
+	 */
+	public void setPersonalSkills(PersonalSkills personalSkills) {
+		this.personalSkills = personalSkills;
 	}
 
 	/* (non-Javadoc)
@@ -61,7 +96,7 @@ public class JobDescription {
 		int result = 1;
 		result = prime * result + ((currentJobTitle == null) ? 0 : currentJobTitle.hashCode());
 		result = prime * result + ((personalSkills == null) ? 0 : personalSkills.hashCode());
-		result = prime * result + ((prefferedLocation == null) ? 0 : prefferedLocation.hashCode());
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + ((professionalSkills == null) ? 0 : professionalSkills.hashCode());
 		result = prime * result + ((yearOfExperience == null) ? 0 : yearOfExperience.hashCode());
 		return result;
@@ -83,7 +118,7 @@ public class JobDescription {
 			return false;
 		if (personalSkills != other.personalSkills)
 			return false;
-		if (prefferedLocation != other.prefferedLocation)
+		if (location != other.location)
 			return false;
 		if (professionalSkills != other.professionalSkills)
 			return false;
@@ -98,15 +133,15 @@ public class JobDescription {
 	@Override
 	public String toString() {
 		return "JobDescription [currentJobTitle=" + currentJobTitle + ", yearOfExperience=" + yearOfExperience
-				+ ", prefferedLocation=" + prefferedLocation + ", professionalSkills=" + professionalSkills
+				+ ", prefferedLocation=" + location + ", professionalSkills=" + professionalSkills
 				+ ", personalSkills=" + personalSkills + "]";
 	}
 
-	private enum CurrentJobTitle {
+	public enum CurrentJobTitle {
 		BA,PM, UI_UX, JAVA;
 	}
 	
-	private enum YearsOfExperience {
+	public enum YearsOfExperience {
 		ZERO_TO_ONE (0, 1),
 		ONE_TO_THREE (0 ,3),
 		THREE_TO_FIVE (3, 5),
@@ -120,25 +155,27 @@ public class JobDescription {
 			this.endYear = endYear;
 		}
 		
-		 private int returnStartYear() {
+		 @SuppressWarnings("unused")
+		private int returnStartYear() {
 			 return startYear;
 		 }
 		 
-		 private int returnEndYear() {
+		 @SuppressWarnings("unused")
+		private int returnEndYear() {
 			 return endYear;
 		 }
 		 
 	}
 	
-	private enum PrefferedLocation {
+	public enum Location {
 		CLUJ_NAPOCA, BUCURESTI;
 	}
 	
-	private enum ProfessionalSkills {
+	public enum ProfessionalSkills {
 		JAVA, JDBC, SPRING;
 	}
 	
-	private enum PersonalSkills {
+	public enum PersonalSkills {
 		TEAM_PLAYER, GOOD_LISTENER, GOOD_COMMNUNICATOR;
 	}
 	

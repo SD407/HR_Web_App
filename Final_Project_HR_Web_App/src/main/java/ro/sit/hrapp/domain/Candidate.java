@@ -6,7 +6,7 @@ public class Candidate extends AbstractModel {
 	private String lastName;
 	private String userName;
 	private String email;
-	private String phone;
+	private String phoneNumber;
 	private String password;
 	private String passwordConfirmed;
 
@@ -71,15 +71,15 @@ public class Candidate extends AbstractModel {
 	/**
 	 * @return the phone to get
 	 */
-	public String getPhone() {
-		return phone;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	/**
 	 * @param phone the phone to set
 	 */
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class Candidate extends AbstractModel {
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((passwordConfirmed == null) ? 0 : passwordConfirmed.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
@@ -185,10 +185,10 @@ public class Candidate extends AbstractModel {
 				return false;
 		} else if (!passwordConfirmed.equals(other.passwordConfirmed))
 			return false;
-		if (phone == null) {
-			if (other.phone != null)
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
 				return false;
-		} else if (!phone.equals(other.phone))
+		} else if (!phoneNumber.equals(other.phoneNumber))
 			return false;
 		if (userName == null) {
 			if (other.userName != null)
@@ -203,8 +203,8 @@ public class Candidate extends AbstractModel {
 	 */
 	@Override
 	public String toString() {
-		return "Candidate [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phone=" + phone
-				+ ", jobProfile=" + jobDescription + "]";
+		return "Candidate [firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
+				+ ", phoneNumber=" + phoneNumber + ", jobDescription=" + jobDescription + "]";
 	}
-
+	
 }

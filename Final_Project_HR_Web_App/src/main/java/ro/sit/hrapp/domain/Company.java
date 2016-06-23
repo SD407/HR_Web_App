@@ -20,7 +20,7 @@ public class Company extends AbstractModel {
 	private String companyName;
 	private String userName;
 	private String email;
-	private String phone;
+	private String phoneNumber;
 	private String password;
 	private String passwordConfirmed;
 	private String jobLocation;
@@ -72,15 +72,15 @@ public class Company extends AbstractModel {
 	/**
 	 * @return the phone to get
 	 */
-	public String getPhone() {
-		return phone;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	/**
 	 * @param phone the phone to set
 	 */
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhoneNumber(String phone) {
+		this.phoneNumber = phone;
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class Company extends AbstractModel {
 		result = prime * result + ((jobDescription == null) ? 0 : jobDescription.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((passwordConfirmed == null) ? 0 : passwordConfirmed.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
@@ -199,10 +199,10 @@ public class Company extends AbstractModel {
 				return false;
 		} else if (!passwordConfirmed.equals(other.passwordConfirmed))
 			return false;
-		if (phone == null) {
-			if (other.phone != null)
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
 				return false;
-		} else if (!phone.equals(other.phone))
+		} else if (!phoneNumber.equals(other.phoneNumber))
 			return false;
 		if (userName == null) {
 			if (other.userName != null)
@@ -217,8 +217,10 @@ public class Company extends AbstractModel {
 	 */
 	@Override
 	public String toString() {
-		return "Company [companyName=" + companyName + ", email=" + email + ", phone=" + phone + ", jobLocation="
-				+ jobLocation + "]";
+		return "Company [companyName=" + companyName + ", userName=" + userName + ", email=" + email + ", phoneNumber="
+				+ phoneNumber + ", jobDescription=" + jobDescription + "]";
 	}
+	
+	
 	
 }

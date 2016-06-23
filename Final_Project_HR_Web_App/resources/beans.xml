@@ -16,5 +16,8 @@
 	</bean> 
 	
 	-->
+	
+	<bean id="candidateValidator" class="ro.sit.hrapp.service.validator.CandidateRegistrationValidator" />
+	<bean id="companyValidator" class="ro.sit.hrapp.service.validator.CompanyRegistrationValidator" />
 
 </beans>
