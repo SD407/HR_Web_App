@@ -14,6 +14,7 @@ import ro.sit.hrapp.domain.Company;
  * @author stefan
  *
  */
+
 @Component
 public class IMCompanyDAO extends IMBaseDAO<Company> implements CompanyDAO {
 

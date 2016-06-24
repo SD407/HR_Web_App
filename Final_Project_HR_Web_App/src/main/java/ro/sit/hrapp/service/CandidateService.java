@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.domain.Candidate;
@@ -14,6 +15,8 @@ import ro.sit.hrapp.domain.Candidate;
  * @author stefan
  *
  */
+
+@Service
 public class CandidateService {
 
 	// doua servicii diferite
@@ -47,8 +50,8 @@ public class CandidateService {
 		return candidateDAO;
 	}
 
-	public void setDAO(CandidateDAO dao) {
-		this.candidateDAO = dao;
+	public void setCandidateDAO(CandidateDAO candidateDAO) {
+		this.candidateDAO = candidateDAO;
 	}
 
 }

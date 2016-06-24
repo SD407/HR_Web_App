@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ro.sit.hrapp.dao.CompanyDAO;
 import ro.sit.hrapp.domain.Company;
@@ -14,6 +15,8 @@ import ro.sit.hrapp.domain.Company;
  * @author stefan
  *
  */
+
+@Service
 public class CompanyService {
 
 	// doua servicii diferite

@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.springframework.stereotype.Component;
+
 import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.domain.Candidate;
 /**
@@ -11,6 +13,8 @@ import ro.sit.hrapp.domain.Candidate;
  * @author stefan
  *
  */
+
+@Component
 public class IMCandidateDAO extends IMBaseDAO<Candidate> implements CandidateDAO {
 
 	@Override
