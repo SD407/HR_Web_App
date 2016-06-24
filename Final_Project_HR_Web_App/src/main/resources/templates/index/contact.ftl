@@ -54,13 +54,13 @@
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="/index/home">Home</a></li>
+		            <li class="#"><a href="/index/home">Home</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
 		            <li class="#"><a href="/index/about">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
-		            <li class="#"><a href="/index/contact">Contact</a></li>
+		            <li class="active"><a href="/index/contact">Contact</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li><a href="#">Login</a></li>
