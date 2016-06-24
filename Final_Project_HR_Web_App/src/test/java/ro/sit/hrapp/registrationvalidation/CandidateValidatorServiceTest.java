@@ -86,7 +86,7 @@ public abstract class CandidateValidatorServiceTest {
 		//when
 		getValidator().validate(candidate, errors);
 		//then
-		System.out.println(errors.toString());
+		System.out.println(errors.getFieldError().getDefaultMessage().toString());
 		assertTrue(errors.hasErrors());
 		assertTrue(candidate.getFirstName().isEmpty());
 	}
