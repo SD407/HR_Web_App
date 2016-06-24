@@ -19,12 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping ("/spring")
 public class WebPageController {
 	
 	@RequestMapping
 	public ModelAndView renerIndexPage () throws Exception{
-		ModelAndView modelAndView = new ModelAndView("/index/home");
+		ModelAndView modelAndView = new ModelAndView("/spring/home");
 		modelAndView.addObject("title", "Index"); 
 		return modelAndView;
 	}

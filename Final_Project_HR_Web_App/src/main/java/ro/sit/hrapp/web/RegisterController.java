@@ -30,7 +30,7 @@ import ro.sit.hrapp.service.validator.CompanyRegistrationValidator;
  */
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/spring")
 public class RegisterController {
 	
 	//common
