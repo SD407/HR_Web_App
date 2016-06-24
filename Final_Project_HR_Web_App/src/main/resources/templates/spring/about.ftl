@@ -50,17 +50,17 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand" href="/index/about">HR Web App</a>
+		          <a class="navbar-brand" href="/spring/about">HR Web App</a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="#"><a href="/index/home">Home</a></li>
+		            <li class="#"><a href="/spring/home">Home</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
-		            <li class="#"><a href="/index/about">About</a></li>
+		            <li class="active"><a href="/spring/about">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="/index/contact">Contact</a></li>
+		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li><a href="#">Login</a></li>

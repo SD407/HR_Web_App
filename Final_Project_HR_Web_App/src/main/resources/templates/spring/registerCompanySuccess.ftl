@@ -30,19 +30,15 @@
 			<!-- Google Fonts -->
 			<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 			<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-			
-			<!-- Register CSS -->
-	   	 	<link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
-			
 		</head>
 		<body>
 
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
 				<div class="panel-body">
-					<#if candidates??>
-						<#list candidates as candidate>
-						    <li class="list-group-item">Registration is complete, ${candidate.userName}. Care to login? <a href="/index/login">Login</a></li>
+					<#if companies??>
+						<#list companies as company>
+						    <li class="list-group-item">Registration is complete, ${company.userName}. Care to login? <a href="/spring/login">Login</a></li>
 						</#list>
 						<!-- end iteration -->
 					</#if>
