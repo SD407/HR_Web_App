@@ -79,7 +79,7 @@
          			 </ul>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="/index/login">Login</a></li>
+		            <li class="active"><a href="/spring/login">Login</a></li>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>
@@ -90,10 +90,8 @@
 			<div class="row main">
 				<div class="panel-heading">
 	            </div> 
-	            
 				<div class="main-login main-center">
-					<!--<form class="form-horizontal" method="post" action="">-->
-					<form class="form-horizontal" method="post" action="/index/registerCandidate">
+					<form class="form-horizontal" method="post" action="/spring/registerCandidate">
 					
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">First Name</label>
@@ -169,7 +167,7 @@
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
 						</div>
 						<div class="login-register">
-				            <a href="/index/login">Login</a>
+				            <a href="/spring/login">Login</a>
 				         </div>
 					</form>
 				</div>

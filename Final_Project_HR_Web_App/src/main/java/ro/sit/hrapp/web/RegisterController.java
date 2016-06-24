@@ -34,7 +34,7 @@ import ro.sit.hrapp.service.validator.CompanyRegistrationValidator;
 public class RegisterController {
 	
 	//common
-	@RequestMapping(value = "/register")
+	@RequestMapping(value = "registrationPage")
 	public ModelAndView renerCandidateRegisterPage () throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", "Register Page"); 
@@ -56,10 +56,10 @@ public class RegisterController {
 		return modelAndView;
 	}
 
-	@RequestMapping("registerCandidateSuccess")
+	@RequestMapping(value = "registerCandidateSuccess")
 	public ModelAndView renderCandidateSuccessfullRegistrationPage() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("applicants", candidateService.listAll());
+		modelAndView.addObject("candidates", candidateService.listAll());
 		modelAndView.addObject("title", "Registration Successfull");
 		return modelAndView;
 	}
@@ -67,20 +67,18 @@ public class RegisterController {
 	@RequestMapping(value = "registerCandidate", method = RequestMethod.POST)
 	public ModelAndView registerCandidate(Candidate candidate, BindingResult bindingResult) {
 
-		ModelAndView modelAndView = null;
+		ModelAndView modelAndView = new ModelAndView();
 		candidateValidator.validate(candidate, bindingResult);
 
 		boolean hasErros = false;
 		if (!bindingResult.hasErrors()) {
-			modelAndView = new ModelAndView();
 			candidateService.saveCandidate(candidate);
 			modelAndView.setView(new RedirectView("registerCandidateSuccess"));
-			hasErros = true;
 		} else {
 			hasErros = true;
 		}
 		if (hasErros) {
-			modelAndView = new ModelAndView("/index/registerCandidate");
+			modelAndView = new ModelAndView("/spring/registerCandidate");
 			modelAndView.addObject("candidate", candidate);
 			modelAndView.addObject("errors", bindingResult.getAllErrors());
 		}
@@ -105,33 +103,30 @@ public class RegisterController {
 	@RequestMapping("registerCompanySuccess")
 	public ModelAndView renderSuccessfullRegistrationPage() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("applicants", companyService.listAll());
+		modelAndView.addObject("companies", companyService.listAll());
 		modelAndView.addObject("title", "Registration Successfull");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "registerCompany", method = RequestMethod.POST)
-	public ModelAndView registerUser(Company company, BindingResult bindingResult) {
+	public ModelAndView registerCompany(Company company, BindingResult bindingResult) {
 
-		ModelAndView modelAndView = null;
+		ModelAndView modelAndView = new ModelAndView();
 		companyValidator.validate(company, bindingResult);
 
 		boolean hasErros = false;
 		if (!bindingResult.hasErrors()) {
-			modelAndView = new ModelAndView();
 			companyService.saveCompany(company);
 			modelAndView.setView(new RedirectView("registerCompanySuccess"));
-			hasErros = true;
 		} else {
 			hasErros = true;
 		}
 		if (hasErros) {
-			modelAndView = new ModelAndView("/index/registerCompany");
+			modelAndView = new ModelAndView("/spring/registerCompany");
 			modelAndView.addObject("company", company);
 			modelAndView.addObject("errors", bindingResult.getAllErrors());
 		}
 		return modelAndView;
 	}
-
 
 }

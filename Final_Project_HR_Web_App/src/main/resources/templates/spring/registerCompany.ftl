@@ -21,34 +21,40 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-		<title>${title}</title>
+		<title>Register Candidate</title>
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	    <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-		
-		<!-- Register CSS -->
-	    <link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
-		
-		<!-- Website CSS style -->
-		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
-		<!-- Website Font style -->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	    <title>Bootstrap 101 Template</title>
+	
+	    <!-- Bootstrap -->
+	    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet">
+	
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	    
+	   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="<@spring.url '/js/bootstrap.min.js'/>"></script>
 		
 		<!-- Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   		
+		<!-- Register CSS -->
+	    <link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
 		
-		<!-- Custom styles for this template -->
-   		 <link href="/css/signin.css" rel="stylesheet">
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	</head>
 	
 	<body>
@@ -63,17 +69,17 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-        		  <a class="navbar-brand" href="#">Project name</a>
+        		  <a class="navbar-brand" href="/spring/about">HR Web App</a>
         		</div>
         		<div id="navbar" class="navbar-collapse collapse">
          			 <ul class="nav navbar-nav">
-			            <li><a href="/index">Home</a></li>
-			            <li><a href="#about">About</a></li>
-			            <li><a href="#contact">Contact</a></li>
+			            <li><a href="/spring/home">Home</a></li>
+			            <li><a href="/spring/about">About</a></li>
+			            <li><a href="/spring/contact">Contact</a></li>
          			 </ul>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="/index/login">Login</a></li>
+		            <li class="active"><a href="/spring/login">Login</a></li>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>
@@ -84,17 +90,15 @@
 			<div class="row main">
 				<div class="panel-heading">
 	            </div> 
-	            
 				<div class="main-login main-center">
-					<!--<form class="form-horizontal" method="post" action="">-->
-					<form class="form-horizontal" method="post" action="/index/registerCompany">
+					<form class="form-horizontal" method="post" action="/spring/registerCompany">
 					
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Company Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="firstName" id="firstName"  value="${company.companyName!''}" placeholder="Enter your Company Name"/>
+									<input type="text" class="form-control" name="companyName" id="companyName"  value="${company.companyName!''}" placeholder="Enter your Company Name"/>
 								</div>
 							</div>
 						</div>
@@ -153,7 +157,7 @@
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
 						</div>
 						<div class="login-register">
-				            <a href="/index/login">Login</a>
+				            <a href="/spring/login">Login</a>
 				         </div>
 					</form>
 				</div>
