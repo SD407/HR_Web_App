@@ -2,6 +2,7 @@ package ro.sit.hrapp.dao.inmemory;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -57,7 +58,7 @@ public class IMBaseDAO<T extends AbstractModel> implements BaseDAO<T> {
 	//candidate related
 	@Override
 	public Collection<T> getAllCandidates() {
-		return candidateModel.values();
+		return new LinkedList<T> (candidateModel.values());
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public abstract class BaseCandidateServiceTest {
 
 	@After
 	public void tearDown() {
-		Collection<Candidate> candidates = new LinkedList<>();
+		Collection<Candidate> candidates = getCandidateService().listAll();
 
 		for (Candidate candidate : candidates) {
 			getCandidateService().deleteCandidate(candidate.getId());
@@ -81,6 +81,7 @@ public abstract class BaseCandidateServiceTest {
 		// when
 		getValidator().validate(candidate, errors);
 		getCandidateService().saveCandidate(candidate);
+		// verifi cae un singur element
 		Collection<Candidate> comp = getCandidateService().listAll();
 		List<Candidate> candidateList = new ArrayList<>(comp);
 		// then
@@ -88,7 +89,7 @@ public abstract class BaseCandidateServiceTest {
 		assertFalse(errors.hasErrors()); // validate fields from candidate
 		assertEquals("biro", candidateList.get(0).getFirstName());
 
-		getCandidateService().getDAO().deleteCandidate(candidate);
+		
 
 	}
 
@@ -109,6 +110,7 @@ public abstract class BaseCandidateServiceTest {
 		Collection<Candidate> candidate = getCandidateService().listAll();
 		Long id = candidateToDelete.getId();
 		getCandidateService().deleteCandidate(id);
+		candidate = getCandidateService().listAll();
 		// then
 		System.out.println(errors.toString());
 		assertFalse(errors.hasErrors());
@@ -116,7 +118,7 @@ public abstract class BaseCandidateServiceTest {
 
 	}
 
-	@Test
+	//@Test
 	public void candidateListNotEmpty() {
 		// given
 		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
