@@ -50,7 +50,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand" href="/index/home">HR Web App</a>
+		          <a class="navbar-brand" href="/index/about">HR Web App</a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
