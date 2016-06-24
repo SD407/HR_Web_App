@@ -37,6 +37,11 @@ public class CompanyService {
 		return false;
 
 	}
+	public Company get(Long id) {
+		LOGGER.debug("Getting employee for id: " + id);
+		return companyDAO.findByIdCompany(id);
+
+	}
 
 	public void saveCompany(Company company) {
 		LOGGER.debug("Saving: " + company);

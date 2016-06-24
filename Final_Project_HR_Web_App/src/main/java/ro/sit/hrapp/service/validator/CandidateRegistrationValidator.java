@@ -18,7 +18,6 @@ import org.springframework.validation.Validator;
 
 import ro.sit.hrapp.domain.Candidate;
 
-
 /**
  * @author Sorin_Dragan
  *
@@ -27,12 +26,10 @@ import ro.sit.hrapp.domain.Candidate;
 @Component
 public class CandidateRegistrationValidator implements Validator {
 
-	private static final String EMAIL_PATTERN = 
-			"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	
-	private static final String PHONE_NUMBER_PATTERN = 
-			"^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+
+	private static final String PHONE_NUMBER_PATTERN = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
 
 	/*
 	 * (non-Javadoc)
@@ -53,12 +50,12 @@ public class CandidateRegistrationValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		Candidate candidate = (Candidate) target;
-		
+
 		// first name validation
 		if (candidate.getFirstName().isEmpty() || candidate.getFirstName() == null) {
 			errors.rejectValue("firstName", "firstName.isEmpty", "Please enter your first name.");
 		}
-		
+
 		// last name validation
 		if (candidate.getLastName().isEmpty() || candidate.getLastName() == null) {
 			errors.rejectValue("lastName", "lastName.isEmpty", "Please enter your last name.");
@@ -68,7 +65,7 @@ public class CandidateRegistrationValidator implements Validator {
 		if (candidate.getUserName().isEmpty() || candidate.getUserName() == null) {
 			errors.rejectValue("userName", "userName.isEmpty", "Please enter your username.");
 		}
-		
+
 		// phone number validation in spring
 		if (candidate.getPhoneNumber() == null || candidate.getPhoneNumber().isEmpty()) {
 			errors.rejectValue("phoneNumber", "phoneNumber.isEmpty", "Please enter your phone number.");
@@ -79,7 +76,7 @@ public class CandidateRegistrationValidator implements Validator {
 				errors.rejectValue("phoneNumber", "phoneNumber.incorrect", "Enter a correct phone number.");
 			}
 		}
-		
+
 		// email validation in spring
 		if (candidate.getEmail() == null || candidate.getEmail().isEmpty()) {
 			errors.rejectValue("email", "email.isEmpty", "Please enter your email.");
@@ -95,27 +92,29 @@ public class CandidateRegistrationValidator implements Validator {
 		if (candidate.getPassword().isEmpty() || candidate.getPassword() == null) {
 			errors.rejectValue("password", "password.isEmpty", "Please enter a password.");
 		}
-		
+
 		if (candidate.getPasswordConfirmed().isEmpty() || candidate.getPasswordConfirmed() == null) {
 			errors.rejectValue("passwordConfirmed", "passwordConfirmed.isEmpty",
 					"Please enter your confirmation password.");
 		}
-		
+
 		if (candidate.getPassword().length() < 6) {
-			errors.rejectValue("password", "password.incorrectSize", 
-					"Password should be at least 6 characters long.");
+			errors.rejectValue("password", "password.incorrectSize", "Password should be at least 6 characters long.");
 		}
-		
+
 		if (candidate.getPasswordConfirmed().length() < 6) {
-			errors.rejectValue("passwordConfirmed", "PasswordConfirmed.incorrectSize", 
+			errors.rejectValue("passwordConfirmed", "PasswordConfirmed.incorrectSize",
 					"Confirmed password should be at least 6 characters long.");
 		}
-		
+
 		if (!candidate.getPassword().equals(candidate.getPasswordConfirmed())) {
 			errors.rejectValue("passwordConfirmed", "passwordConfirmed.notmatch", "Passwords don't match.");
+		}
+		// prefered location validation
+		if (candidate.getPreferedLocation().isEmpty() || candidate.getPreferedLocation() == null) {
+			errors.rejectValue("preferedLocation", "preferedLocation.isEmpty", "Please enter your prefered location for job.");
 		}
 
 	}
 
 }
-

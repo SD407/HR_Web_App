@@ -1,5 +1,7 @@
 package ro.sit.hrapp.domain;
 
+import java.util.List;
+
 public class Candidate extends AbstractModel {
 	
 	private String firstName;
@@ -9,8 +11,9 @@ public class Candidate extends AbstractModel {
 	private String phoneNumber;
 	private String password;
 	private String passwordConfirmed;
+	private String preferedLocation;
 
-	private JobDescription jobDescription;
+	private List<JobDescription> jobDescription;
 	
 	/**
 	 * @return the firstName to get
@@ -113,16 +116,7 @@ public class Candidate extends AbstractModel {
 	/**
 	 * @return the jobProfile to get
 	 */
-	public JobDescription getJobDescription() {
-		return jobDescription;
-	}
-
-	/**
-	 * @param jobProfile the jobProfile to set
-	 */
-	public void setJobDescription(JobDescription jobProfile) {
-		this.jobDescription = jobProfile;
-	}
+	
 	
 
 	/* (non-Javadoc)
@@ -205,6 +199,22 @@ public class Candidate extends AbstractModel {
 	public String toString() {
 		return "Candidate [firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
 				+ ", phoneNumber=" + phoneNumber + ", jobDescription=" + jobDescription + "]";
+	}
+
+	public String getPreferedLocation() {
+		return preferedLocation;
+	}
+
+	public void setPreferedLocation(String preferedLocation) {
+		this.preferedLocation = preferedLocation;
+	}
+
+	public List<JobDescription> getJobDescription() {
+		return jobDescription;
+	}
+
+	public void setJobDescription(List<JobDescription> jobDescription) {
+		this.jobDescription = jobDescription;
 	}
 	
 }

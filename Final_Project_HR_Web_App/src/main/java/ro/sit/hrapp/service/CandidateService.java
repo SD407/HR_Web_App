@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.domain.Candidate;
+import ro.sit.hrapp.domain.Company;
 
 /**
  * 
@@ -21,7 +22,7 @@ public class CandidateService {
 
 	@Autowired
 	private CandidateDAO candidateDAO;
-	
+
 	public Collection<Candidate> listAll() {
 		return candidateDAO.getAllCandidates();
 	}
@@ -35,6 +36,12 @@ public class CandidateService {
 		}
 
 		return false;
+
+	}
+
+	public Candidate get(Long id) {
+		LOGGER.debug("Getting candidate for id: " + id);
+		return candidateDAO.findByIdCompany(id);
 
 	}
 
