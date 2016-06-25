@@ -63,7 +63,7 @@
 		            <li class="active"><a href="/spring/contact">Contact</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="#">Login</a></li>
+		            <li><a href="/spring/login">Login</a></li>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>
