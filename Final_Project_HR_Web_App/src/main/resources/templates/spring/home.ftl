@@ -66,7 +66,6 @@
 		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		         	 <li><a href="/spring/login">Login</a></li>
 			         	 <#if user??>
 			          		<#if user != "anonymousUser">
 				           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
