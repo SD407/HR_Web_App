@@ -4,18 +4,6 @@
 
 </#assign>
 
-<#if errors??>
-    <div>
-        <ul>
-            <#list errors as error>
-            <br>
-                <b style="color:red">
-                <#if error.field??>${error.field}: </#if>${error.defaultMessage}
-                </b>
-            </#list>
-        </ul>
-    </div>
-</#if>
 <#escape x as x?html>
 
 <!DOCTYPE html>
@@ -93,6 +81,18 @@
 				<div class="main-login main-center">
 					<form class="form-horizontal" method="post" action="/spring/registerCandidate">
 					
+						<#if errors??>
+						    <div>
+						        <ul style="text-align: center; padding-left: 0px;">
+						            <#list errors as error>
+						                <b style="color:red">
+						                <#if error.field??>${error.field}: </#if>${error.defaultMessage}
+						                </b>
+						            </#list>
+						        </ul>
+						    </div>
+						</#if>
+
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">First Name</label>
 							<div class="cols-sm-10">

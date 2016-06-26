@@ -36,6 +36,10 @@
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		
+		<!-- Register CSS -->
+	    <link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
+	
 	</head>
 	
 	<body>
@@ -63,7 +67,11 @@
 		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="/spring/login">Login</a></li>
+	          		<#if user != "anonymousUser">
+		           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
+		           	<#else>
+		           		<li><a href="/spring/login">Login</a></li>
+	         		</#if>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>

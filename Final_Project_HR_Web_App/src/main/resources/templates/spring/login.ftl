@@ -79,7 +79,26 @@
 				<div class="panel-heading">
 	            </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="POST" action="/login">
+					<form class="form-horizontal" method="POST" action="/spring/login">
+							<#if RequestParameters.error??>
+							    <div>
+							        <ul style="text-align: center; padding-left: 0px;">
+						                <b style="color:red">
+						                	Invalid credentials provided.
+						                </b>
+							        </ul>
+							    </div>
+							</#if>
+
+							<#if RequestParameters.logout??>
+							    <div>
+							        <ul style="text-align: center; padding-left: 0px;">
+						                <b style="color:green">
+						                	You have been logged out.
+						                </b>
+							        </ul>
+							    </div>
+							</#if>
 				
 							<div class="form-group">
 								<label for="username" class="cols-sm-2 control-label">Username</label>
@@ -105,7 +124,13 @@
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
 						</div>
 						
-						<div class="login-register">
+				        <#if RequestParameters.error??>
+					        <div style="text-align: center; margin-top: 10px;" class="form-control">
+					            <a href="#">Forgot password?</a>
+					        </div>
+				        </#if>
+						
+						<div style="margin-top: 10px;" class="login-register">
 				            <a href="/spring/registrationPage">Register</a>
 				        </div>
 						 <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>

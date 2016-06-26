@@ -36,6 +36,9 @@
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		
+		<link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
+	
 	</head>
 	
 	<body>
@@ -63,14 +66,25 @@
 		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="/spring/login">Login</a></li>
+		         	 <li><a href="/spring/login">Login</a></li>
+			         	 <#if user??>
+			          		<#if user != "anonymousUser">
+				           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
+				           	<#else>
+				           		<li><a href="/spring/login">Login</a></li>
+			         		</#if>
+						</#if>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>
 		    </nav>
 		</div>
-		<div style="margin-top: 100px;">
-			<h3> Welcome witcher</h3>
+		<div style="margin-top: 100px; margin-left: 100px; color:white;">
+		<#if user??>
+			<#if user != "anonymousUser">
+				<h3> Welcome ${user}</h3>
+			</#if>
+		</#if>
 		</div>
 	</body>
 </html>
