@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.domain.Candidate;
-import ro.sit.hrapp.domain.Company;
 
 /**
  * 
@@ -44,7 +43,7 @@ public class CandidateService {
 
 	public Candidate get(Long id) {
 		LOGGER.debug("Getting candidate for id: " + id);
-		return candidateDAO.findByIdCompany(id);
+		return candidateDAO.findByIdCandidate(id);
 
 	}
 
