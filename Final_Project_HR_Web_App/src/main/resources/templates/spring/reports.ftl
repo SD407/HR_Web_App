@@ -1,6 +1,6 @@
 <#ftl>
 <#import "/spring.ftl" as spring/>
-<#assign head>
+<#assign head]
 
 </#assign>
 <#escape x as x?html>
@@ -60,12 +60,12 @@
 		            <li class="#"><a href="/spring/about">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="/spring/contact">Contact</a></li>
+		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
-		          <#if user??>
+	      	 	  <#if user??>
 	          		<#if user != "anonymousUser">
 	         			 <ul class="nav navbar-nav">
-							<li class="dropdown">
+							<li class="dropdown active">
 				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
 				                <li><a href="/spring/details">Account Details</a></li>
@@ -77,11 +77,13 @@
 	         		</#if>
 				  </#if>
 		          <ul class="nav navbar-nav navbar-right">
-	          		<#if user != "anonymousUser">
-		           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
-		           	<#else>
-		           		<li><a href="/spring/login">Login</a></li>
-	         		</#if>
+			         	 <#if user??>
+			          		<#if user != "anonymousUser">
+				           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
+				           	<#else>
+				           		<li><a href="/spring/login">Login</a></li>
+			         		</#if>
+						</#if>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>

@@ -24,7 +24,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth
@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin().loginPage("/spring/login")
             	.failureUrl("/spring/login?error")
-            	.defaultSuccessUrl("/spring/home")
+            	.defaultSuccessUrl("/spring/details")
                 .usernameParameter("userName")
                 .passwordParameter("password")
                 .permitAll()

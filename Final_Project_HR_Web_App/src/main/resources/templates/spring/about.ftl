@@ -15,6 +15,11 @@
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	    <title>Bootstrap 101 Template</title>
 	
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="<@spring.url '/js/bootstrap.min.js'/>"></script>
+	    
 	    <!-- Bootstrap -->
 	    <link href="<@spring.url '/css/bootstrap.min.css'/>" rel="stylesheet">
 	
@@ -25,20 +30,11 @@
 	    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	    
-	   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	    <!-- Include all compiled plugins (below), or include individual files as needed -->
-	    <script src="<@spring.url '/js/bootstrap.min.js'/>"></script>
-		
 		<!-- Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		
-		<!-- Register CSS -->
-	    <link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
+		<link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
 	
 	</head>
 	
@@ -66,13 +62,20 @@
 		          <ul class="nav navbar-nav">
 		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
-		      	  <ul class="nav navbar-nav">
-		          		<#if user??>
-			          		<#if user != "anonymousUser">
-								<li class="#"><a href="/spring/details">Account Details</a></li>
-			         		</#if>
-						</#if>
-		          </ul>
+	      	 	  <#if user??>
+	          		<#if user != "anonymousUser">
+	         			 <ul class="nav navbar-nav">
+							<li class="dropdown">
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
+				              <ul class="dropdown-menu">
+				                <li><a href="/spring/details">Account Details</a></li>
+				                <li><a href="/spring/matching">Perfect Match</a></li>
+				                <li><a href="/spring/reports">Reports</a></li>
+				              </ul>
+				            </li>
+	         			 </ul>
+	         		</#if>
+				  </#if>
 		          <ul class="nav navbar-nav navbar-right">
 	          		<#if user != "anonymousUser">
 		           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>

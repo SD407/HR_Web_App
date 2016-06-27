@@ -16,7 +16,6 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
 import ro.sit.hrapp.domain.Candidate;
-import ro.sit.hrapp.domain.Company;
 import ro.sit.hrapp.domain.JobDescription;
 import ro.sit.hrapp.domain.JobDescription.CurrentJobTitle;
 import ro.sit.hrapp.domain.JobDescription.Location;

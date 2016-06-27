@@ -63,6 +63,22 @@ public class WebPageController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = "/reports")
+	public ModelAndView renderReportsPage () throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("title", "Reports"); 
+		modelAndView.addObject("user", getPrincipal());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/matching")
+	public ModelAndView renderMatchingPage () throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("title", "Matching"); 
+		modelAndView.addObject("user", getPrincipal());
+		return modelAndView;
+	}
+	
 	//finds the current user on the page
 	//if the user is not logged in, he's an "anonymousUser"
 	//if the user is logged in, it will return his userName

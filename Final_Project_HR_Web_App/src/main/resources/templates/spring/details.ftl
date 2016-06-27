@@ -1,10 +1,12 @@
 <#ftl>
 <#import "/spring.ftl" as spring/>
-<#assign head>
+<#assign head]
 
 </#assign>
 <#escape x as x?html>
 
+<#if user??>
+	<#if user != "anonymousUser">
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,8 +16,8 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	    <title>Bootstrap 101 Template</title>
-	
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    
+	   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
 	    <script src="<@spring.url '/js/bootstrap.min.js'/>"></script>
@@ -60,12 +62,12 @@
 		            <li class="#"><a href="/spring/about">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="/spring/contact">Contact</a></li>
+		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
-		          <#if user??>
+	      	 	  <#if user??>
 	          		<#if user != "anonymousUser">
 	         			 <ul class="nav navbar-nav">
-							<li class="dropdown">
+							<li class="dropdown active">
 				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
 				                <li><a href="/spring/details">Account Details</a></li>
@@ -77,17 +79,23 @@
 	         		</#if>
 				  </#if>
 		          <ul class="nav navbar-nav navbar-right">
-	          		<#if user != "anonymousUser">
-		           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
-		           	<#else>
-		           		<li><a href="/spring/login">Login</a></li>
-	         		</#if>
+			         	 <#if user??>
+			          		<#if user != "anonymousUser">
+				           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
+				           	<#else>
+				           		<li><a href="/spring/login">Login</a></li>
+			         		</#if>
+						</#if>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>
 		    </nav>
 		</div>
+		<h2 style="color:white; margin-top:100px; margin-left:100px;"> Welcome ${user} </h2>
 	</body>
+
 </html>
 
+	</#if>
+</#if>
 </#escape>
