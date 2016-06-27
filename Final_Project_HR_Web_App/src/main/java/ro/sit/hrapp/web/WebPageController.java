@@ -55,6 +55,14 @@ public class WebPageController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = "/details")
+	public ModelAndView renderDetailsPage () throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("title", "Details"); 
+		modelAndView.addObject("user", getPrincipal());
+		return modelAndView;
+	}
+	
 	//finds the current user on the page
 	//if the user is not logged in, he's an "anonymousUser"
 	//if the user is logged in, it will return his userName

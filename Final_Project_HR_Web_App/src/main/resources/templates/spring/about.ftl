@@ -1,8 +1,8 @@
-<#ftl]
+<#ftl>
 <#import "/spring.ftl" as spring/>
-<#assign head]
+<#assign head>
 
-</#assign]
+</#assign>
 <#escape x as x?html>
 
 <!DOCTYPE html>
@@ -65,6 +65,13 @@
 		          </ul>
 		          <ul class="nav navbar-nav">
 		            <li class="#"><a href="/spring/contact">Contact</a></li>
+		          </ul>
+		      	  <ul class="nav navbar-nav">
+		          		<#if user??>
+			          		<#if user != "anonymousUser">
+								<li class="#"><a href="/spring/details">Account Details</a></li>
+			         		</#if>
+						</#if>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 	          		<#if user != "anonymousUser">

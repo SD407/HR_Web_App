@@ -111,9 +111,9 @@ public class CandidateRegistrationValidator implements Validator {
 			errors.rejectValue("passwordConfirmed", "passwordConfirmed.notmatch", "Passwords don't match.");
 		}
 		// prefered location validation
-		if (candidate.getPreferedLocation().isEmpty() || candidate.getPreferedLocation() == null) {
-			errors.rejectValue("preferedLocation", "preferedLocation.isEmpty", "Please enter your prefered location for job.");
-		}
+//		if (candidate.getPreferedLocation().isEmpty() || candidate.getPreferedLocation() == null) {
+//			errors.rejectValue("preferedLocation", "preferedLocation.isEmpty", "Please enter your prefered location for job.");
+//		}
 
 	}
 

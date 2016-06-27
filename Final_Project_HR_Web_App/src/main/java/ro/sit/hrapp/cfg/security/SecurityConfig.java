@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             	.antMatchers("/**").permitAll()
+            	.antMatchers("/details/*").access("hasRole('USER') and hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
             .formLogin().loginPage("/spring/login")

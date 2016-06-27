@@ -1,8 +1,8 @@
-<#ftl]
+<#ftl>
 <#import "/spring.ftl" as spring/>
-<#assign head]
+<#assign head>
 
-</#assign]
+</#assign>
 <#escape x as x?html>
 
 <!DOCTYPE html>
