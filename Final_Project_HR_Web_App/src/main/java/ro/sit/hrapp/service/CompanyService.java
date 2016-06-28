@@ -26,14 +26,14 @@ public class CompanyService {
 	private CompanyDAO companyDAO;
 	
 	public Collection<Company> listAll() {
-		return companyDAO.getAllCompanies();
+		return companyDAO.getAll();
 	}
 
 	public boolean deleteCompany(Long id) {
 		LOGGER.debug("Deleting company for id: " + id);
-		Company company = companyDAO.findByIdCompany(id);
+		Company company = companyDAO.findById(id);
 		if (company != null) {
-			companyDAO.deleteCompany(company);
+			companyDAO.delete(company);
 			return true;
 		}
 
@@ -42,14 +42,14 @@ public class CompanyService {
 	}
 	public Company get(Long id) {
 		LOGGER.debug("Getting employee for id: " + id);
-		return companyDAO.findByIdCompany(id);
+		return companyDAO.findById(id);
 
 	}
 
 	public void saveCompany(Company company) {
 		LOGGER.debug("Saving: " + company);
 
-		companyDAO.updateCompany(company);
+		companyDAO.update(company);
 
 	}
 

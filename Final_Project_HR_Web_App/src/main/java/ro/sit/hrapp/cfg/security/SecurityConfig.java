@@ -52,13 +52,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            	.antMatchers("/**").permitAll()
-            	.antMatchers("/details/*").access("hasRole('USER') and hasRole('ADMIN')")
+	            .antMatchers("/css/**", "/js/**", "/images/**", "/fonts/**").permitAll()
+	            .antMatchers("/spring/registrationPage*").permitAll()
+	            .antMatchers("/spring/registerCompany*").permitAll()
+	            .antMatchers("/spring/registerCandidate*").permitAll()
+	            .antMatchers("/spring/home*").permitAll()
+	            .antMatchers("/spring/about*").permitAll()
+	            .antMatchers("/spring/contact*").permitAll()
+            	.antMatchers("/spring/details*").access("hasRole('ROLE_CANDIDATE') "
+            				+ "or hasRole('ROLE_COMPANY') or hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and()
             .formLogin().loginPage("/spring/login")
             	.failureUrl("/spring/login?error")
-            	.defaultSuccessUrl("/spring/details")
+            	.defaultSuccessUrl("/spring/home")
                 .usernameParameter("userName")
                 .passwordParameter("password")
                 .permitAll()
@@ -66,6 +73,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
             	.logoutSuccessUrl("/spring/login?logout")
             	.invalidateHttpSession(true)
-                .permitAll();
+            	.permitAll();
     }
 }

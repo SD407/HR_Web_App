@@ -1,7 +1,6 @@
 <#ftl>
 <#import "/spring.ftl" as spring/>
 <#assign head]
-
 </#assign>
 <#escape x as x?html>
 
@@ -91,11 +90,45 @@
 		      </div>
 		    </nav>
 		</div>
-		<h2 style="color:white; margin-top:100px; margin-left:100px;"> Welcome ${user} </h2>
+		<div>
+			<div class="panel panel-default" style="margin-top:50px;">
+				  <!-- Default panel contents -->
+					<div class="panel-heading"><b>${user} account details</b>
+						<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
+					</div>
+				  <div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
+				   		
+				  </div>
+			<div>
+			<table class="table table-hover">
+					<tr>
+					<th>First Name </th>
+					<th>Last Name </th>
+					<th>Phone Number </th>
+					<th>Email </th>
+						<th> </th>
+				</tr>
+		
+				<tr>
+				<#if candidates??>
+					<#list candidates as candidate>
+			
+						<tr>
+							<td>  ${candidate.firstName} </td>
+							<td>  ${candidate.lastName} </td>
+							<td>  ${candidate.phoneNumber} </td>
+							<td>  ${candidate.email} </td>
+						</tr>
+					</#list>
+				</#if>
+				</table>
+				</div>
+			</div>
 	</body>
 
 </html>
 
 	</#if>
 </#if>
+
 </#escape>

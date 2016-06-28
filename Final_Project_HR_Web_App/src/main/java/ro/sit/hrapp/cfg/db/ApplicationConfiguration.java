@@ -7,13 +7,14 @@
  * MADE FOR TRAINING PURPOSES.
  *
  */
-package ro.sit.hrapp.cfg.security.db;
+package ro.sit.hrapp.cfg.db;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 
 /**
  * @author Sorin_Dragan
@@ -44,5 +45,10 @@ public class ApplicationConfiguration {
 		dataSource.setPassword("password");
 		return dataSource;
 	}
+	
+//	@Bean
+//	public CandidateDAO candidateDAO() {
+//		return new JDBCTemplateCandidateDAO(dataSource());
+//	}
 
 }

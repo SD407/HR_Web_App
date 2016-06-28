@@ -135,9 +135,9 @@ public abstract class BaseCandidateServiceTest {
 		// then
 		System.out.println(errors.toString());
 		assertFalse(errors.hasErrors()); // validate fields from candidate
-		assertFalse(getCandidateService().getDAO().getAllCandidates().isEmpty());
+		assertFalse(getCandidateService().getDAO().getAll().isEmpty());
 
-		getCandidateService().getDAO().deleteCandidate(candidate);
+		getCandidateService().getDAO().delete(candidate);
 
 	}
 
@@ -153,7 +153,7 @@ public abstract class BaseCandidateServiceTest {
 		getCandidateService().saveCandidate(candidate);
 		// when
 		Long candidateId = candidate.getId();
-		assertEquals(candidate, getCandidateService().getDAO().findByIdCandidate(candidateId));
+		assertEquals(candidate, getCandidateService().getDAO().findById(candidateId));
 
 	}
 
@@ -173,7 +173,7 @@ public abstract class BaseCandidateServiceTest {
 		// then
 		assertEquals("Please enter your first name.", errors.getFieldError().getDefaultMessage());
 
-		getCandidateService().getDAO().deleteCandidate(candidate);
+		getCandidateService().getDAO().delete(candidate);
 
 	}
 
@@ -193,7 +193,7 @@ public abstract class BaseCandidateServiceTest {
 		// then
 		assertEquals("Please enter your username.", errors.getFieldError().getDefaultMessage());
 
-		getCandidateService().getDAO().deleteCandidate(candidate);
+		getCandidateService().getDAO().delete(candidate);
 	}
 
 	private Candidate createObjectFromCandidate(String firstName, String lastName, String userName, String email,

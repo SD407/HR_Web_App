@@ -88,6 +88,13 @@
 		        </div><!--/.nav-collapse -->
 		      </div>
 		    </nav>
+		    <div style="margin-top:70px; maring-left:100px; color:white;">
+		    	<#if user??>
+			        <#if user != "anonymousUser">
+		    			<h2> Welcome ${user} </h2>
+		    		</#if>
+				</#if>
+		    </div>
 		</div>
 	</body>
 </html>

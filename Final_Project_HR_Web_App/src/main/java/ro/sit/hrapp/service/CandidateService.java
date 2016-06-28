@@ -26,14 +26,14 @@ public class CandidateService {
 	private CandidateDAO candidateDAO;
 
 	public Collection<Candidate> listAll() {
-		return candidateDAO.getAllCandidates();
+		return candidateDAO.getAll();
 	}
 
 	public boolean deleteCandidate(Long id) {
 		LOGGER.debug("Deleting jd for id: " + id);
-		Candidate candidate = candidateDAO.findByIdCandidate(id);
+		Candidate candidate = candidateDAO.findById(id);
 		if (candidate != null) {
-			candidateDAO.deleteCandidate(candidate);
+			candidateDAO.delete(candidate);
 			return true;
 		}
 
@@ -43,13 +43,13 @@ public class CandidateService {
 
 	public Candidate get(Long id) {
 		LOGGER.debug("Getting candidate for id: " + id);
-		return candidateDAO.findByIdCandidate(id);
+		return candidateDAO.findById(id);
 
 	}
 
 	public void saveCandidate(Candidate candidate) {
 		LOGGER.debug("Saving: " + candidate);
-		candidateDAO.updateCandidate(candidate);
+		candidateDAO.update(candidate);
 	}
 
 	public CandidateDAO getDAO() {

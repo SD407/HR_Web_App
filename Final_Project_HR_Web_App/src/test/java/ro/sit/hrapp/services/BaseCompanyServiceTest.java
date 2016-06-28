@@ -87,7 +87,7 @@ public abstract class BaseCompanyServiceTest {
 		getCompanyService().saveCompany(comp2);
 
 		// then
-		assertFalse(getCompanyService().getCompanyDAO().getAllCompanies().isEmpty());
+		assertFalse(getCompanyService().getCompanyDAO().getAll().isEmpty());
 	}
 
 	@Test
@@ -108,7 +108,7 @@ public abstract class BaseCompanyServiceTest {
 		System.out.println(errors.toString());
 		assertFalse(errors.hasErrors()); // validate fields from company
 		assertEquals("nokia", companyList.get(0).getCompanyName());
-		getCompanyService().getCompanyDAO().deleteCompany(company);
+		getCompanyService().getCompanyDAO().delete(company);
 
 	}
 
@@ -147,7 +147,7 @@ public abstract class BaseCompanyServiceTest {
 		getCompanyService().saveCompany(company);
 		// when
 		Long companyId = company.getId();
-		assertEquals(company, getCompanyService().getCompanyDAO().findByIdCompany(companyId));
+		assertEquals(company, getCompanyService().getCompanyDAO().findById(companyId));
 
 	}
 
@@ -170,7 +170,7 @@ public abstract class BaseCompanyServiceTest {
 		getCompanyService().saveCompany(comp1);
 		getCompanyService().saveCompany(comp2);
 
-		Collection<Company> com = getCompanyService().getCompanyDAO().getAllCompanies();
+		Collection<Company> com = getCompanyService().getCompanyDAO().getAll();
 		List<Company> list = new ArrayList<>(com);
 
 		// then
@@ -199,7 +199,7 @@ public abstract class BaseCompanyServiceTest {
 		// then
 		assertEquals("Please enter your company name.", errors.getFieldError().getDefaultMessage());
 
-		getCompanyService().getCompanyDAO().deleteCompany(company);
+		getCompanyService().getCompanyDAO().delete(company);
 
 	}
 
@@ -219,7 +219,7 @@ public abstract class BaseCompanyServiceTest {
 		// then
 		assertEquals("Please enter your username.", errors.getFieldError().getDefaultMessage());
 
-		getCompanyService().getCompanyDAO().deleteCompany(company);
+		getCompanyService().getCompanyDAO().delete(company);
 	}
 
 	private JobDescription createJobDescriptionObject(CurrentJobTitle ba, YearsOfExperience zeroToOne,

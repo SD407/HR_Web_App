@@ -1,5 +1,7 @@
 package ro.sit.hrapp.dao;
-
+/*
+ * Changes done @DraganSorin
+ */
 import java.util.Collection;
 
 import ro.sit.hrapp.domain.AbstractModel;
@@ -12,24 +14,12 @@ import ro.sit.hrapp.domain.AbstractModel;
  */
 public interface BaseDAO<T extends AbstractModel> {
 	
-	// for companies
-	
-	Collection<T> getAllCompanies(); //added
+	Collection<T> getAll(); //added
 
-	T findByIdCompany(Long id);
+	T findById(Long id);
 	
-	T updateCompany(T model);
+	T update(T model);
 
-	boolean deleteCompany(T model);
+	boolean delete(T model);
 
-	// for candidate
-	
-	Collection<T> getAllCandidates(); //added
-	
-	T findByIdCandidate(Long id);
-	
-	T updateCandidate(T model);
-
-	boolean deleteCandidate(T model);
-	
 }
