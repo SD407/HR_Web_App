@@ -112,13 +112,14 @@
 				<tr>
 				<#if candidates??>
 					<#list candidates as candidate>
-			
+						<#if user == candidate.userName>
 						<tr>
-							<td>  ${candidate.firstName} </td>
-							<td>  ${candidate.lastName} </td>
-							<td>  ${candidate.phoneNumber} </td>
-							<td>  ${candidate.email} </td>
+							<td>  ${candidate.firstName!''} </td>
+							<td>  ${candidate.lastName!''} </td>
+							<td>  ${candidate.phoneNumber!''} </td>
+							<td>  ${candidate.email!''} </td>
 						</tr>
+						</#if>
 					</#list>
 				</#if>
 				</table>

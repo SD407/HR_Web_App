@@ -10,6 +10,8 @@
 package ro.sit.hrapp.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,7 +61,7 @@ public class RegisterController {
 	@RequestMapping(value = "registerCandidateSuccess")
 	public ModelAndView renderCandidateSuccessfullRegistrationPage() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("candidates", candidateService.listAll());
+		modelAndView.addObject("user", getPrincipal());
 		modelAndView.addObject("title", "Registration Successfull");
 		return modelAndView;
 	}
@@ -103,7 +105,7 @@ public class RegisterController {
 	@RequestMapping("registerCompanySuccess")
 	public ModelAndView renderSuccessfullRegistrationPage() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("companies", companyService.listAll());
+		modelAndView.addObject("user", getPrincipal());
 		modelAndView.addObject("title", "Registration Successfull");
 		return modelAndView;
 	}
@@ -128,5 +130,17 @@ public class RegisterController {
 		}
 		return modelAndView;
 	}
+	
+    private String getPrincipal(){
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+ 
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
+    }
 
 }

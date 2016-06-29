@@ -15,6 +15,9 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import ro.sit.hrapp.dao.CandidateDAO;
+import ro.sit.hrapp.dao.db.JDBCTemplateCandidateDAO;
+
 
 /**
  * @author Sorin_Dragan
@@ -46,9 +49,9 @@ public class ApplicationConfiguration {
 		return dataSource;
 	}
 	
-//	@Bean
-//	public CandidateDAO candidateDAO() {
-//		return new JDBCTemplateCandidateDAO(dataSource());
-//	}
+	@Bean
+	public CandidateDAO candidateDAO() {
+		return new JDBCTemplateCandidateDAO(dataSource());
+	}
 
 }

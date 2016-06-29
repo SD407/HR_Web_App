@@ -192,13 +192,10 @@ public class Candidate extends AbstractModel {
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
-		return "Candidate [firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", phoneNumber=" + phoneNumber + ", jobDescription=" + jobDescription + "]";
+		return "Candidate [firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName + ", email="
+				+ email + ", phoneNumber=" + phoneNumber + ", preferedLocation=" + preferedLocation + "]";
 	}
 
 	public String getPreferedLocation() {

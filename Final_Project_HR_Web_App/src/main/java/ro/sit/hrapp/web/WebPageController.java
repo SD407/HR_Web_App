@@ -9,7 +9,10 @@
  */
 package ro.sit.hrapp.web;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -67,6 +70,7 @@ public class WebPageController {
 		modelAndView.addObject("title", "Details"); 
 		modelAndView.addObject("candidates", candidateService.listAll());
 		modelAndView.addObject("user", getPrincipal());
+		modelAndView.addObject("role", getPrincipalRole());
 		return modelAndView;
 	}
 	
@@ -99,6 +103,17 @@ public class WebPageController {
             userName = principal.toString();
         }
         return userName;
+    }
+    
+    //needs to be tested
+    private Collection<? extends GrantedAuthority> getPrincipalRole(){
+    	Collection<? extends GrantedAuthority> role = null;
+    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	
+    	if (principal instanceof UserDetails) {
+    		role = ((UserDetails)principal).getAuthorities();
+    	}
+    	return role;
     }
 
 }

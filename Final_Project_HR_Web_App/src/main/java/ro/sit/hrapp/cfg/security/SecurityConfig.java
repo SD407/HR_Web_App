@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin().loginPage("/spring/login")
             	.failureUrl("/spring/login?error")
-            	.defaultSuccessUrl("/spring/home")
+            	.defaultSuccessUrl("/spring/details")
                 .usernameParameter("userName")
                 .passwordParameter("password")
                 .permitAll()

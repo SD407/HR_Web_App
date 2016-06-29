@@ -37,11 +37,8 @@
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
 			<div class="panel-body">
-				<#if candidates??>
-					<#list candidates as candidate>
-					    <li class="list-group-item">Registration is complete, ${candidate.userName}. Care to login? <a href="/spring/login">Login</a></li>
-					</#list>
-					<!-- end iteration -->
+				<#if user??>
+				    <li class="list-group-item">Registration is complete, ${user}. Care to login? <a href="/spring/login">Login</a></li>
 				</#if>
 		</div>
 	</body>
