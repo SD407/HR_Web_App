@@ -21,9 +21,6 @@
 	
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 			
-			<!-- Website CSS style -->
-			<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-	
 			<!-- Website Font style -->
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 			
@@ -37,7 +34,7 @@
 				<!-- Default panel contents -->
 				<div class="panel-body">
 					<#if user??>
-					    <li class="list-group-item">Registration is complete, ${user}. Care to login? <a href="/spring/login">Login</a></li>
+					    <li class="list-group-item">Registration is complete. Care to login? <a href="/spring/login">Login</a></li>
 					</#if>
 			</div>
 		</body>
