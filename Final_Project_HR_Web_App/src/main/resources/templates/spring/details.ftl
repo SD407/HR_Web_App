@@ -102,25 +102,45 @@
 			<div>
 			<table class="table table-hover">
 					<tr>
-					<th>First Name </th>
-					<th>Last Name </th>
-					<th>Phone Number </th>
-					<th>Email </th>
+					<#if role == "[ROLE_CANDIDATE]">
+						<th>First Name </th>
+						<th>Last Name </th>
+						<th>Phone Number </th>
+						<th>Email </th>
+					<#elseif role == "[ROLE_COMPANY]">
+						<th>Company Name </th>
+						<th>Phone Number </th>
+						<th>Email </th>
+					</#if>
 						<th> </th>
 				</tr>
 		
 				<tr>
-				<#if candidates??>
-					<#list candidates as candidate>
-						<#if user == candidate.userName>
-						<tr>
-							<td>  ${candidate.firstName!''} </td>
-							<td>  ${candidate.lastName!''} </td>
-							<td>  ${candidate.phoneNumber!''} </td>
-							<td>  ${candidate.email!''} </td>
-						</tr>
-						</#if>
-					</#list>
+				<#if role == "[ROLE_CANDIDATE]">
+					<#if candidates??>
+						<#list candidates as candidate>
+							<#if user == candidate.userName>
+							<tr>
+								<td>  ${candidate.firstName!''} </td>
+								<td>  ${candidate.lastName!''} </td>
+								<td>  ${candidate.phoneNumber!''} </td>
+								<td>  ${candidate.email!''} </td>
+							</tr>
+							</#if>
+						</#list>
+					</#if>
+				<#elseif role == "[ROLE_COMPANY]">
+					<#if companies??>
+						<#list companies as company>
+							<#if user == company.userName>
+							<tr>
+								<td>  ${company.companyName!''} </td>
+								<td>  ${company.phoneNumber!''} </td>
+								<td>  ${company.email!''} </td>
+							</tr>
+							</#if>
+						</#list>
+					</#if>
 				</#if>
 				</table>
 				</div>
@@ -128,7 +148,6 @@
 	</body>
 
 </html>
-
 	</#if>
 </#if>
 

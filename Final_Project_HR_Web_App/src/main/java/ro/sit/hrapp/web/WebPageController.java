@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sit.hrapp.service.CandidateService;
+import ro.sit.hrapp.service.CompanyService;
 
 /**
  * @author Sorin_Dragan
@@ -32,6 +33,9 @@ public class WebPageController {
 	
 	@Autowired
 	private CandidateService candidateService;
+	
+	@Autowired
+	private CompanyService companyService;
 	
 	@RequestMapping
 	public ModelAndView renerIndexPage () throws Exception{
@@ -69,6 +73,7 @@ public class WebPageController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", "Details"); 
 		modelAndView.addObject("candidates", candidateService.listAll());
+		modelAndView.addObject("companies", companyService.listAll());
 		modelAndView.addObject("user", getPrincipal());
 		modelAndView.addObject("role", getPrincipalRole());
 		return modelAndView;
@@ -105,15 +110,17 @@ public class WebPageController {
         return userName;
     }
     
-    //needs to be tested
-    private Collection<? extends GrantedAuthority> getPrincipalRole(){
+    //finds the role of the current user
+    //it's returned as a string in this form: [ROLE_USERROLE]
+    //where USERROLE = COMPANY or CANDIDATE or ADMIN
+    private String getPrincipalRole(){
     	Collection<? extends GrantedAuthority> role = null;
     	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	
     	if (principal instanceof UserDetails) {
     		role = ((UserDetails)principal).getAuthorities();
     	}
-    	return role;
+    	return role.toString();
     }
 
 }

@@ -1,7 +1,7 @@
 /*
  * mvc-demo
  * ro.sci.ems.dao.db  
- * JDBCTemplateEmpoyeeDAO.java
+ * JDBCTemplateCandidateDAO.java
  * 
  *
  * MADE FOR TRAINING PURPOSES.
