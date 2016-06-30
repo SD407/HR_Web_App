@@ -35,7 +35,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 		
 		<link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
-	
+		
 	</head>
 	
 	<body>
@@ -87,6 +87,39 @@
 		      </div>
 		    </nav>
 		</div>
+		
+		<div class="panel panel-default" style="margin-top:55px; margin-bottom:0px; text-align:left;">
+			<div class="panel-heading"><b>Application Details</b>
+				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-info-sign" aria-hidden="true"/>
+			</div>
+			<div style="margin-left:40px;">
+				<p>PerfectMatch Tool:</p>
+				<p>This project was created from an idea.</p>
+				<p>Challange Accepted launched by "Scoala Informala de IT" in 2016</p>
+			</div>
+		</div>
+		
+		<div class="panel panel-default" style="margin-top:5px; margin-bottom:0px; text-align:left;">		
+			<div class="panel-heading"><b>Team members:</b>
+				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
+			</div>
+			<div style="margin-left:40px;">
+				<p>Alexandru Egri, Java</p>
+				<p>Marian Darius Cret, Java</p>
+				<p>Sorin-Vladut Dragan, Java</p>
+				<p>Stefan Biro, Java</p>
+				<p>Adrian Badea, BA</p>
+				<p>Alina Crisan, BA</p>
+				<p>Anca Petrache Mero Bermeo, UI/UX</p>
+				<p>Adrian Sumlea, QA</p>
+				<p>Ioana Panciuc, QA</p>
+				<p>Alexandru Vasile Tomus, QA</p>
+				<p>Calin Sturz, QA</p>
+				<p>Mihai Dit, PM</p>
+				<p>Mihai Jisa, PM</p>
+			</div>
+		</div>
+		
 	</body>
 </html>
 

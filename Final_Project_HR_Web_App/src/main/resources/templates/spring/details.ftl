@@ -93,7 +93,7 @@
 		<div>
 			<div class="panel panel-default" style="margin-top:50px;">
 				  <!-- Default panel contents -->
-					<div class="panel-heading"><b>${user} account details</b>
+					<div class="panel-heading"><b>${user?upper_case} ${role?keep_after("_")?keep_before("]")} DETAILS</b>
 						<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
 					</div>
 				  <div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">

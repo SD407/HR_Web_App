@@ -88,12 +88,18 @@
 		        </div><!--/.nav-collapse -->
 		      </div>
 		    </nav>
-		    <div style="margin-top:70px; maring-left:100px; color:white;">
-		    	<#if user??>
-			        <#if user != "anonymousUser">
-		    			<h2> Welcome ${user} </h2>
-		    		</#if>
+		</div>
+		
+		<div class="panel panel-default" style="margin-top:55px;">
+				<#if user??>
+				    <#if user != "anonymousUser">
+						<div class="panel-heading"><b>Welcome ${user}</b>
+					</#if>
 				</#if>
+				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-home" aria-hidden="true"/>
+			</div>
+			<div style="margin-top:5px;">
+				<p>TO DO</p>
 		    </div>
 		</div>
 	</body>
