@@ -48,8 +48,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView loginPage(@RequestParam(value = "error",required = false) String error,
-	@RequestParam(value = "logout",	required = false) String logout) {
+	public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
+								  @RequestParam(value = "logout", required = false) String logout) {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("error", "Invalid Credentials provided.");

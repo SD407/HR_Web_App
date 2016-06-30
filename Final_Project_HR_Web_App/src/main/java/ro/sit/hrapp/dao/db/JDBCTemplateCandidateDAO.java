@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.domain.Candidate;
@@ -50,11 +51,11 @@ public class JDBCTemplateCandidateDAO implements CandidateDAO {
 	@Override
 	public Candidate update(Candidate model) {
 //		Try and implement BCrypt
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		String hashedPassword = passwordEncoder.encode(model.getPassword());
-		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(model.getPassword());
+
 		this.jdbcTemplate.update("insert into public.users (username, password) " + "values (?, ?)",
-				model.getUserName(), model.getPassword());
+				model.getUserName(), hashedPassword);
 		
 		this.jdbcTemplate.update("insert into public.user_roles (username, role) " + "values (?, ?)",
 				model.getUserName(), "ROLE_CANDIDATE");

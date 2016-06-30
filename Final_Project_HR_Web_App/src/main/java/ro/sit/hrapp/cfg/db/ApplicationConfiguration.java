@@ -9,13 +9,13 @@
  */
 package ro.sit.hrapp.cfg.db;
 
-import java.net.URISyntaxException;
-
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.dao.db.JDBCTemplateCandidateDAO;
@@ -50,7 +50,8 @@ public class ApplicationConfiguration {
 //		dataSource.setPassword("password");
 //		return dataSource;
 //	}
-	
+
+//	  Config for HEROKU DB
     @Bean
     public BasicDataSource dataSource() {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
@@ -69,5 +70,10 @@ public class ApplicationConfiguration {
 	public CandidateDAO candidateDAO() {
 		return new JDBCTemplateCandidateDAO(dataSource());
 	}
-
+	
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
+	}
 }
