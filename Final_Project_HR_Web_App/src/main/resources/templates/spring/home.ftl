@@ -39,6 +39,7 @@
 	</head>
 	
 	<body>
+		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top">
@@ -89,19 +90,27 @@
 		      </div>
 		    </nav>
 		</div>
+		<!-- Menu end -->
 		
-		<div class="panel panel-default" style="margin-top:55px;">
-				<#if user??>
-				    <#if user != "anonymousUser">
-						<div class="panel-heading"><b>Welcome ${user}</b>
-					</#if>
-				</#if>
-				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-home" aria-hidden="true"/>
+		<!-- Content -->
+		    <div class="container">
+				<div class="panel panel-default" style="margin-top:55px; margin-bottom:5px;">
+						<#if user??>
+						    <#if user != "anonymousUser">
+								<div class="panel-heading"><b>Welcome ${user?upper_case}</b>
+							<#else>
+								<div class="panel-heading"><b>Welcome!</b>
+							</#if>
+						</#if> 
+						<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-home" aria-hidden="true"/>
+					</div>
+					<div style="margin-left:40px;">
+						<span>To Do</span>
+				    </div>
+				</div>
 			</div>
-			<div style="margin-top:5px;">
-				<p>TO DO</p>
-		    </div>
-		</div>
+
+		<!-- Content end -->
 	</body>
 </html>
 

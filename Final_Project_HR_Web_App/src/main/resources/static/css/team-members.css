@@ -1,0 +1,25 @@
+.input {
+	margin: 10px 10px 0px;
+}
+
+#searchText {
+	font-family: Arial;
+	margin-top: 2.5px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	margin-right: 2.5px;
+}
+
+.cell {
+	float:left;
+    display: table-cell;
+	vertical-align: top;
+}
+
+.cell div {
+	width: 200px;
+	height: 200px;
+	border: solid 1px gray;
+	float: left;
+	margin: 10px;
+}

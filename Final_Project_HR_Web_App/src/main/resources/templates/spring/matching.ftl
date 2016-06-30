@@ -39,6 +39,7 @@
 	</head>
 	
 	<body>
+		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top">
@@ -89,6 +90,8 @@
 		      </div>
 		    </nav>
 		</div>
+		<!-- Menu end -->
+		
 	</body>
 </html>
 

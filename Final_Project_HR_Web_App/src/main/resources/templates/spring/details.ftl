@@ -40,6 +40,8 @@
 	</head>
 	
 	<body>
+	
+		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top">
@@ -90,63 +92,68 @@
 		      </div>
 		    </nav>
 		</div>
-		<div>
-			<div class="panel panel-default" style="margin-top:50px;">
-				  <!-- Default panel contents -->
-					<div class="panel-heading"><b>${user?upper_case} ${role?keep_after("_")?keep_before("]")} DETAILS</b>
-						<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
-					</div>
-				  <div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
-				   		
-				  </div>
+		<!-- Menu end -->
+		
+		<!-- Content -->
+		<div class="container">
 			<div>
-			<table class="table table-hover">
+				<div class="panel panel-default" style="margin-top:55px;">
+					  <!-- Default panel contents -->
+						<div class="panel-heading"><b>${user?upper_case} ${role?keep_after("_")?keep_before("]")} DETAILS</b>
+							<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
+						</div>
+					  <div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
+					   		
+					  </div>
+				<div>
+				<table class="table table-hover">
+						<tr>
+						<#if role == "[ROLE_CANDIDATE]">
+							<th>First Name </th>
+							<th>Last Name </th>
+							<th>Phone Number </th>
+							<th>Email </th>
+						<#elseif role == "[ROLE_COMPANY]">
+							<th>Company Name </th>
+							<th>Phone Number </th>
+							<th>Email </th>
+						</#if>
+							<th> </th>
+					</tr>
+			
 					<tr>
 					<#if role == "[ROLE_CANDIDATE]">
-						<th>First Name </th>
-						<th>Last Name </th>
-						<th>Phone Number </th>
-						<th>Email </th>
+						<#if candidates??>
+							<#list candidates as candidate>
+								<#if user == candidate.userName>
+								<tr>
+									<td>  ${candidate.firstName!''} </td>
+									<td>  ${candidate.lastName!''} </td>
+									<td>  ${candidate.phoneNumber!''} </td>
+									<td>  ${candidate.email!''} </td>
+								</tr>
+								</#if>
+							</#list>
+						</#if>
 					<#elseif role == "[ROLE_COMPANY]">
-						<th>Company Name </th>
-						<th>Phone Number </th>
-						<th>Email </th>
+						<#if companies??>
+							<#list companies as company>
+								<#if user == company.userName>
+								<tr>
+									<td>  ${company.companyName!''} </td>
+									<td>  ${company.phoneNumber!''} </td>
+									<td>  ${company.email!''} </td>
+								</tr>
+								</#if>
+							</#list>
+						</#if>
 					</#if>
-						<th> </th>
-				</tr>
-		
-				<tr>
-				<#if role == "[ROLE_CANDIDATE]">
-					<#if candidates??>
-						<#list candidates as candidate>
-							<#if user == candidate.userName>
-							<tr>
-								<td>  ${candidate.firstName!''} </td>
-								<td>  ${candidate.lastName!''} </td>
-								<td>  ${candidate.phoneNumber!''} </td>
-								<td>  ${candidate.email!''} </td>
-							</tr>
-							</#if>
-						</#list>
-					</#if>
-				<#elseif role == "[ROLE_COMPANY]">
-					<#if companies??>
-						<#list companies as company>
-							<#if user == company.userName>
-							<tr>
-								<td>  ${company.companyName!''} </td>
-								<td>  ${company.phoneNumber!''} </td>
-								<td>  ${company.email!''} </td>
-							</tr>
-							</#if>
-						</#list>
-					</#if>
-				</#if>
-				</table>
+					</table>
+					</div>
 				</div>
 			</div>
+		<!-- Content end -->
 	</body>
-
 </html>
 	</#if>
 </#if>

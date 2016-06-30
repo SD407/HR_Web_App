@@ -46,6 +46,7 @@
 	</head>
 	
 	<body>
+		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top">
@@ -73,7 +74,9 @@
 		      </div>
 		    </nav>
 		</div>
+		<!-- Menu end -->
 		
+		<!-- Content -->
 		<div class="container">
 			<div class="row main">
 				<div class="panel-heading">
@@ -174,6 +177,8 @@
 				</div>
 			</div>
 		</div>
+		<!-- Content end -->
+		
 	</body>
 	</html>
 </#escape>

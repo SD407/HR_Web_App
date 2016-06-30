@@ -39,6 +39,8 @@
 	</head>
 	
 	<body>
+	
+		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top">
@@ -87,39 +89,45 @@
 		      </div>
 		    </nav>
 		</div>
-		<div class="panel panel-default" style="margin-top:55px;">
-			<div class="panel-heading"><b>Scoala Informala de IT</b>
-				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-globe" aria-hidden="true"/>
-			</div>
-			<div style="width:100%;overflow:hidden;height:400px;color:red;">
-			<div id="gmap_display" style="height:100%; max-width:100%;">
-				<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Cluj-Napoca,+Cluj+County,+Romania+henry+barbuse+scoala+informala+de+it&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
-			</div>
-			<a class="embedded-map-html" href="https://www.hostingreviews.website/inmotion-hosting-review" id="enable-map-data">inmotion hosting reviews</a>
-			<style>#gmap_display img{max-width:none!important;background:none!important;}</style>
-			</div>
-			<script src="https://www.hostingreviews.website/google-maps-authorization.js?id=caff92dc-78f9-94bc-617b-6621d1d810c9&c=embedded-map-html&u=1467291397" defer="defer" async="async"></script>
-		<div>
+		<!-- Menu end -->
 		
-		<div class="panel panel-default" style="margin-top:0px; margin-bottom:0px; text-align:left;">
-			<div class="panel-heading"><b>Contact Details</b>
-				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-globe" aria-hidden="true"/>
-			</div>
-			<div style="margin-left:40px;">
-			<p style="margin-top:10px;"><b>Ne puteți contacta la numerele de telefon:</b></p>
-			   <p> Cluj-Napoca: 0744-679.530</p>
-			   <p>București: 0744-679.530</p>
-			   <p>Iași: 0722-523.102</p>
-			   <p> Oradea: 0723-777.826</p>
-			   <p> Timișoara:  0758-522.061</p>
-			<p><b>pe email la:</b></p>
-			  <p>  cluj@scoalainformala.ro</p>
-			  <p>  bucuresti@scoalainformala.ro</p>
-			  <p>  iasi@scoalainformala.ro</p>
-			  <p>  oradea@scoalainformala.ro</p>
-			  <p> timisoara@scoalainformala.ro</p>
+		<!-- Content -->
+		<div class="container">
+			<div class="panel panel-default" style="margin-top:55px;">
+				<div class="panel-heading"><b>Scoala Informala de IT</b>
+					<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-globe" aria-hidden="true"/>
+				</div>
+				<div style="width:100%;overflow:hidden;height:400px;color:red;">
+				<div id="gmap_display" style="height:100%; max-width:100%;">
+					<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Cluj-Napoca,+Cluj+County,+Romania+henry+barbuse+scoala+informala+de+it&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+				</div>
+				<a class="embedded-map-html" href="https://www.hostingreviews.website/inmotion-hosting-review" id="enable-map-data">inmotion hosting reviews</a>
+				<style>#gmap_display img{max-width:none!important;background:none!important;}</style>
+				</div>
+				<script src="https://www.hostingreviews.website/google-maps-authorization.js?id=caff92dc-78f9-94bc-617b-6621d1d810c9&c=embedded-map-html&u=1467291397" defer="defer" async="async"></script>
+			<div>
+		
+			<div class="panel panel-default" style="margin-top:0px; margin-bottom:0px; text-align:left;">
+				<div class="panel-heading"><b>Contact Details</b>
+					<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-globe" aria-hidden="true"/>
+				</div>
+				<div style="margin-left:40px;">
+				<p style="margin-top:10px;"><b>Ne puteți contacta la numerele de telefon:</b></p>
+				   <p> Cluj-Napoca: 0744-679.530</p>
+				   <p>București: 0744-679.530</p>
+				   <p>Iași: 0722-523.102</p>
+				   <p> Oradea: 0723-777.826</p>
+				   <p> Timișoara:  0758-522.061</p>
+				<p><b>pe email la:</b></p>
+				  <p>  cluj@scoalainformala.ro</p>
+				  <p>  bucuresti@scoalainformala.ro</p>
+				  <p>  iasi@scoalainformala.ro</p>
+				  <p>  oradea@scoalainformala.ro</p>
+				  <p> timisoara@scoalainformala.ro</p>
+				</div>
 			</div>
 		</div>
+		<!-- Content end -->
 	</body>
 </html>
 

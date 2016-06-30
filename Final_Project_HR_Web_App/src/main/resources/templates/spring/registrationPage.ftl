@@ -43,6 +43,7 @@
 	</head>
 
 	<body>
+		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top">
@@ -70,7 +71,9 @@
 		      </div>
 		    </nav>
 		</div>
+		<!-- Menu end -->
 		
+		<!-- Content -->
 		<div style="margin: 300px auto 0px; max-width: 330px;">
 			<div class="main-login main-center">
 				<form class="form-horizontal" method="post" action="#">
@@ -89,7 +92,7 @@
 				</form>
 			</div>
 		</div>
-		
+		<!-- Content end -->
 	</body>
 	</html>
 </#escape>

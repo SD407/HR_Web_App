@@ -35,10 +35,12 @@
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 		
 		<link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
-		
+		<link href="<@spring.url '/css/team-members.css'/>" rel="stylesheet">
+		 
 	</head>
 	
 	<body>
+		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top">
@@ -88,38 +90,79 @@
 		    </nav>
 		</div>
 		
-		<div class="panel panel-default" style="margin-top:55px; margin-bottom:0px; text-align:left;">
-			<div class="panel-heading"><b>Application Details</b>
-				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-info-sign" aria-hidden="true"/>
-			</div>
-			<div style="margin-left:40px;">
-				<p>PerfectMatch Tool:</p>
-				<p>This project was created from an idea.</p>
-				<p>Challange Accepted launched by "Scoala Informala de IT" in 2016</p>
-			</div>
-		</div>
-		
-		<div class="panel panel-default" style="margin-top:5px; margin-bottom:0px; text-align:left;">		
-			<div class="panel-heading"><b>Team members:</b>
-				<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
-			</div>
-			<div style="margin-left:40px;">
-				<p>Alexandru Egri, Java</p>
-				<p>Marian Darius Cret, Java</p>
-				<p>Sorin-Vladut Dragan, Java</p>
-				<p>Stefan Biro, Java</p>
-				<p>Adrian Badea, BA</p>
-				<p>Alina Crisan, BA</p>
-				<p>Anca Petrache Mero Bermeo, UI/UX</p>
-				<p>Adrian Sumlea, QA</p>
-				<p>Ioana Panciuc, QA</p>
-				<p>Alexandru Vasile Tomus, QA</p>
-				<p>Calin Sturz, QA</p>
-				<p>Mihai Dit, PM</p>
-				<p>Mihai Jisa, PM</p>
+		<div class="container">
+			<div class="panel panel-default" style="margin-top:55px; margin-bottom:0px; text-align:left;">
+				<div class="panel-heading"><b>Application Details</b>
+					<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-info-sign" aria-hidden="true"/>
+				</div>
+				<div style="margin-left:40px;">
+					<p>PerfectMatch Tool.</p>
+					<p>Challange Accepted "Scoala Informala de IT" in 2016.</p>
+				</div>
 			</div>
 		</div>
+		<!-- Menu end -->
 		
+		<!-- Content -->
+		<div class="container">
+			<div class="panel panel-default" style="margin-top:5px; margin-bottom:0px; text-align:left;">		
+				<div class="panel-heading"><b>Team members:</b>
+					<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
+				</div>
+					<div style="margin-left:5px;">
+					<div class="container">
+					<div class="input">
+						<input type="text" />
+	                    <!-- @comment Choose span instead of p. It natively sposition the text where you need it, whitout using float-->
+						<span id="searchText">Search</span>
+					</div>
+					<div class="cell">
+						<div>
+							<span>Alexandru Egri, Java</span>
+						</div>
+						<div>
+							<span>Marian Darius Cret, Java</span>
+						</div>
+						<div>
+							<span>Sorin-Vladut Dragan, Java</span>
+						</div>
+						<div>
+							<span>Stefan Biro, Java</span>
+						</div>
+						<div>
+							<span>Adrian Badea, BA</span>
+						</div>
+						<div>
+							<span>Alina Crisan, BA</span>
+						</div>
+						<div>
+							<span>Anca Petrache Mero Bermeo, UI/UX</span>
+						</div>
+						<div>
+							<span>Adrian Sumlea, QA</span>
+						</div>
+						<div>
+							<span>Ioana Panciuc, QA</span>
+						</div>
+						<div>
+							<span>Alexandru Vasile Tomus, QA</span>
+						</div>
+						<div>
+							<span>Calin Sturz, QA</span>
+						</div>
+						<div>
+							<span>Mihai Dit, PM</span>
+						</div>
+						<div>
+							<span>Mihai Jisa, PM</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Team Members -->
+	    <script src="<@spring.url '/js/team-members.js'/>"></script>
+	    <!-- Content end -->
 	</body>
 </html>
 
