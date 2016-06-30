@@ -31,42 +31,42 @@ import ro.sit.hrapp.dao.db.JDBCTemplateCompanyDAO;
 @Configuration
 public class ApplicationConfiguration {
 	
-	@Bean
-	public DataSource dataSource() {
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		
-
-		String url = new StringBuilder()
-				.append("jdbc:")
-				.append("postgresql")
-				.append("://")
-				.append("127.0.0.1")
-				.append(":")
-				.append("5432")
-				.append("/")
-				.append("webapp").toString();
-		
-		dataSource.setUrl(url);
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("password");
-		return dataSource;
-	}
-
-//	  Config for HEROKU DB
-//    @Bean
-//    public BasicDataSource dataSource() {
-//        String dbUrl = System.getenv("JDBC_DATABASE_URL");
-//        String username = System.getenv("JDBC_DATABASE_USERNAME");
-//        String password = System.getenv("JDBC_DATABASE_PASSWORD");
+//	@Bean
+//	public DataSource dataSource() {
+//		BasicDataSource dataSource = new BasicDataSource();
+//		dataSource.setDriverClassName("org.postgresql.Driver");
+//		
 //
-//        BasicDataSource basicDataSource = new BasicDataSource();
-//        basicDataSource.setUrl(dbUrl);
-//        basicDataSource.setUsername(username);
-//        basicDataSource.setPassword(password);
-//
-//        return basicDataSource;
-//    }
+//		String url = new StringBuilder()
+//				.append("jdbc:")
+//				.append("postgresql")
+//				.append("://")
+//				.append("127.0.0.1")
+//				.append(":")
+//				.append("5432")
+//				.append("/")
+//				.append("webapp").toString();
+//		
+//		dataSource.setUrl(url);
+//		dataSource.setUsername("postgres");
+//		dataSource.setPassword("password");
+//		return dataSource;
+//	}
+
+	//Config for HEROKU DB
+    @Bean
+    public BasicDataSource dataSource() {
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        String username = System.getenv("JDBC_DATABASE_USERNAME");
+        String password = System.getenv("JDBC_DATABASE_PASSWORD");
+
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setUrl(dbUrl);
+        basicDataSource.setUsername(username);
+        basicDataSource.setPassword(password);
+
+        return basicDataSource;
+    }
 	
 	@Bean
 	public CandidateDAO candidateDAO() {
