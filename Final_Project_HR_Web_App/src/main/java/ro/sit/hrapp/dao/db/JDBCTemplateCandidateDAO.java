@@ -44,16 +44,21 @@ public class JDBCTemplateCandidateDAO implements CandidateDAO {
 
 	@Override
 	public Candidate findById(Long id) {
-		return jdbcTemplate.queryForObject("select * from public.candidates where candidate_id = ", new Long[] { id },
+		return jdbcTemplate.queryForObject("select * from public.candidates where candidate_id=?", new Long[] { id },
 				new CandidateMapper());
 	}
 
 	@Override
 	public Candidate update(Candidate model) {
-//		Try and implement BCrypt
+		if (model.getId() > 0) {
+			this.jdbcTemplate.update("update public.candidates set email=?, first_name=?, last_name=?, phone_number=?"
+								+ "where candidate_id=?", model.getEmail(),model.getFirstName(), model.getLastName(), 
+								model.getPhoneNumber(), model.getId());
+		} else {
+		
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(model.getPassword());
-
+		
 		this.jdbcTemplate.update("insert into public.users (username, password) " + "values (?, ?)",
 				model.getUserName(), hashedPassword);
 		
@@ -64,15 +69,21 @@ public class JDBCTemplateCandidateDAO implements CandidateDAO {
 				"insert into public.candidates (username, email, first_name, last_name, phone_number) "
 						+ "values (?, ?, ?, ?, ?)", model.getUserName(), model.getEmail(),
 						model.getFirstName(), model.getLastName(), model.getPhoneNumber());
+		}
 		
 		return model;
 	}
 
 	@Override
 	public boolean delete(Candidate model) {
-		// return this.jdbcTemplate.update("delete from candidates where
-		// candidate_id = ", model.getId() );
-		return false;
+		boolean result = false;
+		if(!result) {
+			this.jdbcTemplate.update("delete from public.candidates where username=?", model.getUserName());
+			this.jdbcTemplate.update("delete from public.user_roles where username=?", model.getUserName());
+			this.jdbcTemplate.update("delete from public.users where username=?", model.getUserName());
+			result = true;
+		}
+		return result;
 	}
 
 	@Override

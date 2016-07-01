@@ -44,16 +44,21 @@ public class JDBCTemplateCompanyDAO implements CompanyDAO {
 
 	@Override
 	public Company findById(Long id) {
-		return jdbcTemplate.queryForObject("select * from public.companies where company_id = ", new Long[] { id },
+		return jdbcTemplate.queryForObject("select * from public.companies where company_id=?", new Long[] { id },
 				new CompanyMapper());
 	}
 
 	@Override
 	public Company update(Company model) {
-//		Try and implement BCrypt
+		if (model.getId() > 0) {
+			this.jdbcTemplate.update("update public.companies set email=?, company_name=?, phone_number=?"
+								+ "where company_id = ?", model.getEmail(),
+								model.getCompanyName(), model.getPhoneNumber(), model.getId());
+		} else {
+			
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(model.getPassword());
-
+		
 		this.jdbcTemplate.update("insert into public.users (username, password) " + "values (?, ?)",
 				model.getUserName(), hashedPassword);
 		
@@ -64,15 +69,21 @@ public class JDBCTemplateCompanyDAO implements CompanyDAO {
 				"insert into public.companies (username, email, company_name, phone_number) "
 						+ "values (?, ?, ?, ?)", model.getUserName(), model.getEmail(),
 						model.getCompanyName(), model.getPhoneNumber());
+		}
 		
 		return model;
 	}
 
 	@Override
 	public boolean delete(Company model) {
-		// return this.jdbcTemplate.update("delete from candidates where
-		// candidate_id = ", model.getId() );
-		return false;
+		boolean result = false;
+		if(!result) {
+			this.jdbcTemplate.update("delete from public.companies where username=?", model.getUserName());
+			this.jdbcTemplate.update("delete from public.user_roles where username=?", model.getUserName());
+			this.jdbcTemplate.update("delete from public.users where username=?", model.getUserName());
+			result = true;
+		}
+		return result;
 	}
 
 	@Override

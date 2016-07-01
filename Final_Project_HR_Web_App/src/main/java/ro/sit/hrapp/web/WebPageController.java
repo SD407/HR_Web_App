@@ -28,7 +28,7 @@ import ro.sit.hrapp.service.CompanyService;
  */
 
 @Controller
-@RequestMapping("/spring")
+@RequestMapping("spring")
 public class WebPageController {
 	
 	@Autowired
@@ -38,14 +38,14 @@ public class WebPageController {
 	private CompanyService companyService;
 	
 	@RequestMapping
-	public ModelAndView renerIndexPage () throws Exception{
+	public ModelAndView renderIndexPage () throws Exception{
 		ModelAndView modelAndView = new ModelAndView("/spring/home");
 		modelAndView.addObject("title", "Index"); 
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/home")
-	public ModelAndView renerHomePage () throws Exception{
+	public ModelAndView renderHomePage () throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", "Home Page"); 
 		modelAndView.addObject("user", getPrincipal());

@@ -69,7 +69,7 @@
 	          		<#if user != "anonymousUser">
 	         			 <ul class="nav navbar-nav">
 							<li class="dropdown active">
-				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accounts <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
 				                <li><a href="/spring/details">Account Details</a></li>
 				                <li><a href="/spring/matching">Perfect Match</a></li>
@@ -94,18 +94,27 @@
 		</div>
 		<!-- Menu end -->
 		
-		<!-- Content -->
+		<!-- Content candidate details-->
 		<div class="container">
 			<div>
 				<div class="panel panel-default" style="margin-top:55px;">
-					  <!-- Default panel contents -->
-						<div class="panel-heading"><b>${user?upper_case} ${role?keep_after("_")?keep_before("]")} DETAILS</b>
-							<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-user" aria-hidden="true"/>
+					<!-- Admin panel contents -->
+				  	<#if role == "[ROLE_ADMIN]">
+					  	<div class="panel-heading"><b>${role?keep_after("_")?keep_before("]")} TABLES</b>
+							<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
 						</div>
-					  <div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
-					   		
-					  </div>
+					<#elseif role != "[ROLE_ADMIN]">
+				 	<!-- Default panel contents -->
+						<div class="panel-heading"><b>${user?upper_case} ${role?keep_after("_")?keep_before("]")} DETAILS</b>
+							<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
+						</div>
+					</#if>
+				  	<div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
+				  	</div>
 				<div>
+				
+				<!-- Default tables -->
+				<#if role == "[ROLE_CANDIDATE]" || role == "[ROLE_COMPANY]">
 				<table class="table table-hover">
 						<tr>
 						<#if role == "[ROLE_CANDIDATE]">
@@ -131,6 +140,7 @@
 									<td>  ${candidate.lastName!''} </td>
 									<td>  ${candidate.phoneNumber!''} </td>
 									<td>  ${candidate.email!''} </td>
+									<td><a href="/spring/editCandidate?id=${candidate.id?c}">EDIT</a></td>
 								</tr>
 								</#if>
 							</#list>
@@ -143,16 +153,69 @@
 									<td>  ${company.companyName!''} </td>
 									<td>  ${company.phoneNumber!''} </td>
 									<td>  ${company.email!''} </td>
+									<td><a href="/spring/editCompany?id=${company.id?c}">EDIT</a></td>
 								</tr>
 								</#if>
 							</#list>
 						</#if>
 					</#if>
 					</table>
+					<!-- Default tables -->
+					
+					<!-- ADMIN tables -->
+					<#elseif role == "[ROLE_ADMIN]">
+						<table class="table table-hover">
+							<tr>
+								<th>First Name </th>
+								<th>Last Name </th>
+								<th>Phone Number </th>
+								<th>Email </th>
+								<th> </th>
+								<th> </th>
+							</tr>
+						<#if candidates??>
+							<#list candidates as candidate>
+								<#if user != candidate.userName>
+								<tr>
+									<td>  ${candidate.firstName!''} </td>
+									<td>  ${candidate.lastName!''} </td>
+									<td>  ${candidate.phoneNumber!''} </td>
+									<td>  ${candidate.email!''} </td>
+									<td><a style="float:right;" href="/spring/editCandidate?id=${candidate.id?c}">EDIT</a></td>
+									<td><a style="float:right;" href="/spring/deleteCandidate?id=${candidate.id?c}">DELETE</a></td>
+									</tr>
+								</#if>
+							</#list>
+						</#if>
+						</table>
+						<table class="table table-hover">
+							<tr>
+								<th>Company Name </th>
+								<th>Phone Number </th>
+								<th>Email </th>
+								<th> </th>
+								<th> </th>
+							</tr>
+						<#if companies??>
+							<#list companies as company>
+								<#if user != company.userName>
+								<tr>
+									<td>  ${company.companyName!''} </td>
+									<td>  ${company.phoneNumber!''} </td>
+									<td>  ${company.email!''} </td>
+									<td><a style="float:right;" href="/spring/editCompany?id=${company.id?c}">EDIT</a></td>
+									<td><a style="float:right;" href="/spring/deleteCompany?id=${company.id?c}">DELETE</a></td>
+								</tr>
+								</#if>
+							</#list>
+						</#if>
+						</table>
+					</#if>
+					<!-- Default tables -->
 					</div>
 				</div>
 			</div>
-		<!-- Content end -->
+		<!-- Content candidate details end -->
 	</body>
 </html>
 	</#if>

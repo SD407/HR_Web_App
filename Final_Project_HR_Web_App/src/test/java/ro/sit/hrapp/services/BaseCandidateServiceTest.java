@@ -208,7 +208,7 @@ public abstract class BaseCandidateServiceTest {
 		candidate.setPassword(password);
 		candidate.setPasswordConfirmed(passwordConfirmed);
 		candidate.setPreferedLocation(location);
-		candidate.setJobDescription(jobProfile);
+//		candidate.setJobDescription(jobProfile); //Stefan will fix these issues.
 
 		return candidate;
 	}

@@ -1,6 +1,6 @@
 <#ftl>
 <#import "/spring.ftl" as spring/>
-<#assign head>
+<#assign head]
 
 </#assign>
 <#escape x as x?html>
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>${title}</title>
+		<title>Edit Details</title>
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,11 +35,13 @@
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 		
 		<link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
+		
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	
 	</head>
 	
 	<body>
-	
 		<!-- Menu -->
 		<div class="container">
 			<!-- Fixed navbar -->
@@ -56,15 +58,15 @@
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
-		            <li class="#"><a href="/spring/home">Home</a></li>
+		            <li class="active"><a href="/spring/home">Home</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
 		            <li class="#"><a href="/spring/about">About</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="/spring/contact">Contact</a></li>
+		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
-		          <#if user??>
+	      	 	  <#if user??>
 	          		<#if user != "anonymousUser">
 	         			 <ul class="nav navbar-nav">
 							<li class="dropdown">
@@ -79,11 +81,13 @@
 	         		</#if>
 				  </#if>
 		          <ul class="nav navbar-nav navbar-right">
-	          		<#if user != "anonymousUser">
-		           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
-		           	<#else>
-		           		<li><a href="/spring/login">Login</a></li>
-	         		</#if>
+			         	 <#if user??>
+			          		<#if user != "anonymousUser">
+				           	 	<li><a href="<@spring.url '/logout'/>">Logout</a></li>
+				           	<#else>
+				           		<li><a href="/spring/login">Login</a></li>
+			         		</#if>
+						</#if>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>
@@ -91,43 +95,77 @@
 		</div>
 		<!-- Menu end -->
 		
-		<!-- Content -->
-		<div class="container">
-			<div class="panel panel-default" style="margin-top:55px;">
-				<div class="panel-heading"><b>Scoala Informala de IT</b>
-					<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-globe" aria-hidden="true"/>
-				</div>
-				<div style="width:100%;overflow:hidden;height:400px;color:red;">
-				<div id="gmap_display" style="height:100%; max-width:100%;">
-					<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Cluj-Napoca,+Cluj+County,+Romania+henry+barbuse+scoala+informala+de+it&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
-				</div>
-				<a class="embedded-map-html" href="https://www.hostingreviews.website/inmotion-hosting-review" id="enable-map-data">inmotion hosting reviews</a>
-				<style>#gmap_display img{max-width:none!important;background:none!important;}</style>
-				</div>
-				<script src="https://www.hostingreviews.website/google-maps-authorization.js?id=caff92dc-78f9-94bc-617b-6621d1d810c9&c=embedded-map-html&u=1467291397" defer="defer" async="async"></script>
-			<div>
 		
-			<div class="panel panel-default" style="margin-top:0px; margin-bottom:0px; text-align:left;">
-				<div class="panel-heading"><b>Contact Details</b>
-					<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-globe" aria-hidden="true"/>
-				</div>
-				<div style="margin-left:40px;">
-				<p style="margin-top:10px;"><b>Ne puteți contacta la numerele de telefon:</b></p>
-				   <p> Cluj-Napoca: 0744-679.530</p>
-				   <p>București: 0744-679.530</p>
-				   <p>Iași: 0722-523.102</p>
-				   <p> Oradea: 0723-777.826</p>
-				   <p> Timișoara:  0758-522.061</p>
-				<p><b>pe email la:</b></p>
-				  <p>  cluj@scoalainformala.ro</p>
-				  <p>  bucuresti@scoalainformala.ro</p>
-				  <p>  iasi@scoalainformala.ro</p>
-				  <p>  oradea@scoalainformala.ro</p>
-				  <p> timisoara@scoalainformala.ro</p>
-				</div>
-			</div>
-		</div>
-		<!-- Content end -->
+		<div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	            </div> 
+				<div class="main-login main-center">
+					<form class="form-horizontal" method="post" action="/spring/saveCandidateChanges">
+					
+						<#if errors??>
+						    <div>
+						        <ul style="text-align: center; padding-left: 0px;">
+						            <#list errors as error>
+						                <b style="color:red">
+						                <#if error.field??>${error.field}: </#if>${error.defaultMessage}
+						                </b>
+						            </#list>
+						        </ul>
+						    </div>
+						</#if>
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">First Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="firstName" id="firstName"  value="${candidate.firstName!''}"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Last Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="lastName" id="lastName"  value="${candidate.lastName!''}"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Your Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  value="${candidate.email!''}"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Phone Number</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="phoneNumber" id="phoneNumber"  value="${candidate.phoneNumber!''}"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Save Changes</button>
+						</div>
+						<div class="login-register">
+				            <a href="/spring/details">Cancel</a>
+				        </div>
+						<input type="hidden" name="id" value="<#if candidate.id??>${candidate.id?c}</#if>">
+						<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+					
+					</form>
+		</form>
 	</body>
 </html>
 
