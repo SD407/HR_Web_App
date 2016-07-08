@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ro.sit.hrapp.service.CandidateService;
+import ro.sit.hrapp.service.CompanyJobDescriptionService;
 import ro.sit.hrapp.service.CompanyService;
+import ro.sit.hrapp.service.CandidateJobDescriptionService;
 
 /**
  * @author Sorin_Dragan
@@ -36,6 +38,12 @@ public class WebPageController {
 	
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired
+	private CandidateJobDescriptionService candidateJobDescriptionService;
+	
+	@Autowired
+	private CompanyJobDescriptionService companyJobDescriptionService;
 	
 	@RequestMapping
 	public ModelAndView renderIndexPage () throws Exception{
@@ -74,6 +82,8 @@ public class WebPageController {
 		modelAndView.addObject("title", "Details"); 
 		modelAndView.addObject("candidates", candidateService.listAll());
 		modelAndView.addObject("companies", companyService.listAll());
+		modelAndView.addObject("candidateJobDescriptions", candidateJobDescriptionService.listAll());
+		modelAndView.addObject("companyJobDescriptions", companyJobDescriptionService.listAll());
 		modelAndView.addObject("user", getPrincipal());
 		modelAndView.addObject("role", getPrincipalRole());
 		return modelAndView;

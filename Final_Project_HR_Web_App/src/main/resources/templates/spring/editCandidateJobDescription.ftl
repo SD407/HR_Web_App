@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>${title}</title>
+		<title>Add Details</title>
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,6 +35,9 @@
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 		
 		<link href="<@spring.url '/css/register.css'/>" rel="stylesheet">
+		
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	
 	</head>
 	
@@ -89,29 +92,67 @@
 		        </div><!--/.nav-collapse -->
 		      </div>
 		    </nav>
-		</div>
 		<!-- Menu end -->
 		
-		<!-- Content -->
-		    <div class="container">
-				<div class="panel panel-default" style="margin-top:55px; margin-bottom:5px;">
-						<#if user??>
-						    <#if user != "anonymousUser">
-								<div class="panel-heading"><b>Welcome ${user?upper_case}</b>
-							<#else>
-								<div class="panel-heading"><b>Welcome!</b>
-							</#if>
-						</#if> 
-						<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-home" aria-hidden="true"/>
-					</div>
-					<div style="margin-left:40px;">
-						<span>To Do</span>
-				    </div>
+		
+		<!-- Add candidate experience & skills -->
+		<div class="panel panel-default" style="margin-top:55px;">
+				<div class="panel-heading"><b>ADD DETAILS </b>
+					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
 				</div>
+		  	<div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
+		  	</div>
+				<form method="post" action="/spring/saveCandidateJobDescription">
+					
+					<#if errors??>
+					    <div>
+					        <ul style="text-align: center; padding-left: 0px;">
+					            <#list errors as error>
+					                <b style="color:red">
+					                <#if error.field??>${error.field}: </#if>${error.defaultMessage}
+					                </b>
+					            </#list>
+					        </ul>
+					    </div>
+					</#if>
+				
+					<div class="form-group" style="margin-top:15px;margin-left:10px;">
+		        		<label style="margin: 0px 0px 0px;">Location:</label>
+						<br>
+						<input type="radio" name="location" id="location" value="CLUJ-NAPOCA">&nbsp;CLUJ-NAPOCA&nbsp;</input>
+						<input type="radio" name="location" id="location" value="BUCURESTI">&nbsp;BUCURESTI&nbsp;</input>
+		            </div>
+						<hr style="margin-left: 0px;margin-right: 0px;margin-top: 10px;margin-bottom: 10px;width: 100%;">
+					<div class="form-group" style="margin-top:15px;margin-left:10px;">
+		        		<label style="margin: 0px 0px 0px;">Years of Experience:</label>
+						<br>
+						<input type="radio" name="yearOfExperience" id="yearOfExperience" value="0-1">&nbsp;0-1&nbsp;</input>
+						<input type="radio" name="yearOfExperience" id="yearOfExperience" value="1-3">&nbsp;1-3&nbsp;</input>
+						<input type="radio" name="yearOfExperience" id="yearOfExperience" value="3-5">&nbsp;3-5&nbsp;</input>
+						<input type="radio" name="yearOfExperience" id="yearOfExperience" value="5-8">&nbsp;5-8&nbsp;</input>
+		            </div>
+		            	<hr style="margin-left: 0px;margin-right: 0px;margin-top: 10px;margin-bottom: 10px;width: 100%;">
+		            <div class="form-group" style="margin-top:15px;margin-left:10px;">
+		        		<label style="margin: 0px 0px 0px;">Current Job:</label>
+						<br>
+						<input type="radio" name="currentJobTitle" id="currentJobTitle" value="PM">&nbsp;PM&nbsp;</input>
+						<input type="radio" name="currentJobTitle" id="currentJobTitle" value="BA">&nbsp;BA&nbsp;</input>
+						<input type="radio" name="currentJobTitle" id="currentJobTitle" value="QA">&nbsp;QA&nbsp;</input>
+						<input type="radio" name="currentJobTitle" id="currentJobTitle" value="JAVA">&nbsp;JAVA&nbsp;</input>
+		            </div>
+		            	<hr style="margin-left: 0px;margin-right: 0px;margin-top: 10px;margin-bottom: 10px;width: 100%;">
+					<div class="form-group main-center" style="padding-top:0px;padding-bottom:10px;">
+						<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Save skills</button>
+					</div>
+					<div style="margin-bottom:10px;" class="login-register">
+				            <a href="/spring/details">Cancel</a>
+				    </div>
+					<input type="hidden" name="id" value="<#if candidateJobDescription.id??>${candidateJobDescription.id?c}</#if>">
+					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+				</form>
 			</div>
-
-		<!-- Content end -->
+		<!-- End candidate experience & skills -->
+		
 	</body>
 </html>
-
 </#escape>

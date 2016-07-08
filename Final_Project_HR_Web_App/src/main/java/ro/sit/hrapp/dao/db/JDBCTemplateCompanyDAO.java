@@ -65,6 +65,9 @@ public class JDBCTemplateCompanyDAO implements CompanyDAO {
 		this.jdbcTemplate.update("insert into public.user_roles (username, role) " + "values (?, ?)",
 				model.getUserName(), "ROLE_COMPANY");
 		
+		this.jdbcTemplate.update("insert into public.company_skills (username) values (?)",
+				model.getUserName());
+		
 		this.jdbcTemplate.update(
 				"insert into public.companies (username, email, company_name, phone_number) "
 						+ "values (?, ?, ?, ?)", model.getUserName(), model.getEmail(),
@@ -78,6 +81,7 @@ public class JDBCTemplateCompanyDAO implements CompanyDAO {
 	public boolean delete(Company model) {
 		boolean result = false;
 		if(!result) {
+			this.jdbcTemplate.update("delete from public.company_skills where username=?", model.getUserName());
 			this.jdbcTemplate.update("delete from public.companies where username=?", model.getUserName());
 			this.jdbcTemplate.update("delete from public.user_roles where username=?", model.getUserName());
 			this.jdbcTemplate.update("delete from public.users where username=?", model.getUserName());

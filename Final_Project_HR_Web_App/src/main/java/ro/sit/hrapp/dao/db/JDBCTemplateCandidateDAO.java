@@ -65,6 +65,9 @@ public class JDBCTemplateCandidateDAO implements CandidateDAO {
 		this.jdbcTemplate.update("insert into public.user_roles (username, role) " + "values (?, ?)",
 				model.getUserName(), "ROLE_CANDIDATE");
 		
+		this.jdbcTemplate.update("insert into public.candidate_skills (username) values (?)",
+				model.getUserName());
+		
 		this.jdbcTemplate.update(
 				"insert into public.candidates (username, email, first_name, last_name, phone_number) "
 						+ "values (?, ?, ?, ?, ?)", model.getUserName(), model.getEmail(),
@@ -78,6 +81,7 @@ public class JDBCTemplateCandidateDAO implements CandidateDAO {
 	public boolean delete(Candidate model) {
 		boolean result = false;
 		if(!result) {
+			this.jdbcTemplate.update("delete from public.candidate_skills where username=?", model.getUserName());
 			this.jdbcTemplate.update("delete from public.candidates where username=?", model.getUserName());
 			this.jdbcTemplate.update("delete from public.user_roles where username=?", model.getUserName());
 			this.jdbcTemplate.update("delete from public.users where username=?", model.getUserName());

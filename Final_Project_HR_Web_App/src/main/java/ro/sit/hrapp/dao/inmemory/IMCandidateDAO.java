@@ -14,7 +14,7 @@ import ro.sit.hrapp.domain.Candidate;
  *
  */
 
-@Component
+//@Component
 public class IMCandidateDAO extends IMBaseDAO<Candidate> implements CandidateDAO {
 
 	@Override

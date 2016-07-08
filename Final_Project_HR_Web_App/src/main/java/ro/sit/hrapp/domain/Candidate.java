@@ -112,10 +112,32 @@ public class Candidate extends AbstractModel {
 	}
 
 	/**
-	 * @return the jobProfile to get
+	 * @return the preferedLocation to get
 	 */
-	
-	
+	public String getPreferedLocation() {
+		return preferedLocation;
+	}
+
+	/**
+	 * @param preferedLocation the preferedLocation to set
+	 */
+	public void setPreferedLocation(String preferedLocation) {
+		this.preferedLocation = preferedLocation;
+	}
+
+	/**
+	 * @return the jobDescription to get
+	 */
+	public JobDescription getJobDescription() {
+		return jobDescription;
+	}
+
+	/**
+	 * @param jobDescription the jobDescription to set
+	 */
+	public void setJobDescription(JobDescription jobDescription) {
+		this.jobDescription = jobDescription;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -126,10 +148,7 @@ public class Candidate extends AbstractModel {
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((jobDescription == null) ? 0 : jobDescription.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((passwordConfirmed == null) ? 0 : passwordConfirmed.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
@@ -157,25 +176,10 @@ public class Candidate extends AbstractModel {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
-		if (jobDescription == null) {
-			if (other.jobDescription != null)
-				return false;
-		} else if (!jobDescription.equals(other.jobDescription))
-			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
 		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (passwordConfirmed == null) {
-			if (other.passwordConfirmed != null)
-				return false;
-		} else if (!passwordConfirmed.equals(other.passwordConfirmed))
 			return false;
 		if (phoneNumber == null) {
 			if (other.phoneNumber != null)
@@ -190,26 +194,13 @@ public class Candidate extends AbstractModel {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Candidate [firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName + ", email="
-				+ email + ", phoneNumber=" + phoneNumber + ", preferedLocation=" + preferedLocation + "]";
-	}
-
-	public String getPreferedLocation() {
-		return preferedLocation;
-	}
-
-	public void setPreferedLocation(String preferedLocation) {
-		this.preferedLocation = preferedLocation;
-	}
-
-	public JobDescription getJobDescription() {
-		return jobDescription;
-	}
-
-	public void setJobDescription(JobDescription jobDescription) {
-		this.jobDescription = jobDescription;
+				+ email + ", phoneNumber=" + phoneNumber + ", jobDescription=" + jobDescription + "]";
 	}
 	
 }

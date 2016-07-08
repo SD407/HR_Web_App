@@ -14,7 +14,6 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	    <title>Bootstrap 101 Template</title>
 	    
 	   	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -69,7 +68,7 @@
 	          		<#if user != "anonymousUser">
 	         			 <ul class="nav navbar-nav">
 							<li class="dropdown active">
-				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accounts <span class="caret"></span></a>
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
 				                <li><a href="/spring/details">Account Details</a></li>
 				                <li><a href="/spring/matching">Perfect Match</a></li>
@@ -111,12 +110,11 @@
 					</#if>
 				  	<div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
 				  	</div>
-				<div>
-				
+				  	
 				<!-- Default tables -->
 				<#if role == "[ROLE_CANDIDATE]" || role == "[ROLE_COMPANY]">
 				<table class="table table-hover">
-						<tr>
+					<tr>
 						<#if role == "[ROLE_CANDIDATE]">
 							<th>First Name </th>
 							<th>Last Name </th>
@@ -127,10 +125,8 @@
 							<th>Phone Number </th>
 							<th>Email </th>
 						</#if>
-							<th> </th>
 					</tr>
 			
-					<tr>
 					<#if role == "[ROLE_CANDIDATE]">
 						<#if candidates??>
 							<#list candidates as candidate>
@@ -140,7 +136,7 @@
 									<td>  ${candidate.lastName!''} </td>
 									<td>  ${candidate.phoneNumber!''} </td>
 									<td>  ${candidate.email!''} </td>
-									<td><a href="/spring/editCandidate?id=${candidate.id?c}">EDIT</a></td>
+									<td><a style="float:right;" href="/spring/editCandidate?id=${candidate.id?c}">EDIT</a></td>
 								</tr>
 								</#if>
 							</#list>
@@ -153,15 +149,14 @@
 									<td>  ${company.companyName!''} </td>
 									<td>  ${company.phoneNumber!''} </td>
 									<td>  ${company.email!''} </td>
-									<td><a href="/spring/editCompany?id=${company.id?c}">EDIT</a></td>
+									<td><a style="float:right;" href="/spring/editCompany?id=${company.id?c}">EDIT</a></td>
 								</tr>
 								</#if>
 							</#list>
 						</#if>
 					</#if>
-					</table>
+				</table>
 					<!-- Default tables -->
-					
 					<!-- ADMIN tables -->
 					<#elseif role == "[ROLE_ADMIN]">
 						<table class="table table-hover">
@@ -210,12 +205,83 @@
 							</#list>
 						</#if>
 						</table>
-					</#if>
-					<!-- Default tables -->
-					</div>
+				</#if>
+				<!-- Default tables -->
 				</div>
 			</div>
 		<!-- Content candidate details end -->
+		
+		<!-- Add candidate experience & skills -->
+		<div class="panel panel-default" style="margin-top:5px;">
+				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} EXPERIENCE</b>
+					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
+				</div>
+		  	<div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
+		  	</div>
+			<#if role == "[ROLE_CANDIDATE]">
+				<table class="table table-hover">
+					<#if candidateJobDescriptions??>
+						<#list candidateJobDescriptions as candidateJobDescription>
+							<#if user == candidateJobDescription.userName>
+								<tr>
+									<th>Location </th>
+									<th>Year Of Experience </th>
+									<th>Current Job Title </th>
+									<th><a style ="float:right;" 
+									href="/spring/addCandidateJobDescription?id=${candidateJobDescription.id?c}"> ADD </a> </th>
+								</tr>
+							</#if>
+						</#list>
+					</#if>
+					<#if candidateJobDescriptions??>
+						<#list candidateJobDescriptions as candidateJobDescription>
+							<#if user == candidateJobDescription.userName>
+								<tr>
+									<td>  ${candidateJobDescription.location!''} </td>
+									<td>  ${candidateJobDescription.yearOfExperience!''} </td>
+									<td>  ${candidateJobDescription.currentJobTitle!''} </td>
+									<td><a style="float:right;" 
+									href="/spring/editCandidateJobDescription?id=${candidateJobDescription.id?c}">EDIT</a></td>
+								</tr>
+							</#if>
+						</#list>
+					</#if>
+				</table>
+			<#elseif role == "[ROLE_COMPANY]">
+				<table class="table table-hover">
+					<#if companyJobDescriptions??>
+						<#list companyJobDescriptions as companyJobDescription>
+							<#if user == companyJobDescription.userName>
+								<tr>
+									<th>Location </th>
+									<th>Year Of Experience </th>
+									<th>Current Job Title </th>
+									<th><a style ="float:right;" 
+									href="/spring/addCompanyJobDescription?id=${companyJobDescription.id?c}"> ADD </a> </th>
+								</tr>
+							</#if>
+						</#list>
+					</#if>
+					<#if companyJobDescriptions??>
+						<#list companyJobDescriptions as companyJobDescription>
+							<#if user == companyJobDescription.userName>
+								<tr>
+									<td>  ${companyJobDescription.location!''} </td>
+									<td>  ${companyJobDescription.yearOfExperience!''} </td>
+									<td>  ${companyJobDescription.currentJobTitle!''} </td>
+									<td><a style="float:right;" 
+									href="/spring/editCompanyJobDescription?id=${companyJobDescription.id?c}">EDIT</a></td>
+								</tr>
+							</#if>
+						</#list>
+					</#if>
+				</table>
+			</#if>
+		</div>
+		<!-- End candidate experience & skills -->
+		
+	</div>
+		
 	</body>
 </html>
 	</#if>

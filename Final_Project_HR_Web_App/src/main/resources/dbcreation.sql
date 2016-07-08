@@ -18,6 +18,20 @@ INCREMENT BY 1
 NO MINVALUE
 NO MAXVALUE
 CACHE 1;
+
+CREATE SEQUENCE candidate_skills_id_seq
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
+
+CREATE SEQUENCE company_skills_id_seq
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
  
 CREATE TABLE users (
  username VARCHAR(60) NOT NULL,
@@ -57,4 +71,24 @@ PRIMARY KEY (company_id),
 UNIQUE (username, email),
 CONSTRAINT fk_company_username FOREIGN KEY (username) REFERENCES public.users (username)
 );
+
+CREATE TABLE candidate_skills(
+candidate_skill_id numeric DEFAULT nextval('candidate_skills_id_seq'::regclass) NOT NULL,
+username VARCHAR(60) NOT NULL,
+job_title VARCHAR(60),
+years_experience VARCHAR(60),
+location VARCHAR(60),
+PRIMARY KEY (candidate_skill_id),
+CONSTRAINT fk_skills_username FOREIGN KEY (username) REFERENCES public.users (username)
+);
  
+CREATE TABLE company_skills(
+company_skill_id numeric DEFAULT nextval('company_skills_id_seq'::regclass) NOT NULL,
+username VARCHAR(60) NOT NULL,
+job_title VARCHAR(60),
+years_experience VARCHAR(60),
+location VARCHAR(60),
+PRIMARY KEY (company_skill_id),
+CONSTRAINT fk_company_skills_username FOREIGN KEY (username) REFERENCES public.users (username)
+);
+
