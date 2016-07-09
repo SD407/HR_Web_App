@@ -97,17 +97,58 @@
 				<div class="panel panel-default" style="margin-top:55px; margin-bottom:5px;">
 						<#if user??>
 						    <#if user != "anonymousUser">
-								<div class="panel-heading"><b>Welcome ${user?upper_case}</b>
+								<div class="panel-heading"><b>Welcome ${user?upper_case} to PERFECT MATCH TOOL. A new way
+								to date companies.</b>
 							<#else>
 								<div class="panel-heading"><b>Welcome!</b>
 							</#if>
 						</#if> 
 						<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-home" aria-hidden="true"/>
 					</div>
-					<div style="margin-left:40px;">
-						<span>To Do</span>
-				    </div>
-				</div>
+			
+			<div style="position:relative; height:600px;" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			  </ol>
+			
+			  <!-- Wrapper for slides -->
+			  <div class="carousel-inner" role="listbox">
+			    <div style="height:600px;" class="item active">
+			      <img src="<@spring.url '/images/recrutingHistory.jpg'/>" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			    <div style="height:600px;" class="item">
+			      <img src="<@spring.url '/images/perfectMatch.jpg'/>" alt="...">
+			      <div class="carousel-caption">
+			      </div>
+			    </div>
+			  </div>
+			
+			  <!-- Controls -->
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+			
+			<div style="margin:5px 10px 5px 10px;align:center;">
+			
+				The application matches <b>Company</b> requirements with <b>Applicant</b> capabilities in
+				one or more industry fields.
+				The application then shows matches found based on the company's list of requirements in 
+				form of a list, each entry on the list having a match percentage.
+				
+				More information is made available to the company or applicant in a certaing manner.
+				The company can see the résumé's of matched applicants.
+				Applicants are able to search for their perfect job.
+				
 			</div>
 
 		<!-- Content end -->

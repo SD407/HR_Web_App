@@ -10,16 +10,13 @@
 	margin-right: 2.5px;
 }
 
-.cell {
-	float:left;
-    display: table-cell;
-	vertical-align: top;
-}
-
 .cell div {
-	width: 200px;
-	height: 200px;
-	border: solid 1px gray;
+	width: 171px;
+	height: 180px;
 	float: left;
-	margin: 10px;
+	margin: auto;
+	margin-bottom: 65px;
+	margin-top: 10px;
+	margin-right: 10px;
+	position:inherit;
 }

@@ -95,9 +95,9 @@
 				<div class="panel-heading"><b>Application Details</b>
 					<span style="float:left; margin-right:10px;" class="glyphicon glyphicon-info-sign" aria-hidden="true"/>
 				</div>
-				<div style="margin-left:40px;">
+				<div style="margin-left:40px;margin-top:10px;">
 					<p>PerfectMatch Tool.</p>
-					<p>Challange Accepted "Scoala Informala de IT" in 2016.</p>
+					<p>Challange Accepted "Scoala Informala de IT" 2016.</p>
 				</div>
 			</div>
 		</div>
@@ -111,58 +111,130 @@
 				</div>
 					<div style="margin-left:5px;">
 					<div class="container">
-					<div class="input">
-						<input type="text" />
-	                    <!-- @comment Choose span instead of p. It natively sposition the text where you need it, whitout using float-->
-						<span id="searchText">Search</span>
-					</div>
+					
 					<div class="cell">
-						<div>
-							<span>Alexandru Egri, Java</span>
-						</div>
-						<div>
-							<span>Marian Darius Cret, Java</span>
-						</div>
-						<div>
-							<span>Sorin-Vladut Dragan, Java</span>
-						</div>
-						<div>
-							<span>Stefan Biro, Java</span>
-						</div>
-						<div>
-							<span>Adrian Badea, BA</span>
-						</div>
-						<div>
-							<span>Alina Crisan, BA</span>
-						</div>
-						<div>
-							<span>Anca Petrache Mero Bermeo, UI/UX</span>
-						</div>
-						<div>
-							<span>Adrian Sumlea, QA</span>
-						</div>
-						<div>
-							<span>Ioana Panciuc, QA</span>
-						</div>
-						<div>
-							<span>Alexandru Vasile Tomus, QA</span>
-						</div>
-						<div>
-							<span>Calin Sturz, QA</span>
-						</div>
-						<div>
-							<span>Mihai Dit, PM</span>
-						</div>
-						<div>
-							<span>Mihai Jisa, PM</span>
-						</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Alexandru Egri, Java</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Marian Darius Cret, Java</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Sorin-Vladut Dragan, Java</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Stefan Biro, Java</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Adrian Badea, BA</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Alina Crisan, BA</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Anca Petrache Mero Bermeo, UI/UX</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Adrian Sumlea, QA</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Ioana Panciuc, QA</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Alexandru Vasile Tomus, QA</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Calin Sturz, QA</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Mihai Dit, PM</h4>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-3">
+					    <div class="thumbnail">
+					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					        <h4>Mihai Jisa, PM</h4>
+					    </div>
+					  </div>
+					</div>
+					
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Team Members -->
-	    <script src="<@spring.url '/js/team-members.js'/>"></script>
-	    <!-- Content end -->
 	</body>
 </html>
 
