@@ -9,16 +9,14 @@
  */
 package ro.sit.hrapp.domain;
 
-import java.util.List;
-
 public class JobDescription extends AbstractModel{
 
 	private String userName;
 	private String currentJobTitle;
 	private String yearOfExperience;
 	private String location;
-	private List<String> professionalSkills;
-	private List<String> personalSkills;
+	private String professionalSkills;
+	private String personalSkills;
 	
 	/**
 	 * @return the userName to get
@@ -71,25 +69,25 @@ public class JobDescription extends AbstractModel{
 	/**
 	 * @return the professionalSkills to get
 	 */
-	public List<String> getProfessionalSkills() {
+	public String getProfessionalSkills() {
 		return professionalSkills;
 	}
 	/**
 	 * @param professionalSkills the professionalSkills to set
 	 */
-	public void setProfessionalSkills(List<String> professionalSkills) {
+	public void setProfessionalSkills(String professionalSkills) {
 		this.professionalSkills = professionalSkills;
 	}
 	/**
 	 * @return the personalSkills to get
 	 */
-	public List<String> getPersonalSkills() {
+	public String getPersonalSkills() {
 		return personalSkills;
 	}
 	/**
 	 * @param personalSkills the personalSkills to set
 	 */
-	public void setPersonalSkills(List<String> personalSkills) {
+	public void setPersonalSkills(String personalSkills) {
 		this.personalSkills = personalSkills;
 	}
 	/* (non-Javadoc)

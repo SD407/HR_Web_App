@@ -52,8 +52,9 @@ public class JDBCTemplateCandidateJobDescriptionDAO implements JobDescriptionDAO
 
 		if (model.getId() > 0) {
 			this.jdbcTemplate.update(
-					"update public.candidate_skills set job_title=?, years_experience=?, location=? where candidate_skill_id=?",
-					model.getCurrentJobTitle(), model.getYearOfExperience(), model.getLocation(), model.getId());
+					"update public.candidate_skills set job_title=?, years_experience=?, location=?, personal_skill=?,"
+					+ " professional_skill=? where candidate_skill_id=?",model.getCurrentJobTitle(), model.getYearOfExperience(), 
+					model.getLocation(), model.getPersonalSkills(), model.getProfessionalSkills(), model.getId());
 		} else {
 			this.jdbcTemplate.update(
 					"insert into public.candidate_skills (job_title, years_experience, location)"
@@ -91,6 +92,8 @@ public class JDBCTemplateCandidateJobDescriptionDAO implements JobDescriptionDAO
 			jobDescription.setCurrentJobTitle(rs.getString("job_title"));
 			jobDescription.setYearOfExperience(rs.getString("years_experience"));
 			jobDescription.setLocation(rs.getString("location"));
+			jobDescription.setPersonalSkills(rs.getString("personal_skill"));
+			jobDescription.setProfessionalSkills(rs.getString("professional_skill"));
 			return jobDescription;
 		}
 

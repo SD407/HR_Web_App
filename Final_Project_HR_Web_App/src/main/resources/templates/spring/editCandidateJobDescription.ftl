@@ -141,6 +141,22 @@
 						<input type="radio" name="currentJobTitle" id="currentJobTitle" value="JAVA">&nbsp;JAVA&nbsp;</input>
 		            </div>
 		            	<hr style="margin-left: 0px;margin-right: 0px;margin-top: 10px;margin-bottom: 10px;width: 100%;">
+		            	<div class="form-group" style="margin-top:15px;margin-left:10px;">
+		        		<label style="margin: 0px 0px 0px;">Personal Skills:</label>
+						<br>
+						<input type="checkbox" name="personalSkills" id="personalSkills" value="TEAM PLAYER">&nbsp;TEAM PLAYER&nbsp;</input>
+						<input type="checkbox" name="personalSkills" id="personalSkills" value="GOOD COMMUNICATOR">&nbsp;GOOD COMMUNICATOR&nbsp;</input>
+						<input type="checkbox" name="personalSkills" id="personalSkills" value="HARD WORKING">&nbsp;HARD WORKING&nbsp;</input>
+		            </div>
+		            	<hr style="margin-left: 0px;margin-right: 0px;margin-top: 10px;margin-bottom: 10px;width: 100%;">
+		            <div class="form-group" style="margin-top:15px;margin-left:10px;">
+		        		<label style="margin: 0px 0px 0px;">Professional Skills:</label>
+						<br>
+						<input type="checkbox" name="professionalSkills" id="professionalSkills" value="JAVA">&nbsp;JAVA&nbsp;</input>
+						<input type="checkbox" name="professionalSkills" id="professionalSkills" value="SPRING">&nbsp;SPRING&nbsp;</input>
+						<input type="checkbox" name="professionalSkills" id="professionalSkills" value="JDBC">&nbsp;JDBC&nbsp;</input>
+		            </div>
+		            	<hr style="margin-left: 0px;margin-right: 0px;margin-top: 10px;margin-bottom: 10px;width: 100%;">
 					<div class="form-group main-center" style="padding-top:0px;padding-bottom:10px;">
 						<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Save skills</button>
 					</div>

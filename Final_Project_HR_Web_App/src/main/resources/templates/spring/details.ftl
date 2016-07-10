@@ -211,11 +211,17 @@
 			</div>
 		<!-- Content candidate details end -->
 		
-		<!-- Add candidate experience & skills -->
+		<!-- Add experience & skills -->
 		<div class="panel panel-default" style="margin-top:5px;">
+			<#if role == "[ROLE_CANDIDATE]">
 				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} EXPERIENCE</b>
 					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
 				</div>
+			<#elseif role == "[ROLE_COMPANY]">
+				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} REQUIREMENTS</b>
+					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
+				</div>
+			</#if>
 		  	<div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">
 		  	</div>
 			<#if role == "[ROLE_CANDIDATE]">
@@ -227,6 +233,8 @@
 									<th>Location </th>
 									<th>Year Of Experience </th>
 									<th>Current Job Title </th>
+									<th>Personal Skills </th>
+									<th>Professional Skills </th>
 									<th><a style ="float:right;" 
 									href="/spring/addCandidateJobDescription?id=${candidateJobDescription.id?c}"> ADD </a> </th>
 								</tr>
@@ -240,6 +248,8 @@
 									<td>  ${candidateJobDescription.location!''} </td>
 									<td>  ${candidateJobDescription.yearOfExperience!''} </td>
 									<td>  ${candidateJobDescription.currentJobTitle!''} </td>
+									<td>  ${candidateJobDescription.personalSkills!''} </td>
+									<td>  ${candidateJobDescription.professionalSkills!''} </td>
 									<td><a style="float:right;" 
 									href="/spring/editCandidateJobDescription?id=${candidateJobDescription.id?c}">EDIT</a></td>
 								</tr>
@@ -256,6 +266,8 @@
 									<th>Location </th>
 									<th>Year Of Experience </th>
 									<th>Current Job Title </th>
+									<th>Personal Skills </th>
+									<th>Professional Skills </th>
 									<th><a style ="float:right;" 
 									href="/spring/addCompanyJobDescription?id=${companyJobDescription.id?c}"> ADD </a> </th>
 								</tr>
@@ -269,6 +281,8 @@
 									<td>  ${companyJobDescription.location!''} </td>
 									<td>  ${companyJobDescription.yearOfExperience!''} </td>
 									<td>  ${companyJobDescription.currentJobTitle!''} </td>
+									<td>  ${companyJobDescription.personalSkills!''} </td>
+									<td>  ${companyJobDescription.professionalSkills!''} </td>
 									<td><a style="float:right;" 
 									href="/spring/editCompanyJobDescription?id=${companyJobDescription.id?c}">EDIT</a></td>
 								</tr>
@@ -278,7 +292,7 @@
 				</table>
 			</#if>
 		</div>
-		<!-- End candidate experience & skills -->
+		<!-- End xperience & skills -->
 		
 	</div>
 		

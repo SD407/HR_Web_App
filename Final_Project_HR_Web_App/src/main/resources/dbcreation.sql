@@ -78,6 +78,8 @@ username VARCHAR(60) NOT NULL,
 job_title VARCHAR(60),
 years_experience VARCHAR(60),
 location VARCHAR(60),
+personal_skill character varying(250),
+professional_skill character varying(250),
 PRIMARY KEY (candidate_skill_id),
 CONSTRAINT fk_skills_username FOREIGN KEY (username) REFERENCES public.users (username)
 );
@@ -88,6 +90,8 @@ username VARCHAR(60) NOT NULL,
 job_title VARCHAR(60),
 years_experience VARCHAR(60),
 location VARCHAR(60),
+personal_skill character varying(250),
+professional_skill character varying(250),
 PRIMARY KEY (company_skill_id),
 CONSTRAINT fk_company_skills_username FOREIGN KEY (username) REFERENCES public.users (username)
 );
