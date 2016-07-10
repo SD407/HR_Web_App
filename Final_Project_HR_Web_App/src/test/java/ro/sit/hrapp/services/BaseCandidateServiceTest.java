@@ -33,8 +33,7 @@ public abstract class BaseCandidateServiceTest {
 	protected abstract CandidateRegistrationValidator getValidator();
 
 	CandidateService candidateService = new CandidateService();
-	JobDescription jd;
-	List<JobDescription> jobList = new LinkedList<>();
+	JobDescription jd = new JobDescription();
 
 	@After
 	public void tearDown() {
@@ -72,35 +71,34 @@ public abstract class BaseCandidateServiceTest {
 	public void addCandidate() {
 		// given
 
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+		jd = (createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
 				listProfessionalSkills(), listPersonalSkills()));
 		Candidate candidate = createObjectFromCandidate("biro", "stefan", "junior", "stefanbiro.emp@yahoo.com",
-				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jobList);
+				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jd);
 		Errors errors = new BeanPropertyBindingResult(candidate, "candidate");
 		// when
 		getValidator().validate(candidate, errors);
 		getCandidateService().saveCandidate(candidate);
-		// verifi cae un singur element
+
 		Collection<Candidate> comp = getCandidateService().listAll();
 		List<Candidate> candidateList = new ArrayList<>(comp);
 		// then
 		System.out.println(errors.toString());
 		assertFalse(errors.hasErrors()); // validate fields from candidate
-		assertEquals("biro", candidateList.get(0).getFirstName());
 
-		
+		assertEquals("biro", candidateList.get(0).getFirstName());
+		assertTrue(candidateList.size() == 1);
 
 	}
 
 	@Test
 	public void deleteCandidate() {
 		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
-				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+		jd = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA, JobDescription.YearsOfExperience.ZERO_TO_ONE,
+				JobDescription.Location.CLUJ_NAPOCA, listProfessionalSkills(), listPersonalSkills());
 		Candidate candidateToDelete = createObjectFromCandidate("biro", "stefan", "junior", "stefanbiro.emp@yahoo.com",
-				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jobList);
+				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jd);
 		Errors errors = new BeanPropertyBindingResult(candidateToDelete, "candidate");
 
 		// when
@@ -118,38 +116,13 @@ public abstract class BaseCandidateServiceTest {
 
 	}
 
-	//@Test
-	public void candidateListNotEmpty() {
-		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
-				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
-		Candidate candidate = createObjectFromCandidate("biro", "stefan", "junior", "stefanbiro.emp@yahoo.com",
-				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jobList);
-		Errors errors = new BeanPropertyBindingResult(candidate, "candidate");
-		// when
-		getValidator().validate(candidate, errors);
-		// adding candidate
-		getCandidateService().saveCandidate(candidate);
-		Collection<Candidate> comp = getCandidateService().listAll();
-		List<Candidate> candidateList = new ArrayList<>(comp);
-		// then
-		System.out.println(errors.toString());
-		assertFalse(errors.hasErrors()); // validate fields from candidate
-		assertFalse(getCandidateService().getDAO().getAllCandidates().isEmpty());
-
-		getCandidateService().getDAO().deleteCandidate(candidate);
-
-	}
-
 	@Test
 	public void findCandidateById() {
 		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
-				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+		jd = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA, JobDescription.YearsOfExperience.ZERO_TO_ONE,
+				JobDescription.Location.CLUJ_NAPOCA, listProfessionalSkills(), listPersonalSkills());
 		Candidate candidate = createObjectFromCandidate("biro", "stefan", "junior", "stefanbiro.emp@yahoo.com",
-				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jobList);
+				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jd);
 		Errors errors = new BeanPropertyBindingResult(candidate, "candidate");
 		getCandidateService().saveCandidate(candidate);
 		// when
@@ -161,11 +134,10 @@ public abstract class BaseCandidateServiceTest {
 	@Test
 	public void test_add_no_candidate__first_name() {
 		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
-				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+		jd = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA, JobDescription.YearsOfExperience.ZERO_TO_ONE,
+				JobDescription.Location.CLUJ_NAPOCA, listProfessionalSkills(), listPersonalSkills());
 		Candidate candidate = createObjectFromCandidate("", "stefan", "junior", "stefanbiro.emp@yahoo.com",
-				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jobList);
+				"1234567890", "javajunior", "javajunior", "Cluj-Napoca", jd);
 		Errors errors = new BeanPropertyBindingResult(candidate, "candidate");
 		// when
 		getValidator().validate(candidate, errors); // validate fields from
@@ -181,11 +153,10 @@ public abstract class BaseCandidateServiceTest {
 	@Test
 	public void test_add_no_username() {
 
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
-				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+		jd = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA, JobDescription.YearsOfExperience.ZERO_TO_ONE,
+				JobDescription.Location.CLUJ_NAPOCA, listProfessionalSkills(), listPersonalSkills());
 		Candidate candidate = createObjectFromCandidate("biro", "stefan", "", "stefanbiro.emp@yahoo.com", "1234567890",
-				"javajunior", "javajunior", "Cluj-Napoca", jobList);
+				"javajunior", "javajunior", "Cluj-Napoca", jd);
 		Errors errors = new BeanPropertyBindingResult(candidate, "company");
 		// when
 		getValidator().validate(candidate, errors); // validate fields from
@@ -198,8 +169,7 @@ public abstract class BaseCandidateServiceTest {
 	}
 
 	private Candidate createObjectFromCandidate(String firstName, String lastName, String userName, String email,
-			String phoneNumber, String password, String passwordConfirmed, String location,
-			List<JobDescription> jobProfile) {
+			String phoneNumber, String password, String passwordConfirmed, String location, JobDescription jobProfile) {
 		Candidate candidate = new Candidate();
 		candidate.setFirstName(firstName);
 		candidate.setLastName(lastName);

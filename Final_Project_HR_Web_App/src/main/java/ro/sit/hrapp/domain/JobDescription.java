@@ -156,7 +156,7 @@ public class JobDescription {
 	}
 
 	public enum ProfessionalSkills {
-		JAVA, JDBC, SPRING;
+		JAVA, JDBC, SPRING,TEST,QBASE;
 	}
 
 	public enum PersonalSkills {

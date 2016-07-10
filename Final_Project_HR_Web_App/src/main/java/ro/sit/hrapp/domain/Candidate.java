@@ -12,8 +12,9 @@ public class Candidate extends AbstractModel {
 	private String password;
 	private String passwordConfirmed;
 	private String preferedLocation;
+	private int match;
 
-	private List<JobDescription> jobDescription;
+	private JobDescription jobDescription; 
 	
 	/**
 	 * @return the firstName to get
@@ -209,12 +210,24 @@ public class Candidate extends AbstractModel {
 		this.preferedLocation = preferedLocation;
 	}
 
-	public List<JobDescription> getJobDescription() {
+	public JobDescription getJobDescription() {
 		return jobDescription;
 	}
 
-	public void setJobDescription(List<JobDescription> jobDescription) {
+	public void setJobDescription(JobDescription jobDescription) {
 		this.jobDescription = jobDescription;
 	}
+
+	public int getMatch() {
+		return match;
+	}
+
+	public void setMatch(int match) {
+		this.match = match;
+	}
+	public void addMatch(int newMatch){
+		match += newMatch;
+	}
+
 	
 }

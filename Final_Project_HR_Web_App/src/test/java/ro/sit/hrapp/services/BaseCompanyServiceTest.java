@@ -52,42 +52,17 @@ public abstract class BaseCompanyServiceTest {
 
 	@After
 	public void tearDown() {
-		Collection<Company> companies = new LinkedList<Company>();
+		Collection<Company> companies = getCompanyService().listAll();
 
 		for (Company company : companies) {
 			getCompanyService().deleteCompany(company.getId());
 		}
 	}
 
-	// tests that the company list is empty from the beginning
 	@Test
 	public void test_empty_get_all() {
 		Collection<Company> company = getCompanyService().listAll();
 		Assert.assertTrue(company.isEmpty());
-	}
-
-	@Test
-	public void companyListNotEmpty() {
-		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
-				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
-		Company comp1 = createObjectFromCompany("endava", "nokya", "phones", "nokia.emp@yahoo.com", "1234567890",
-				"phones", jobList, "Cluj-Napoca");
-		Company comp2 = createObjectFromCompany("bosh", "nokya", "phones", "nokia.emp@yahoo.com", "1234567890",
-				"phones", jobList, "Cluj-Napoca");
-		Errors errors1 = new BeanPropertyBindingResult(comp1, "comp1");
-		Errors errors2 = new BeanPropertyBindingResult(comp2, "comp2");
-		// when
-		getValidator().validate(comp1, errors1); // validate fields from company
-		getValidator().validate(comp2, errors2); // validate fields from company
-
-		// adding two companies
-		getCompanyService().saveCompany(comp1);
-		getCompanyService().saveCompany(comp2);
-
-		// then
-		assertFalse(getCompanyService().getCompanyDAO().getAllCompanies().isEmpty());
 	}
 
 	@Test
@@ -108,7 +83,7 @@ public abstract class BaseCompanyServiceTest {
 		System.out.println(errors.toString());
 		assertFalse(errors.hasErrors()); // validate fields from company
 		assertEquals("nokia", companyList.get(0).getCompanyName());
-		getCompanyService().getCompanyDAO().deleteCompany(company);
+		assertTrue(companyList.size() == 1);
 
 	}
 
@@ -151,37 +126,7 @@ public abstract class BaseCompanyServiceTest {
 
 	}
 
-	@Test
-	public void getCompany() {
-		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
-				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
-		Company comp1 = createObjectFromCompany("endava", "nokya", "phones", "nokia.emp@yahoo.com", "1234567890",
-				"phones", jobList, "Cluj-Napoca");
-		Company comp2 = createObjectFromCompany("bosh", "nokya", "phones", "nokia.emp@yahoo.com", "1234567890",
-				"phones", jobList, "Cluj-Napoca");
-		Errors errors1 = new BeanPropertyBindingResult(comp1, "comp1");
-		Errors errors2 = new BeanPropertyBindingResult(comp2, "comp2");
-		// when
-		getValidator().validate(comp1, errors1); // validate fields from company
-		getValidator().validate(comp2, errors2); // validate fields from company
-
-		getCompanyService().saveCompany(comp1);
-		getCompanyService().saveCompany(comp2);
-
-		Collection<Company> com = getCompanyService().getCompanyDAO().getAllCompanies();
-		List<Company> list = new ArrayList<>(com);
-
-		// then
-		assertFalse(errors1.hasErrors());
-		System.out.println(errors1.toString());
-		assertFalse(errors2.hasErrors());
-		System.out.println(errors2.toString());
-
-		assertEquals(comp1.getClass(), list.get(0).getClass());
-
-	}
+	
 
 	@Test
 	public void test_add_no_company_name() {

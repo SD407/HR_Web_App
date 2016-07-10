@@ -18,6 +18,7 @@ import ro.sit.hrapp.dao.inmemory.IMCandidateDAO;
 import ro.sit.hrapp.dao.inmemory.IMCompanyDAO;
 import ro.sit.hrapp.service.CandidateService;
 import ro.sit.hrapp.service.CompanyService;
+import ro.sit.hrapp.service.MatchService;
 import ro.sit.hrapp.service.validator.CandidateRegistrationValidator;
 import ro.sit.hrapp.service.validator.CompanyRegistrationValidator;
 
@@ -60,6 +61,12 @@ public class TestApplicationConfiguration {
 	@Bean 
 	public CompanyRegistrationValidator companyValidator() {
 		return new CompanyRegistrationValidator();
+	}
+	
+	// Match beans
+	@Bean
+	public MatchService matchService() {
+		return new MatchService();
 	}
 
 }
