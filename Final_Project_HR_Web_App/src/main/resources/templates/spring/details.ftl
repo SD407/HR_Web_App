@@ -235,8 +235,12 @@
 									<th>Current Job Title </th>
 									<th>Personal Skills </th>
 									<th>Professional Skills </th>
-									<th><a style ="float:right;" 
-									href="/spring/addCandidateJobDescription?id=${candidateJobDescription.id?c}"> ADD </a> </th>
+									<#if candidateJobDescription.id?c?? && candidateJobDescription.location??>
+										<th></th>
+									<#else>
+										<th><a style ="float:right;" 
+										href="/spring/addCandidateJobDescription?id=${candidateJobDescription.id?c}"> ADD </a> </th>
+									</#if>
 								</tr>
 							</#if>
 						</#list>
@@ -250,8 +254,12 @@
 									<td>  ${candidateJobDescription.currentJobTitle!''} </td>
 									<td>  ${candidateJobDescription.personalSkills!''} </td>
 									<td>  ${candidateJobDescription.professionalSkills!''} </td>
-									<td><a style="float:right;" 
-									href="/spring/editCandidateJobDescription?id=${candidateJobDescription.id?c}">EDIT</a></td>
+									<#if candidateJobDescription.id?c?? && candidateJobDescription.location??>
+										<td><a style="float:right;" 
+										href="/spring/editCandidateJobDescription?id=${candidateJobDescription.id?c}">EDIT</a></td>
+									<#else>
+										<th></th>
+									</#if>
 								</tr>
 							</#if>
 						</#list>
@@ -268,8 +276,12 @@
 									<th>Current Job Title </th>
 									<th>Personal Skills </th>
 									<th>Professional Skills </th>
-									<th><a style ="float:right;" 
-									href="/spring/addCompanyJobDescription?id=${companyJobDescription.id?c}"> ADD </a> </th>
+									<#if companyJobDescription.id?c?? && companyJobDescription.location??>
+										<th></th>
+									<#else>
+										<th><a style ="float:right;" 
+										href="/spring/addCompanyJobDescription?id=${companyJobDescription.id?c}"> ADD </a> </th>
+									</#if>
 								</tr>
 							</#if>
 						</#list>
@@ -283,8 +295,12 @@
 									<td>  ${companyJobDescription.currentJobTitle!''} </td>
 									<td>  ${companyJobDescription.personalSkills!''} </td>
 									<td>  ${companyJobDescription.professionalSkills!''} </td>
-									<td><a style="float:right;" 
-									href="/spring/editCompanyJobDescription?id=${companyJobDescription.id?c}">EDIT</a></td>
+									<#if companyJobDescription.id?c?? && companyJobDescription.location??>
+										<td><a style="float:right;" 
+										href="/spring/editCompanyJobDescription?id=${companyJobDescription.id?c}">EDIT</a></td>
+									<#else>
+										<th></th>
+									</#if>
 								</tr>
 							</#if>
 						</#list>

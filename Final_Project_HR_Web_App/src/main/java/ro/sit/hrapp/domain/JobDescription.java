@@ -9,13 +9,32 @@
  */
 package ro.sit.hrapp.domain;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class JobDescription extends AbstractModel{
 
 	private String userName;
+	
+	@NotEmpty
+	@NotNull
 	private String currentJobTitle;
+	
+	@NotEmpty
+	@NotNull
 	private String yearOfExperience;
+	
+	@NotEmpty
+	@NotNull
 	private String location;
+	
+	@NotEmpty
+	@NotNull
 	private String professionalSkills;
+	
+	@NotEmpty
+	@NotNull
 	private String personalSkills;
 	
 	/**

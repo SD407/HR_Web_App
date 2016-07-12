@@ -9,6 +9,8 @@
  */
 package ro.sit.hrapp.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -120,7 +122,7 @@ public class UserController {
 	
 	//candidate job description related
 	@RequestMapping(value = "saveCandidateJobDescription", method = RequestMethod.POST)
-	public ModelAndView saveCandidateJobDescription(JobDescription jobDescription, BindingResult bindingResult) {
+	public ModelAndView saveCandidateJobDescription(@Valid JobDescription jobDescription, BindingResult bindingResult) {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -155,7 +157,7 @@ public class UserController {
 	
 	//company job description related
 	@RequestMapping(value = "saveCompanyJobDescription", method = RequestMethod.POST)
-	public ModelAndView saveCompanyJobDescription(JobDescription jobDescription, BindingResult bindingResult) {
+	public ModelAndView saveCompanyJobDescription(@Valid JobDescription jobDescription, BindingResult bindingResult) {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
