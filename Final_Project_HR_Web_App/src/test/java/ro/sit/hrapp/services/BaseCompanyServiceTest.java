@@ -48,7 +48,7 @@ public abstract class BaseCompanyServiceTest {
 	protected abstract CompanyRegistrationValidator getValidator();
 
 	CompanyService companyService = new CompanyService();
-	List<JobDescription> jobList = new LinkedList<>();
+	JobDescription jobList = new JobDescription();
 
 	@After
 	public void tearDown() {
@@ -68,9 +68,9 @@ public abstract class BaseCompanyServiceTest {
 	@Test
 	public void addCompany() {
 		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+		jobList = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+				listProfessionalSkills(), listPersonalSkills());
 		Company company = createObjectFromCompany("nokia", "nokya", "phones", "nokia.emp@yahoo.com", "1234567890",
 				"phones", jobList, "Cluj-Napoca");
 		Errors errors = new BeanPropertyBindingResult(company, "company");
@@ -90,9 +90,9 @@ public abstract class BaseCompanyServiceTest {
 	@Test
 	public void deleteCompany() {
 		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+		jobList = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+				listProfessionalSkills(), listPersonalSkills());
 		Company companyToDelete = createObjectFromCompany("endava", "nokya", "phones", "nokia.emp@yahoo.com",
 				"1234567890", "phones", jobList, "Cluj-Napoca");
 		Errors errors = new BeanPropertyBindingResult(companyToDelete, "company");
@@ -113,9 +113,9 @@ public abstract class BaseCompanyServiceTest {
 	@Test
 	public void findCompanyById() {
 		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+		jobList = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+				listProfessionalSkills(), listPersonalSkills());
 		Company company = createObjectFromCompany("nokia", "nokya", "phones", "nokia.emp@yahoo.com", "1234567890",
 				"phones", jobList, "Cluj-Napoca");
 		Errors errors = new BeanPropertyBindingResult(company, "company");
@@ -131,9 +131,9 @@ public abstract class BaseCompanyServiceTest {
 	@Test
 	public void test_add_no_company_name() {
 		// given
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+		jobList = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+				listProfessionalSkills(), listPersonalSkills());
 		Company company = createObjectFromCompany("", "nokya", "phones", "nokia.emp@yahoo.com", "1234567890", "phones",
 				jobList, "Cluj-Napoca");
 		Errors errors = new BeanPropertyBindingResult(company, "company");
@@ -151,9 +151,9 @@ public abstract class BaseCompanyServiceTest {
 	@Test
 	public void test_add_no_username() {
 
-		jobList.add(createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
+		jobList = createJobDescriptionObject(JobDescription.CurrentJobTitle.BA,
 				JobDescription.YearsOfExperience.ZERO_TO_ONE, JobDescription.Location.CLUJ_NAPOCA,
-				listProfessionalSkills(), listPersonalSkills()));
+				listProfessionalSkills(), listPersonalSkills());
 		Company company = createObjectFromCompany("nokia", "", "phones", "nokia.emp@yahoo.com", "1234567890", "phones",
 				jobList, "Cluj-Napoca");
 		Errors errors = new BeanPropertyBindingResult(company, "company");
@@ -180,7 +180,7 @@ public abstract class BaseCompanyServiceTest {
 	}
 
 	private Company createObjectFromCompany(String companyName, String userName, String password, String email,
-			String phone, String confirmedPassword, List<JobDescription> jobList, String jobLocation) {
+			String phone, String confirmedPassword, JobDescription jobList, String jobLocation) {
 
 		Company company = new Company();
 		company.setCompanyName(companyName);

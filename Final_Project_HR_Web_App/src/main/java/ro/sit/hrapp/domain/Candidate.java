@@ -1,7 +1,5 @@
 package ro.sit.hrapp.domain;
 
-import java.util.List;
-
 public class Candidate extends AbstractModel {
 	
 	private String firstName;
@@ -12,7 +10,7 @@ public class Candidate extends AbstractModel {
 	private String password;
 	private String passwordConfirmed;
 	private String preferedLocation;
-	private int match;
+	private float match;
 
 	private JobDescription jobDescription; 
 	
@@ -218,14 +216,14 @@ public class Candidate extends AbstractModel {
 		this.jobDescription = jobDescription;
 	}
 
-	public int getMatch() {
+	public float getMatch() {
 		return match;
 	}
 
-	public void setMatch(int match) {
+	public void setMatch(float match) {
 		this.match = match;
 	}
-	public void addMatch(int newMatch){
+	public void addMatch(float newMatch){
 		match += newMatch;
 	}
 

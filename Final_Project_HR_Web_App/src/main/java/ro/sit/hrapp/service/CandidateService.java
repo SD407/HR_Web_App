@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.domain.Candidate;
-import ro.sit.hrapp.domain.Company;
 
 /**
  * 
