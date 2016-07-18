@@ -51,6 +51,9 @@ public class MatchService {
 
 	@Autowired
 	private CompanyDAO companyDAO;
+	
+	//I think we would also need the matchingDAO here 
+	//We would also need getters and setters for that as well so spring framework can create the necessary beans
 
 	public Collection<Candidate> listAllCandidate() {
 		return candidateDAO.getAllCandidates();
