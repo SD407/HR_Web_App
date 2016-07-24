@@ -11,10 +11,13 @@ package ro.sit.hrapp.dao.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -25,7 +28,7 @@ import ro.sit.hrapp.domain.JobDescription;
  * @author Sorin_Dragan
  *
  */
-public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO{
+public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO {
 
 	private JdbcTemplate jdbcTemplate;
 
@@ -53,13 +56,13 @@ public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO{
 		if (model.getId() > 0) {
 			this.jdbcTemplate.update(
 					"update public.company_skills set job_title=?, years_experience=?, location=?, personal_skill=?,"
-					+ " professional_skill=? where company_skill_id=?", model.getCurrentJobTitle(), model.getYearOfExperience(), 
-					model.getLocation(), model.getPersonalSkills(), model.getProfessionalSkills(), model.getId());
+							+ " professional_skill=? where company_skill_id=?",
+					model.getCurrentJobTitle(), model.getYearOfExperience(), model.getLocation(),
+					model.getPersonalSkills(), model.getProfessionalSkills(), model.getId());
 		} else {
 			this.jdbcTemplate.update(
-					"insert into public.company_skills (job_title, years_experience, location)"
-							+ " values (?, ?, ?)", model.getCurrentJobTitle(),
-							model.getYearOfExperience(), model.getLocation());
+					"insert into public.company_skills (job_title, years_experience, location)" + " values (?, ?, ?)",
+					model.getCurrentJobTitle(), model.getYearOfExperience(), model.getLocation());
 		}
 
 		return model;
@@ -98,5 +101,63 @@ public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO{
 		}
 
 	}
-	
+
+	// See if you can do something like this.
+	// Would be cool if it worked
+
+	@Autowired
+	DataSource dataSource;
+
+	public List<JobDescription> findMatches() {
+
+//		float matchPercentage = 0f;
+
+		JdbcTemplate companyJdbcTemplate = new JdbcTemplate(dataSource);
+
+		String companyListSQL = "select * from company_skills";
+		List<JobDescription> companySkillList;
+		companySkillList = companyJdbcTemplate.query(companyListSQL, mapJD());
+
+		String candidateListSQL = "select * from candidate_skills";
+		List<JobDescription> candidateSkillList = this.jdbcTemplate.query(candidateListSQL, mapJD());
+		
+		List<JobDescription> result = new ArrayList<>();
+
+		for (int i = 0; i < companySkillList.size(); i++) {
+			for (int j = 0; j < candidateSkillList.size(); j++) {
+				if (companySkillList.get(i).getCurrentJobTitle().equals(candidateSkillList.get(j).getCurrentJobTitle()) &&
+					companySkillList.get(i).getLocation().equals(candidateSkillList.get(j).getLocation()) &&
+					companySkillList.get(i).getYearOfExperience().equals(candidateSkillList.get(j).getYearOfExperience()) &&
+					companySkillList.get(i).getPersonalSkills().equals(candidateSkillList.get(j).getPersonalSkills()) && 
+					companySkillList.get(i).getProfessionalSkills().equals(candidateSkillList.get(j).getProfessionalSkills())) {
+					
+					result.add(candidateSkillList.get(j));
+					System.out.println(result.toString());
+				}
+			}
+		}
+		
+		return result;
+	}
+
+	/**
+	 * @return
+	 */
+	private RowMapper<JobDescription> mapJD() {
+		return new RowMapper<JobDescription>() {
+			@Override
+			public JobDescription mapRow(ResultSet rs, int rowNum) throws SQLException {
+				JobDescription jobDescription = new JobDescription();
+				jobDescription.setUserName(rs.getString("username"));
+				jobDescription.setCurrentJobTitle(rs.getString("job_title"));
+				jobDescription.setYearOfExperience(rs.getString("years_experience"));
+				jobDescription.setLocation(rs.getString("location"));
+				jobDescription.setPersonalSkills(rs.getString("personal_skill"));
+				jobDescription.setProfessionalSkills(rs.getString("professional_skill"));
+				return jobDescription;
+			}
+
+		};
+	}
+
 }

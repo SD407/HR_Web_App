@@ -5,6 +5,8 @@
 </#assign>
 <#escape x as x?html>
 
+<#if user??>
+	<#if user != "anonymousUser">
 <!DOCTYPE html>
 <html>
 	<head>
@@ -70,8 +72,7 @@
 				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
 				                <li><a href="/spring/details">Account Details</a></li>
-				                <li><a href="/spring/matching">Perfect Match</a></li>
-				                <li><a href="/spring/reports">Reports</a></li>
+				                <li><a href="/spring/matchingReports">Matching Reports</a></li>
 				              </ul>
 				            </li>
 	         			 </ul>
@@ -92,7 +93,41 @@
 		</div>
 		<!-- Menu end -->
 		
+		<div class="container">
+			<div>
+				<div class="panel panel-default" style="margin-top:55px;">
+					<div class="panel-heading"><b>MATCHING RESULTS</b>
+						<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
+					</div>
+				
+				<#if role == "[ROLE_COMPANY]">  	
+				<!-- Default tables -->
+				<table class="table table-hover">
+					<tr>
+						<th>Username </th>
+						<th>Location </th>
+						<th>Year Of Experience </th>
+						<th>Current Job Title </th>
+						<th>Personal Skills </th>
+						<th>Professional Skills </th>
+					</tr>
+					<#if matches??>
+						<#list matches as match>
+								<tr>
+									<td>  ${match.userName!''} </td>
+									<td>  ${match.location!''} </td>
+									<td>  ${match.yearOfExperience!''} </td>
+									<td>  ${match.currentJobTitle!''} </td>
+									<td>  ${match.personalSkills!''} </td>
+									<td>  ${match.professionalSkills!''} </td>
+								</tr>
+						</#list>
+					</#if>
+				</table>
+				</#if>
+			</div>
 	</body>
 </html>
-
+	</#if>
+</#if>
 </#escape>

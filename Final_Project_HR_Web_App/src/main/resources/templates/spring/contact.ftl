@@ -71,8 +71,7 @@
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
 					              <ul class="dropdown-menu">
 					                <li><a href="/spring/details">Account Details</a></li>
-					                <li><a href="/spring/matching">Perfect Match</a></li>
-					                <li><a href="/spring/reports">Reports</a></li>
+					                <li><a href="/spring/matchingReports">Matching Reports</a></li>
 					              </ul>
 				            </li>
 	         			 </ul>

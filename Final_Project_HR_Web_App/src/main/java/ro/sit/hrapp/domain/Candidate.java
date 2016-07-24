@@ -10,7 +10,7 @@ public class Candidate extends AbstractModel {
 	private String password;
 	private String passwordConfirmed;
 	private String preferedLocation;
-
+	
 	private JobDescription jobDescription;
 	
 	/**

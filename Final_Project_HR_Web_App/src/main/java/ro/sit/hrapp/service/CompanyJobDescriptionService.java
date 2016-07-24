@@ -10,6 +10,7 @@
 package ro.sit.hrapp.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,6 +58,11 @@ public class CompanyJobDescriptionService {
 	public void saveJobDescription(JobDescription jobDescription) {
 		LOGGER.debug("Saving: " + jobDescription);
 		companyJobDescriptionDAO.update(jobDescription);
+	}
+	
+	public List<JobDescription> findMatches() {
+		LOGGER.debug("Finding match...");
+		return companyJobDescriptionDAO.findMatches();
 	}
 
 	public JobDescriptionDAO getDAO() {

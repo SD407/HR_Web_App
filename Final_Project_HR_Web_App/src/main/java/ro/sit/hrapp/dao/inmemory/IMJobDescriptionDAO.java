@@ -12,13 +12,9 @@ package ro.sit.hrapp.dao.inmemory;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
-import org.springframework.stereotype.Component;
-
-import ro.sit.hrapp.dao.CandidateDAO;
 import ro.sit.hrapp.dao.JobDescriptionDAO;
-import ro.sit.hrapp.domain.Candidate;
-import ro.sit.hrapp.domain.Company;
 import ro.sit.hrapp.domain.JobDescription;
 
 /**
@@ -44,6 +40,14 @@ public class IMJobDescriptionDAO extends IMBaseDAO<JobDescription> implements Jo
 		}
 
 		return all;
+	}
+
+	/* (non-Javadoc)
+	 * @see ro.sit.hrapp.dao.JobDescriptionDAO#findMatches()
+	 */
+	@Override
+	public List<JobDescription> findMatches() {
+		return null;
 	}
 
 }

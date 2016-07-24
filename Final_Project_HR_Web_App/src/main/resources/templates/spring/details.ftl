@@ -71,8 +71,7 @@
 				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
 				                <li><a href="/spring/details">Account Details</a></li>
-				                <li><a href="/spring/matching">Perfect Match</a></li>
-				                <li><a href="/spring/reports">Reports</a></li>
+				                <li><a href="/spring/matchingReports">Matching Reports</a></li>
 				              </ul>
 				            </li>
 	         			 </ul>
@@ -215,10 +214,12 @@
 		<div class="panel panel-default" style="margin-top:5px;">
 			<#if role == "[ROLE_CANDIDATE]">
 				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} EXPERIENCE</b>
+					<th><a style ="float:right;" href="/spring/matchingReports"> FIND MATCHES</a> </th>
 					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
 				</div>
 			<#elseif role == "[ROLE_COMPANY]">
 				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} REQUIREMENTS</b>
+					<th><a style ="float:right;" href="/spring/matchingReports"> FIND MATCHES</a> </th>
 					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
 				</div>
 			</#if>

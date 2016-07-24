@@ -12,6 +12,7 @@ package ro.sit.hrapp.dao.db;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -97,6 +98,14 @@ public class JDBCTemplateCandidateJobDescriptionDAO implements JobDescriptionDAO
 			return jobDescription;
 		}
 
+	}
+
+	/* (non-Javadoc)
+	 * @see ro.sit.hrapp.dao.JobDescriptionDAO#findMatches()
+	 */
+	@Override
+	public List<JobDescription> findMatches() {
+		return null;
 	}
 
 }

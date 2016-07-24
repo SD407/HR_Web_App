@@ -10,6 +10,7 @@
 package ro.sit.hrapp.dao;
 
 import java.util.Collection;
+import java.util.List;
 
 import ro.sit.hrapp.domain.JobDescription;
 
@@ -20,5 +21,7 @@ import ro.sit.hrapp.domain.JobDescription;
 public interface JobDescriptionDAO extends BaseDAO<JobDescription>{
 	
 	Collection<JobDescription> searchByNameJobDescription(String query);
+	
+	List<JobDescription> findMatches();
 
 }

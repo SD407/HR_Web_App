@@ -89,19 +89,13 @@ public class WebPageController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/reports")
+	@RequestMapping(value = "/matchingReports")
 	public ModelAndView renderReportsPage () throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", "Reports"); 
+		modelAndView.addObject("matches", companyJobDescriptionService.findMatches());
 		modelAndView.addObject("user", getPrincipal());
-		return modelAndView;
-	}
-	
-	@RequestMapping(value = "/matching")
-	public ModelAndView renderMatchingPage () throws Exception{
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("title", "Matching"); 
-		modelAndView.addObject("user", getPrincipal());
+		modelAndView.addObject("role", getPrincipalRole());
 		return modelAndView;
 	}
 	
