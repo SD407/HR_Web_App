@@ -108,6 +108,9 @@ public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO {
 	@Autowired
 	DataSource dataSource;
 	@Override
+	/**
+	 * Finds matching candidates
+	 */
 	public List<JobDescription> findMatches(Long id) {
 
 
@@ -127,9 +130,12 @@ public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO {
 				
 				float matchPercentage = 0f;
 				
+				int i1 = Integer.parseInt(companySkillList.get(i).getYearOfExperience().substring(2));
+				int i2 = Integer.parseInt(candidateSkillList.get(i).getYearOfExperience().substring(2));
+				
 				if (companySkillList.get(i).getLocation().equals(candidateSkillList.get(j).getLocation())) {
 					matchPercentage += 20;
-					if (companySkillList.get(i).getYearOfExperience().equals(candidateSkillList.get(j).getYearOfExperience())) {
+					if (i1 <= i2) {
 						matchPercentage += 20;
 						if (companySkillList.get(i).getCurrentJobTitle().equals(candidateSkillList.get(j).getCurrentJobTitle())) {
 							matchPercentage += 20;
