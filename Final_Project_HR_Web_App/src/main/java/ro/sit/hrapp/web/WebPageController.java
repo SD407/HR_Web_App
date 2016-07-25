@@ -90,10 +90,10 @@ public class WebPageController {
 	}
 	
 	@RequestMapping(value = "/matchingReports")
-	public ModelAndView renderReportsPage () throws Exception{
+	public ModelAndView renderReportsPage (long id) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", "Reports"); 
-		modelAndView.addObject("matches", companyJobDescriptionService.findMatches());
+		modelAndView.addObject("matches", companyJobDescriptionService.findMatches(id));
 		modelAndView.addObject("user", getPrincipal());
 		modelAndView.addObject("role", getPrincipalRole());
 		return modelAndView;

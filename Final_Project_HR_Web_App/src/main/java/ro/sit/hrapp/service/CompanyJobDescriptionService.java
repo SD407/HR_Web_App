@@ -60,9 +60,9 @@ public class CompanyJobDescriptionService {
 		companyJobDescriptionDAO.update(jobDescription);
 	}
 	
-	public List<JobDescription> findMatches() {
+	public List<JobDescription> findMatches(Long id) {
 		LOGGER.debug("Finding match...");
-		return companyJobDescriptionDAO.findMatches();
+		return companyJobDescriptionDAO.findMatches(id);
 	}
 
 	public JobDescriptionDAO getDAO() {

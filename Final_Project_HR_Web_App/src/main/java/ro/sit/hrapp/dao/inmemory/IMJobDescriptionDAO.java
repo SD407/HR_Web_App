@@ -46,7 +46,7 @@ public class IMJobDescriptionDAO extends IMBaseDAO<JobDescription> implements Jo
 	 * @see ro.sit.hrapp.dao.JobDescriptionDAO#findMatches()
 	 */
 	@Override
-	public List<JobDescription> findMatches() {
+	public List<JobDescription> findMatches(Long id) {
 		return null;
 	}
 

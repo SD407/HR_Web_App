@@ -107,16 +107,15 @@ public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO {
 
 	@Autowired
 	DataSource dataSource;
+	@Override
+	public List<JobDescription> findMatches(Long id) {
 
-	public List<JobDescription> findMatches() {
-
-//		float matchPercentage = 0f;
 
 		JdbcTemplate companyJdbcTemplate = new JdbcTemplate(dataSource);
 
-		String companyListSQL = "select * from company_skills";
+		String companyListSQL = "select * from company_skills where company_skill_id=?";
 		List<JobDescription> companySkillList;
-		companySkillList = companyJdbcTemplate.query(companyListSQL, mapJD());
+		companySkillList = companyJdbcTemplate.query(companyListSQL, new Long[] { id }, mapJD());
 
 		String candidateListSQL = "select * from candidate_skills";
 		List<JobDescription> candidateSkillList = this.jdbcTemplate.query(candidateListSQL, mapJD());
@@ -125,14 +124,31 @@ public class JDBCTemplateCompanyJobDescriptionDAO implements JobDescriptionDAO {
 
 		for (int i = 0; i < companySkillList.size(); i++) {
 			for (int j = 0; j < candidateSkillList.size(); j++) {
-				if (companySkillList.get(i).getCurrentJobTitle().equals(candidateSkillList.get(j).getCurrentJobTitle()) &&
-					companySkillList.get(i).getLocation().equals(candidateSkillList.get(j).getLocation()) &&
-					companySkillList.get(i).getYearOfExperience().equals(candidateSkillList.get(j).getYearOfExperience()) &&
-					companySkillList.get(i).getPersonalSkills().equals(candidateSkillList.get(j).getPersonalSkills()) && 
-					companySkillList.get(i).getProfessionalSkills().equals(candidateSkillList.get(j).getProfessionalSkills())) {
-					
-					result.add(candidateSkillList.get(j));
-					System.out.println(result.toString());
+				
+				float matchPercentage = 0f;
+				
+				if (companySkillList.get(i).getLocation().equals(candidateSkillList.get(j).getLocation())) {
+					matchPercentage += 20;
+					if (companySkillList.get(i).getYearOfExperience().equals(candidateSkillList.get(j).getYearOfExperience())) {
+						matchPercentage += 20;
+						if (companySkillList.get(i).getCurrentJobTitle().equals(candidateSkillList.get(j).getCurrentJobTitle())) {
+							matchPercentage += 20;
+							if ((companySkillList.get(i).getPersonalSkills().length() >= candidateSkillList.get(j).getPersonalSkills().length()) ||
+								(companySkillList.get(i).getPersonalSkills().length() <= candidateSkillList.get(j).getPersonalSkills().length())) {
+								String [] personalSkills = candidateSkillList.get(j).getPersonalSkills().split(",");
+								matchPercentage += ((20 / 3) * personalSkills.length);
+								if ((companySkillList.get(i).getProfessionalSkills().length() >= candidateSkillList.get(j).getProfessionalSkills().length()) ||
+									(companySkillList.get(i).getProfessionalSkills().length() <= candidateSkillList.get(j).getProfessionalSkills().length())) {
+									String [] professionalSkills = candidateSkillList.get(j).getProfessionalSkills().split(",");
+									matchPercentage += ((20 / 3) * professionalSkills.length);
+									
+									if (matchPercentage > 70f) {
+										result.add(candidateSkillList.get(j));
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}

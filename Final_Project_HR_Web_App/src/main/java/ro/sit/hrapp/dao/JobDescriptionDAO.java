@@ -22,6 +22,6 @@ public interface JobDescriptionDAO extends BaseDAO<JobDescription>{
 	
 	Collection<JobDescription> searchByNameJobDescription(String query);
 	
-	List<JobDescription> findMatches();
+	List<JobDescription> findMatches(Long id);
 
 }

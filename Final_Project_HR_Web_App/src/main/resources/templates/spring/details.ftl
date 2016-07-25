@@ -214,13 +214,25 @@
 		<div class="panel panel-default" style="margin-top:5px;">
 			<#if role == "[ROLE_CANDIDATE]">
 				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} EXPERIENCE</b>
-					<th><a style ="float:right;" href="/spring/matchingReports"> FIND MATCHES</a> </th>
+				<#if candidateJobDescriptions??>
+					<#list candidateJobDescriptions as candidateJobDescription>
+					<#if user == candidateJobDescription.userName>
+					<th><a style ="float:right;" href="/spring/matchingReports?id=${candidateJobDescription.id?c}"> FIND MATCHES</a> </th>
 					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
+					</#if>
+					</#list>
+				</#if>
 				</div>
 			<#elseif role == "[ROLE_COMPANY]">
 				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} REQUIREMENTS</b>
-					<th><a style ="float:right;" href="/spring/matchingReports"> FIND MATCHES</a> </th>
+				<#if companyJobDescriptions??>
+					<#list companyJobDescriptions as companyJobDescription>
+					<#if user == companyJobDescription.userName>
+					<th><a style ="float:right;" href="/spring/matchingReports?id=${companyJobDescription.id?c}"> FIND MATCHES</a> </th>
 					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
+					</#if>
+					</#list>
+				</#if>
 				</div>
 			</#if>
 		  	<div class="panel-body" style="padding-top: 0px;padding-bottom: 0px;">

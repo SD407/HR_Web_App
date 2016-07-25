@@ -104,7 +104,7 @@ public class JDBCTemplateCandidateJobDescriptionDAO implements JobDescriptionDAO
 	 * @see ro.sit.hrapp.dao.JobDescriptionDAO#findMatches()
 	 */
 	@Override
-	public List<JobDescription> findMatches() {
+	public List<JobDescription> findMatches(Long id) {
 		return null;
 	}
 
