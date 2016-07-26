@@ -317,8 +317,6 @@
 		</div>
 		<!-- End xperience & skills -->
 		
-	</div>
-		
 	</body>
 </html>
 	</#if>

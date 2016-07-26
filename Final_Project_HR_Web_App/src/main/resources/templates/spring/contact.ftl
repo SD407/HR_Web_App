@@ -118,7 +118,48 @@
 				  <p>  oradea@scoalainformala.ro</p>
 				  <p> timisoara@scoalainformala.ro</p>
 				</div>
-			</div>
+			<hr style="margin-left: 0px;margin-right: 0px;margin-top: 10px;margin-bottom: 10px;width: 100%;">
+			<div class="container">
+		    <!----------- Footer ------------>
+		    <footer class="footer-bs">
+		        <div class="row">
+		        	<div class="col-md-4 footer-brand animated fadeInLeft">
+		            	<h2 style="margin-top: 10px;"><img src="<@spring.url '/images/logo.png'/>" style="width:80px;height:80px;"></h2>
+		                <p>© 2016 PerfectMatch, All rights reserved</p>
+		            </div>
+		        	<div class="col-md-4 footer-nav animated fadeInUp"  style="width:270px;">
+		            	<h4>Menu</h4>
+		            	<div class="col-md-10" style="padding-left: 0px;">
+		                    <ul class="list">
+		                        <li><a href="/spring/about">About Us</a></li>
+		                        <li><a href="/spring/contact">Contact</a></li>
+		                        <li><a href="#">Terms & Condition</a></li>
+		                        <li><a href="#">Privacy Policy</a></li>
+		                    </ul>
+		                </div>
+		            </div>
+		        	<div class="col-md-3 footer-social animated fadeInDown">
+		            	<h4>Follow Us</h4>
+		            	<ul>
+		                	<li><a href="#">Facebook</a></li>
+		                	<li><a href="#">Twitter</a></li>
+		                	<li><a href="#">Instagram</a></li>
+		                	<li><a href="#">RSS</a></li>
+		                </ul>
+		            </div>
+		        	<div class="col-md-2 footer-ns animated fadeInRight">
+		            	<h4>Email us
+		                <p>
+		                    <div class="input-group">
+		                      <a href="mailto:dragan.sorinvladut@gmail.com?Subject=Hello%20again" target="_top"><span class="glyphicon glyphicon-envelope"></span></a>
+		                    </div>
+		                    <!-- /input-group -->
+		                 </p>
+		                 </h4>
+		            </div>
+		        </div>
+		    </footer>
+		
 		</div>
 		<!-- Content end -->
 	</body>
