@@ -11,11 +11,13 @@ package ro.sit.hrapp.dao.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -100,12 +102,98 @@ public class JDBCTemplateCandidateJobDescriptionDAO implements JobDescriptionDAO
 
 	}
 
-	/* (non-Javadoc)
-	 * @see ro.sit.hrapp.dao.JobDescriptionDAO#findMatches()
-	 */
+
+	@Autowired
+	DataSource dataSource;
 	@Override
+	/**
+	 * Finds matching candidates
+	 */
 	public List<JobDescription> findMatches(Long id) {
-		return null;
+
+
+		JdbcTemplate companyJdbcTemplate = new JdbcTemplate(dataSource);
+
+		String companyListSQL = "select * from company_skills";
+		List<JobDescription> companySkillList = companyJdbcTemplate.query(companyListSQL, mapJD());
+
+		String candidateListSQL = "select * from candidate_skills where candidate_skill_id=?";
+		List<JobDescription> candidateSkillList = this.jdbcTemplate.query(candidateListSQL, new Long[] { id }, mapJD());
+		
+		List<JobDescription> result = new ArrayList<>();
+
+		for (int i = 0; i < candidateSkillList.size(); i++) {
+			for (int j = 0; j < companySkillList.size(); j++) {
+				
+				float matchPercentage = 0f;
+				
+				int i1 = Integer.parseInt(candidateSkillList.get(i).getYearOfExperience().substring(2));
+				int i2 = Integer.parseInt(companySkillList.get(i).getYearOfExperience().substring(2));
+				
+				/*
+				 * company has the same location as the candidate?
+				 */
+				if (candidateSkillList.get(i).getLocation().equals(companySkillList.get(j).getLocation())) {
+					matchPercentage += 20;
+					/*
+					 * company years of experience are matched?
+					 */
+					if (i1 >= i2) {
+						matchPercentage += 20;
+						/*
+						 * the job position searched by the company is the same as the candidates?
+						 */
+						if (candidateSkillList.get(i).getCurrentJobTitle().equals(companySkillList.get(j).getCurrentJobTitle())) {
+							matchPercentage += 20;
+							/*
+							 * getPersonalSkills gets a string of skills separated by commas
+							 */
+							if ((candidateSkillList.get(i).getPersonalSkills().length() >= companySkillList.get(j).getPersonalSkills().length()) ||
+								(candidateSkillList.get(i).getPersonalSkills().length() <= companySkillList.get(j).getPersonalSkills().length())) {
+								String [] personalSkills = companySkillList.get(j).getPersonalSkills().split(",");
+								matchPercentage += ((20 / 3) * personalSkills.length);
+								/*
+								 * getProfessionalSkills gets a string of skills separated by commas
+								 */
+								if ((candidateSkillList.get(i).getProfessionalSkills().length() >= companySkillList.get(j).getProfessionalSkills().length()) ||
+									(candidateSkillList.get(i).getProfessionalSkills().length() <= companySkillList.get(j).getProfessionalSkills().length())) {
+									String [] professionalSkills = companySkillList.get(j).getProfessionalSkills().split(",");
+									matchPercentage += ((20 / 3) * professionalSkills.length);
+									/*
+									 * If matching percentage is over 70, add to result
+									 */
+									if (matchPercentage > 70f) {
+										result.add(companySkillList.get(j));
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return result;
+	}
+
+	/**
+	 * @return
+	 */
+	private RowMapper<JobDescription> mapJD() {
+		return new RowMapper<JobDescription>() {
+			@Override
+			public JobDescription mapRow(ResultSet rs, int rowNum) throws SQLException {
+				JobDescription jobDescription = new JobDescription();
+				jobDescription.setUserName(rs.getString("username"));
+				jobDescription.setCurrentJobTitle(rs.getString("job_title"));
+				jobDescription.setYearOfExperience(rs.getString("years_experience"));
+				jobDescription.setLocation(rs.getString("location"));
+				jobDescription.setPersonalSkills(rs.getString("personal_skill"));
+				jobDescription.setProfessionalSkills(rs.getString("professional_skill"));
+				return jobDescription;
+			}
+
+		};
 	}
 
 }

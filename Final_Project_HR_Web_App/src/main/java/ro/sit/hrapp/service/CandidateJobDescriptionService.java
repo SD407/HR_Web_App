@@ -66,5 +66,14 @@ public class CandidateJobDescriptionService {
 	public void setCandidateJobDescriptionDAO(JobDescriptionDAO candidateJobDescriptionDAO) {
 		this.candidateJobDescriptionDAO = candidateJobDescriptionDAO;
 	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public Object findMatches(long id) {
+		LOGGER.debug("Finding match...");
+		return candidateJobDescriptionDAO.findMatches(id);
+	}
 	
 }

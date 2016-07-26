@@ -66,17 +66,11 @@
 		          <ul class="nav navbar-nav">
 		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
-	      	 	  <#if user??>
+	      	 	   <#if user??>
 	          		<#if user != "anonymousUser">
-	         			 <ul class="nav navbar-nav">
-							<li class="dropdown">
-					              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
-					              <ul class="dropdown-menu">
-					                <li><a href="/spring/details">Account Details</a></li>
-					                <li><a href="/spring/matchingReports">Matching Reports</a></li>
-					              </ul>
-				            </li>
-	         			 </ul>
+			          <ul class="nav navbar-nav">
+			            <li class="#"><a href="/spring/details">Account Details</a></li>
+			          </ul>
 	         		</#if>
 				  </#if>
 		          <ul class="nav navbar-nav navbar-right">

@@ -65,17 +65,11 @@
 		          <ul class="nav navbar-nav">
 		            <li class="#"><a href="/spring/contact">Contact</a></li>
 		          </ul>
-	      	 	  <#if user??>
+	      	 	   <#if user??>
 	          		<#if user != "anonymousUser">
-	         			 <ul class="nav navbar-nav">
-							<li class="dropdown active">
-				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account <span class="caret"></span></a>
-				              <ul class="dropdown-menu">
-				                <li><a href="/spring/details">Account Details</a></li>
-				                <li><a href="/spring/matchingReports">Matching Reports</a></li>
-				              </ul>
-				            </li>
-	         			 </ul>
+			          <ul class="nav navbar-nav">
+			            <li class="#"><a href="/spring/details">Account Details</a></li>
+			          </ul>
 	         		</#if>
 				  </#if>
 		          <ul class="nav navbar-nav navbar-right">
@@ -111,15 +105,38 @@
 						<th>Personal Skills </th>
 						<th>Professional Skills </th>
 					</tr>
-					<#if matches??>
-						<#list matches as match>
+					<#if candidateMatches??>
+						<#list candidateMatches as matchCandidate>
 								<tr>
-									<td>  ${match.userName!''} </td>
-									<td>  ${match.location!''} </td>
-									<td>  ${match.yearOfExperience!''} </td>
-									<td>  ${match.currentJobTitle!''} </td>
-									<td>  ${match.personalSkills!''} </td>
-									<td>  ${match.professionalSkills!''} </td>
+									<td>  ${matchCandidate.userName!''} </td>
+									<td>  ${matchCandidate.location!''} </td>
+									<td>  ${matchCandidate.yearOfExperience!''} </td>
+									<td>  ${matchCandidate.currentJobTitle!''} </td>
+									<td>  ${matchCandidate.personalSkills!''} </td>
+									<td>  ${matchCandidate.professionalSkills!''} </td>
+								</tr>
+						</#list>
+					</#if>
+				</table>
+				<#elseif role == "[ROLE_CANDIDATE]">
+				<table class="table table-hover">
+					<tr>
+						<th>Username </th>
+						<th>Location </th>
+						<th>Year Of Experience </th>
+						<th>Current Job Title </th>
+						<th>Personal Skills </th>
+						<th>Professional Skills </th>
+					</tr>
+					<#if companyMatches??>
+						<#list companyMatches as matchCompany>
+								<tr>
+									<td>  ${matchCompany.userName!''} </td>
+									<td>  ${matchCompany.location!''} </td>
+									<td>  ${matchCompany.yearOfExperience!''} </td>
+									<td>  ${matchCompany.currentJobTitle!''} </td>
+									<td>  ${matchCompany.personalSkills!''} </td>
+									<td>  ${matchCompany.professionalSkills!''} </td>
 								</tr>
 						</#list>
 					</#if>

@@ -93,7 +93,8 @@ public class WebPageController {
 	public ModelAndView renderReportsPage (long id) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", "Reports"); 
-		modelAndView.addObject("matches", companyJobDescriptionService.findMatches(id));
+		modelAndView.addObject("candidateMatches", companyJobDescriptionService.findMatches(id));
+		modelAndView.addObject("companyMatches", candidateJobDescriptionService.findMatches(id));
 		modelAndView.addObject("user", getPrincipal());
 		modelAndView.addObject("role", getPrincipalRole());
 		return modelAndView;
