@@ -129,7 +129,8 @@
 									<td>  ${candidate.lastName!''} </td>
 									<td>  ${candidate.phoneNumber!''} </td>
 									<td>  ${candidate.email!''} </td>
-									<td><a style="float:right;" href="/spring/editCandidate?id=${candidate.id?c}">EDIT</a></td>
+									<td><a style="float:right;" href="/spring/editCandidate?id=${candidate.id?c}">
+										<button type="button" class="btn btn-primary btn-xs">EDIT </button></a></td>
 								</tr>
 								</#if>
 							</#list>
@@ -142,7 +143,8 @@
 									<td>  ${company.companyName!''} </td>
 									<td>  ${company.phoneNumber!''} </td>
 									<td>  ${company.email!''} </td>
-									<td><a style="float:right;" href="/spring/editCompany?id=${company.id?c}">EDIT</a></td>
+									<td><a style="float:right;" href="/spring/editCompany?id=${company.id?c}">
+										<button type="button" class="btn btn-primary btn-xs">EDIT </button></a></td>
 								</tr>
 								</#if>
 							</#list>
@@ -169,8 +171,10 @@
 									<td>  ${candidate.lastName!''} </td>
 									<td>  ${candidate.phoneNumber!''} </td>
 									<td>  ${candidate.email!''} </td>
-									<td><a style="float:right;" href="/spring/editCandidate?id=${candidate.id?c}">EDIT</a></td>
-									<td><a style="float:right;" href="/spring/deleteCandidate?id=${candidate.id?c}">DELETE</a></td>
+									<td><a href="/spring/editCandidate?id=${candidate.id?c}">
+										<button type="button" class="btn btn-primary btn-xs">EDIT </button></a></td>
+									<td><a href="/spring/deleteCandidate?id=${candidate.id?c}">
+										<button type="button" class="pull-right btn btn-danger btn-xs">DELETE</button></a></td>
 									</tr>
 								</#if>
 							</#list>
@@ -191,8 +195,10 @@
 									<td>  ${company.companyName!''} </td>
 									<td>  ${company.phoneNumber!''} </td>
 									<td>  ${company.email!''} </td>
-									<td><a style="float:right;" href="/spring/editCompany?id=${company.id?c}">EDIT</a></td>
-									<td><a style="float:right;" href="/spring/deleteCompany?id=${company.id?c}">DELETE</a></td>
+									<td><a href="/spring/editCompany?id=${company.id?c}">
+										<button type="button" class="pull-right btn btn-primary btn-xs">EDIT </button></a></td>
+									<td><a href="/spring/deleteCompany?id=${company.id?c}">
+										<button type="button" class="pull-right btn btn-danger btn-xs">DELETE</button></a></td>
 								</tr>
 								</#if>
 							</#list>
@@ -211,7 +217,8 @@
 				<#if candidateJobDescriptions??>
 					<#list candidateJobDescriptions as candidateJobDescription>
 					<#if user == candidateJobDescription.userName>
-					<th><a style ="float:right;" href="/spring/matchingReports?id=${candidateJobDescription.id?c}"> FIND MATCHES</a> </th>
+					<th><a href="/spring/matchingReports?id=${candidateJobDescription.id?c}">
+						<button type="button" class="pull-right btn btn-success btn-xs">FIND MATCHES </button></a></td>
 					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
 					</#if>
 					</#list>
@@ -222,7 +229,8 @@
 				<#if companyJobDescriptions??>
 					<#list companyJobDescriptions as companyJobDescription>
 					<#if user == companyJobDescription.userName>
-					<th><a style ="float:right;" href="/spring/matchingReports?id=${companyJobDescription.id?c}"> FIND MATCHES</a> </th>
+					<th><a href="/spring/matchingReports?id=${companyJobDescription.id?c}">
+						<button type="button" class="pull-right btn btn-success btn-xs">FIND MATCHES </button></a></td>
 					<span style="float:left; margin-right:50px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"/>
 					</#if>
 					</#list>
@@ -246,7 +254,8 @@
 										<th></th>
 									<#else>
 										<th><a style ="float:right;" 
-										href="/spring/addCandidateJobDescription?id=${candidateJobDescription.id?c}"> ADD </a> </th>
+										href="/spring/addCandidateJobDescription?id=${candidateJobDescription.id?c}">
+											<button type="button" class="btn btn-primary btn-xs">ADD </button></a></td>
 									</#if>
 								</tr>
 							</#if>
@@ -263,7 +272,8 @@
 									<td>  ${candidateJobDescription.professionalSkills!''} </td>
 									<#if candidateJobDescription.id?c?? && candidateJobDescription.location??>
 										<td><a style="float:right;" 
-										href="/spring/editCandidateJobDescription?id=${candidateJobDescription.id?c}">EDIT</a></td>
+										href="/spring/editCandidateJobDescription?id=${candidateJobDescription.id?c}">	
+											<button type="button" class="btn btn-primary btn-xs">EDIT </button></a></td>
 									<#else>
 										<th></th>
 									</#if>
@@ -287,7 +297,8 @@
 										<th></th>
 									<#else>
 										<th><a style ="float:right;" 
-										href="/spring/addCompanyJobDescription?id=${companyJobDescription.id?c}"> ADD </a> </th>
+										href="/spring/addCompanyJobDescription?id=${companyJobDescription.id?c}">
+											<button type="button" class="btn btn-primary btn-xs">ADD </button></a></td>
 									</#if>
 								</tr>
 							</#if>
@@ -297,14 +308,15 @@
 						<#list companyJobDescriptions as companyJobDescription>
 							<#if user == companyJobDescription.userName>
 								<tr>
-									<td>  ${companyJobDescription.location!''} </td>
-									<td>  ${companyJobDescription.yearOfExperience!''} </td>
-									<td>  ${companyJobDescription.currentJobTitle!''} </td>
+									<td>   ${companyJobDescription.location!''} </td>
+									<td>   ${companyJobDescription.yearOfExperience!''} </td>
+									<td>   ${companyJobDescription.currentJobTitle!''} </td>
 									<td>  ${companyJobDescription.personalSkills!''} </td>
 									<td>  ${companyJobDescription.professionalSkills!''} </td>
 									<#if companyJobDescription.id?c?? && companyJobDescription.location??>
 										<td><a style="float:right;" 
-										href="/spring/editCompanyJobDescription?id=${companyJobDescription.id?c}">EDIT</a></td>
+										href="/spring/editCompanyJobDescription?id=${companyJobDescription.id?c}">
+											<button type="button" class="btn btn-primary btn-xs">EDIT </button></a></td>
 									<#else>
 										<th></th>
 									</#if>
