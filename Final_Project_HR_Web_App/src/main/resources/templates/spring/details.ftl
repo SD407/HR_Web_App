@@ -213,7 +213,7 @@
 		<!-- Add experience & skills -->
 		<div class="panel panel-default" style="margin-top:5px;">
 			<#if role == "[ROLE_CANDIDATE]">
-				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} EXPERIENCE</b>
+				<div class="panel-heading"style="padding-right: 8px;"><b>ADD ${role?keep_after("_")?keep_before("]")} EXPERIENCE</b>
 				<#if candidateJobDescriptions??>
 					<#list candidateJobDescriptions as candidateJobDescription>
 					<#if user == candidateJobDescription.userName>
@@ -225,7 +225,7 @@
 				</#if>
 				</div>
 			<#elseif role == "[ROLE_COMPANY]">
-				<div class="panel-heading"><b>ADD ${role?keep_after("_")?keep_before("]")} REQUIREMENTS</b>
+				<div class="panel-heading" style="padding-right: 8px;"><b>ADD ${role?keep_after("_")?keep_before("]")} REQUIREMENTS</b>
 				<#if companyJobDescriptions??>
 					<#list companyJobDescriptions as companyJobDescription>
 					<#if user == companyJobDescription.userName>

@@ -128,7 +128,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/Sorin.jpg'/>" alt="...">
 					        <h4>Sorin-Vladut Dragan, Java</h4>
 					    </div>
 					  </div>
@@ -155,7 +155,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/AlinaCrisan.png'/>" alt="...">
 					        <h4>Alina Crisan, BA</h4>
 					    </div>
 					  </div>
@@ -182,7 +182,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/IoanaPanciuc.jpg'/>" alt="...">
 					        <h4>Ioana Panciuc, QA</h4>
 					    </div>
 					  </div>
@@ -191,7 +191,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/AlexTomus.jpg'/>" alt="...">
 					        <h4>Alexandru Vasile Tomus, QA</h4>
 					    </div>
 					  </div>
@@ -209,7 +209,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/MihaiDit.jpg'/>" alt="...">
 					        <h4>Mihai Dit, PM</h4>
 					    </div>
 					  </div>

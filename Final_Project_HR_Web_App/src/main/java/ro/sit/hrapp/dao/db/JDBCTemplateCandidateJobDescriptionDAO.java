@@ -128,7 +128,7 @@ public class JDBCTemplateCandidateJobDescriptionDAO implements JobDescriptionDAO
 				float matchPercentage = 0f;
 				
 				int i1 = Integer.parseInt(candidateSkillList.get(i).getYearOfExperience().substring(2));
-				int i2 = Integer.parseInt(companySkillList.get(i).getYearOfExperience().substring(2));
+				int i2 = Integer.parseInt(companySkillList.get(j).getYearOfExperience().substring(2));
 				
 				/*
 				 * company has the same location as the candidate?
