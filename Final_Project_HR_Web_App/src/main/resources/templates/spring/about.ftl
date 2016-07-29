@@ -146,7 +146,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/AdrianBadea.jpg'/>" alt="...">
 					        <h4>Adrian Badea, BA</h4>
 					    </div>
 					  </div>
