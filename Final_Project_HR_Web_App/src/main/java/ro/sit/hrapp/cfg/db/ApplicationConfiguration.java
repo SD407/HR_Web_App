@@ -70,7 +70,7 @@ public class ApplicationConfiguration {
 
         return basicDataSource;
     }
-	
+
 	@Bean
 	public CandidateDAO candidateDAO() {
 		return new JDBCTemplateCandidateDAO(dataSource());

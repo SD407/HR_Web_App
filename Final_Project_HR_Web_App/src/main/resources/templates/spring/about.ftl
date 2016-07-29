@@ -173,7 +173,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/AdrianSumlea.jpg'/>" alt="...">
 					        <h4>Adrian Sumlea, QA</h4>
 					    </div>
 					  </div>
@@ -218,7 +218,7 @@
 					<div class="row">
 					  <div class="col-sm-6 col-md-3">
 					    <div class="thumbnail">
-					      <img src="<@spring.url '/images/icon.png'/>" alt="...">
+					      <img src="<@spring.url '/images/MihaiJisa.jpg'/>" alt="...">
 					        <h4>Mihai Jisa, PM</h4>
 					    </div>
 					  </div>
